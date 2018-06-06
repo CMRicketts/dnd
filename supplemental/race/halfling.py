@@ -13,15 +13,19 @@ class Halfling:
         self.speed = 25
         self.proficiency = [self.lucky(), self.brave(), self.nimble()]
         self.resistance = []
+        self.language = ["common", "halfling"]
+        self.subrace = ""
         self.set_subrace()
 
     def set_subrace(self):
         subrace = raw_input("what subrace do you want to be? lightfoot or stout")
         if(subrace == "lightfoot"):
+            self.subrace = "Lightfoot Halfling"
             self.charisma = 1
             self.proficiency.append(str(self.natural()))
 
         if(subrace == "stout"):
+            self.subrace = "Stout Halfling"
             self.constitution = 1
             self.resistance.append("poison")
             self.proficiency.append("poison")

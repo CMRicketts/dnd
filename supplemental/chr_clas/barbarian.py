@@ -1,17 +1,35 @@
 import math
 
-
 class Barbarian:
 
-    def __init__(self, level, race):
+    def __init__(self, level, race, stre, dex, con, cha, inte, wis):
 
-        self.feature = [self.rage_details(), self.unarmored()]
-        self.proficiency = ["light armor", "medium armor", "shields", "simple weapons", "martial weapons", "strength",
-                            "constitution"]
+        self.feature = ["Rage", "Unarmored Defense"]
+        self.proficiency = ["light armor", "medium armor", "shields", "simple weapons", "martial weapons"]
+        self.saving_throw = ["strength", "constitution"]
         self.resistance = []
         self.skill = []
         self.equipment = []
+        self.weapon = []
         self.path = ""
+
+        self.rage_description = []
+
+        self.level = level
+        self.strength = str(stre)
+        self.wisdom = str(wis)
+        self.intelligence = str(inte)
+        self.dexterity = str(dex)
+        self.charisma = str(cha)
+        self.constitution = str(con)
+        self.hit_dice = ""
+
+        self.hp = 0
+
+        self.swim_speed = 0
+
+        self.attack = []
+        self.archetype = ""
 
         self.proficiency_bonus = 2
         if level > 4:
@@ -23,40 +41,40 @@ class Barbarian:
         if level > 16:
             self.proficiency_bonus = 6
 
-        if level > 1 and not self.feature.__contains__(self.reckless()):
-            self.feature.append([self.reckless(), self.danger_sense()])
+        if level > 1:
+            self.feature.append(["Reckless Attack", "Danger Sense"])
             self.proficiency.append("Dexterity saving throws against effects you can see")
 
         if level > 2 and self.path == "":
             path = raw_input("what path do you want to take? "
-                         "cannibal, ancestor, berserker, storm, totem, or zealot?")
+                             "cannibal, ancestor, berserker, storm, totem, or zealot?")
             if race == "dwarf":
                 str(path) + " or battlerager (dwarf only)?"
             if path == "cannibal":
+                self.archetype = "Cannibal"
                 self.path = self.cannibal(level)
             if path == "ancestor":
+                self.archetype = "Ancestor"
                 self.path = self.ancestor(level)
             if path == "battlerager":
+                self.archetype = "Battlerager"
                 self.path = self.battlerager(level)
             if path == "beserker":
+                self.archetype = "Beserker"
                 self.path = self.beserker(level)
             if path == "storm":
+                self.archetype = "Storm"
                 self.path = self.storm(level)
             if path == "totem":
+                self.archetype = "Totem"
                 self.path = self.totem(level)
             if path == "zealot":
+                self.archetype = "Zealot"
                 self.path = self.zealot(level)
 
-        if level > 1:
-            self.feature.append("At 2nd level, you can throw aside all concern for defense to attack with fierce "
-                                "desperation. When you make your first attack on your turn, you can decide to attack "
-                                "recklessly. Doing so gives you advantage on melee weapon attack rolls using Strength "
-                                "during this turn, but attack rolls against you have advantage until your next turn.")
-            self.proficiency.append("Dexterity saving throws (unless blinded or incapacitated")
-
         if level > 4:
-            self.feature.append("extra attack")
-            self.feature.append("fast movement: speed increases by 10 when not wearing heavy armor")
+            self.feature.append("Extra attack")
+            self.feature.append("Fast movement")
 
         if level > 6:
             self.proficiency.append("initiative rolls (feral instinct)")
@@ -65,24 +83,16 @@ class Barbarian:
             self.brutal_crit(level)
 
         if level > 10:
-            self.rage_description.append(
-                "Relentless Rage: your rage can keep you fighting despite grievous wounds. If you "
-                "drop to O hit points "
-                "while you're raging and don't die outright, you can make a DC 10 Constitution saving "
-                "throw. If you succeed. you drop to 1 hit point instead. "
-                "\n\tEach time you use this feature after the first, "
-                "the DC increases by 5. When you finish a short or long "
-                "rest, the DC resets to 10.")
+            self.rage_description.append("Relentless Rage")
 
         if level > 14:
-            self.rage_description.append("your rage is so fierce that it ends early only if you fall unconscious or "
-                                         "if you choose to end it.")
+            self.rage_description.append("Persistant Rage")
 
         if level > 17:
-            self.feature.append("if your total for a Strength check is less than your Strength score, you can use "
-                                "that score in place of the total.")
+            self.feature.append("Indomitable Might")
 
         if level == 20:
+            self.feature.append("Primal Champion")
             self.strength = self.strength + 4
             self.constitution = self.constitution + 4
 
@@ -106,7 +116,7 @@ class Barbarian:
             self.rage_count = 5
         if level > 16:
             self.rage_count = 6
-        if level == 20:
+        if level > 19:
             self.rage_count = 999
 
         self.rage_dmg = 2
@@ -115,27 +125,44 @@ class Barbarian:
         if level > 15:
             self.rage_dmg = 4
 
-        self.rage_description = []
-
-        self.strength = 0
-        self.wisdom = 0
-        self.intelligence = 0
-        self.dexterity = 0
-        self.charisma = 0
-        self.constitution = 0
-
-        self.hp_init = 12 + self.constitution
-        self.hp_level = 12 + (self.constitution * level)
-
-        self.swim_speed = 0
-
-        self.attack = []
-
         self.equipments()
         self.skills()
+        self.init_hit_die()
+
+        if level == 1:
+            self.init_hp()
+        else:
+            self.level_hp(level)
+
+    def strength_mod(self):
+        return math.floor((self.strength - 10) / 2)
+
+    def dexterity_mod(self):
+        return math.floor((self.dexterity - 10) / 2)
+
+    def wisdom_mod(self):
+        return math.floor((self.wisdom - 10) / 2)
+
+    def constitution_mod(self):
+        return math.floor((self.constitution - 10) / 2)
+
+    def charisma_mod(self):
+        return math.floor((self.charisma - 10) / 2)
+
+    def intelligence_mod(self):
+        return math.floor((self.intelligence - 10) / 2)
+
+    def init_hit_die(self):
+        self.hit_dice = str(self.level) + "d12"
+
+    def init_hp(self):
+        self.hp = 12 + self.constitution_mod()
+
+    def level_hp(self, level):
+        self.hp = 12 + (self.constitution_mod() * int(level))
 
     def ability(self):
-        choice = raw_input("do you want to increase 'one' score by two, or 'two' scores by one each?")
+        choice = raw_input("levelling up: do you want to increase 'one' score by two, or 'two' scores by one each?")
         if choice == "one":
             score = raw_input("which ability do you want to increase by two?")
             if score == "strength":
@@ -150,7 +177,7 @@ class Barbarian:
                 self.charisma = self.charisma + 2
             else:
                 self.constitution = self.constitution + 2
-        elif choice == "two":
+        else:
             score = raw_input("which ability do you want to increase by one?")
             if score == "strength":
                 self.strength = self.strength + 1
@@ -189,10 +216,13 @@ class Barbarian:
     def equipments(self):
         weapon = raw_input("which weapon do you want? greataxe, or any other martial melee weapon (input please)")
         self.equipment.append(weapon)
+        self.weapon.append(weapon)
         other = raw_input("which other weapon do you want? two handaxes, or any other simple weapon (input please)?")
         self.equipment.append(other)
+        self.weapon.append(other)
         self.equipment.append("explorer's pack")
         self.equipment.append("javelin x4")
+        self.weapon.append("javelin x4")
 
     def brutal_crit(self, level):
         beg = "you can roll "
@@ -204,43 +234,7 @@ class Barbarian:
         end = "additional weapon damage die when determining the extra damage for a critical hit with a melee attack."
         self.feature.append(beg + dice + end)
 
-    def rage_details(self):
-        return "in battle, you fight with a primal ferocity. On your turn, you can enter a rage as a bonus action. " \
-               "While raging, you gain the following benefits, as long as you aren't wearing heavy armor." \
-               "\n\tYou have advantage on Strength check and Strength saves." \
-               "\n\tWhen you make a melee weapon attack using Strength, you gain a +2 to the damage roll. This bonus " \
-               "increase to +3 at 9th level, and +4 at 16th level." \
-               "\n\tYou have resistance to bludgeoning, piercing, and physical damage." \
-               "\nIf you can cast spells, you can't cast them or concentrate on them while raging." \
-               "\nYour rage lasts 1 minute. It ends early if you are knocked unconscious " \
-               "or if your turn ends without you having attacked a hostile creature or taken any damage since your " \
-               "last turn. " \
-               "You can also end your rage on your turn as a bonus action." \
-               "\nOnce you have raged a number of time shown for your barbarian level on the table above," \
-               " you must finish a long rest before you can rage again."
-
-    def unarmored(self):
-        return "When you aren't wearing any armor, " \
-               "your Armor Class is 10 + your Dexterity modifier + your Constitution modifier. " \
-               "You can use a shield and still gain this benefit."
-
-    def reckless(self):
-        return "At 2nd level, you can throw aside all concern for defense to attack with fierce desperation. " \
-               "When you make your first attack on your turn, you can decide to attack recklessly. " \
-               "Doing so gives you advantage on melee weapon attack rolls using Strength during this turn," \
-               " but attack rolls against you have advantage until your next turn."
-
-    def danger_sense(self):
-        return "You have advantage on Dexterity saving throws against effects that you can see," \
-               " such as traps and spells. " \
-               "To gain this benefit, you can't be blinded, deafened, or incapacitated."
-
     def cannibal(self, level):
-
-        def all_consuming():
-            return "Starting at 3rd level, during rage, when you reduce a hostile opponent to 0 hit points," \
-                   " you gain temporary hit points equal your Constitution modifier + your barbarian level " \
-                   "(minimum of 1)."
 
         def biting():
             dmg = "1d4 + " + str(self.strength)
@@ -257,142 +251,60 @@ class Barbarian:
                 dc,
                 description
             }
+            self.attack.append(str(bite))
             return bite
 
-        def heart():
-            return "by consuming a heart of a humanoid you have participated in slaying within the past hour," \
-                   " you regain your full hit points as if finishing a long rest. " \
-                   "You must finish a long rest to regain use of this feature."
-
-        def spirit():
-            return "At 14th level, by channeling the spirits of those you have eaten," \
-                   " you have advantage on your next attack. " \
-                   "You can only do this a number of times each day equal to your proficiency bonus, " \
-                   "and only once per turn."
-
-        self.rage_description.append(all_consuming())
+        self.rage_description.append("All Consuming Rage")
 
         if level > 5:
-            self.attack.append(biting())
+            self.attack.append("Biting Rebuke")
+            biting()
         if level > 9:
-            self.feature.append(heart())
+            self.feature.append("Heart of Enemies")
         if level > 13:
-            self.feature.append(spirit())
+            self.feature.append("Spirit of the Slain")
 
         return "cannibal"
 
     def ancestor(self, level):
 
-        def protector():
-            return "Starting when you choose this path at 3rd level, " \
-                   "spectral warriors appear when you enter your rage. " \
-                   "While you're raging, the first creature you hit with an attack on your turn becomes" \
-                   " the target of the warriors, which hinder its attacks. " \
-                   "Until the start of your next turn, that target has disadvantage on any attack roll " \
-                   "that isn't against you, and when the target hits a creature other than you with an attack, " \
-                   "that creature has resistance to the damage dealt by the attack. " \
-                   "The effect on the target ends early if your rage ends."
-
-        def spirit():
-            desc = "If you are raging and another creature you can see within 30 feet of you takes damage, " \
-                   "you can use your reaction to reduce that damage by "
-            if 5 < level < 10:
-                str(desc) + "2d6"
-            if 9 < level < 14:
-                str(desc) + "3d6"
-            if 13 < level:
-                str(desc) + "4d6"
-
-            return desc
-
-        def consult():
-            return "At 10th level, you gain the ability to consult with your ancestral spirits. " \
-                   "When you do so, you cast the augury or clairvoyance spell, " \
-                   "without using a spell slot or material components. " \
-                   "Rather than creating a spherical sensor, " \
-                   "this use of clairvoyance invisibly summons one Of your ancestral spirits" \
-                   " to the chosen location. Wisdom is your spellcasting ability for these spells. " \
-                   "After you cast either spell in this way, you can't use this feature again until you " \
-                   "finish a short or long rest."
-
-        def venge():
-            return "At 14th level, your ancestral spirits grow powerful enough to retaliate. " \
-                   "When you use your Spirit Shield to reduce the damage of an attack, " \
-                   "the attacker takes an amount of force damage equal to the damage" \
-                   " that your Spirit Shield prevents."
-
-        self.rage_description.append(protector())
+        self.rage_description.append("Ancestral Protectors")
 
         if level > 5:
-            self.rage_description.append(spirit())
+            self.rage_description.append("Spirit Shield")
         if level > 9:
-            self.feature.append(consult())
+            self.feature.append("Consult the Spirit")
         if level > 13:
-            self.feature.append(venge())
+            self.feature.append("Vengeful Ancestors")
 
         return "ancestral guardian"
 
     def battlerager(self, level):
 
-        def spike():
-            return "When you choose this path at 3rd level, you gain the ability to use spiked armor (see the 'Spiked " \
-                   "Armor' sidebar) as a weapon. While you are wearing spiked armor and are raging, you can use a " \
-                   "bonus action to make one melee weapon attack with your armor spikes against a target within 5 " \
-                   "feet of you. If the attack hits, the spikes deal ld4 piercing damage. You use your Strength " \
-                   "modifier for the attack and damage rolls. Additionally, when you use the Attack action to grapple " \
-                   "a creature, the target takes 3 piercing damage if your grapple check succeeds. "
-
-        def reckless():
-            return "Beginning at 6th level, when you use Reckless Attack while raging, you also gain temporary hit " \
-                   "points equal to your Constitution modifier (minimum of 1). They vanish if any of them are left " \
-                   "when your rage ends. "
-
-        self.feature.append(spike())
+        self.feature.append("Battlerager Armor")
 
         if level > 5:
-            self.feature.append(reckless())
+            self.feature.append("Reckless Abandon")
         if level > 9:
-            self.feature.append("You can take a dash action as a bonus action while you are raging")
+            self.feature.append("Battlerager Charge")
         if level > 13:
-            self.feature.append("when a creature within 5 feet of you hits you with a melee attack,"
-                                " the attacker takes 3 piercing damage if you are raging, "
-                                "aren't incapacitated, and are wearing spiked armor.")
+            self.feature.append("Spiked Retribution")
 
         return "battlerager"
 
     def beserker(self, level):
 
-        def rage():
-            return "Starting when you choose this path at 3rd level, you can go into a frenzy when you rage. If you " \
-                   "do so, for the duration of your rage you can make a single melee weapon attack as a bonus action " \
-                   "on each of your turns after this one. When your rage ends, you suffer one level of exhaustion. "
 
         def mindless():
             self.resistance.append(["charm (while raging)", "frighten (while raging)"])
 
-        def intimidate():
-            beginning = "Beginning at 10th level, you can use your action to frighten someone with your menacing " \
-                        "presence. When you do so, choose one creature that you can see within 30 feet of you. If the " \
-                        "creature can see or hear you, it must succeed on a Wisdom saving throw "
-            dc = 8 + self.proficiency_bonus + self.charisma
-            end = "or be frightened of you until the end of your next turn. On subsequent turns, you can use your " \
-                  "action to extend the duration of this effect on the frightened creature until the end of your next " \
-                  "turn. This effect ends if the creature ends its turn out of line of sight or more than 60 feet " \
-                  "away from you. "
-
-            return beginning + str(dc) + end
-
-        def retaliate():
-            return "when you take damage from a creature that is within 5 feet of you, you can use your reaction to " \
-                   "make a melee weapon attack against that creature. "
-
-        self.feature.append(rage())
+        self.feature.append("Frenzy")
         if level > 5:
             mindless()
         if level > 9:
-            self.feature.append(intimidate())
+            self.feature.append("Intimidating Presence")
         if level > 13:
-            self.feature.append(retaliate())
+            self.feature.append("Retaliation")
 
         return "beserker"
 
@@ -410,25 +322,25 @@ class Barbarian:
             dc = 8 + self.proficiency_bonus + self.constitution
             if element == "desert":
                 end = "When this effect is activated, all other creatures in your aura take 2 fire damage each. The " \
-                      "damage increases when you reach certain levels in this cla, increasing to 3 at 5th level, " \
+                      "damage increases when you reach certain levels in this class, increasing to 3 at 5th level, " \
                       "4 at 10th level, 5 at 15th level, and 6 at 20th level. "
             if element == "sea":
                 end = "When this effect is activated, you can choose one other creature you can see in your aura. The " \
                       "target must make a Dexterity saving throw. The target takes 1d6 lightning damage on a failed " \
                       "save, or half as much damage on a successful one. The damage increases when you reach certain " \
-                      "levels in this cla, increasing to 2d6 at 10th level, 3d6 at 15th level, and 4d6 at 20th " \
+                      "levels in this class, increasing to 2d6 at 10th level, 3d6 at 15th level, and 4d6 at 20th " \
                       "level. "
             if element == "tundra":
                 end = "When this effect is activated, each creature of your choice in your aura gains 2 temporary hit " \
                       "points, as icy spirits inure it to suffering. The temporary hit points increase when you reach " \
-                      "certain levels in this cla, increasing to 3 at 5th level, 4 at 10th level, 5 at 15th level, " \
+                      "certain levels in this class, increasing to 3 at 5th level, 4 at 10th level, 5 at 15th level, " \
                       "and 6 at 20th level. "
             return beginning + str(dc) + end
 
         def soul():
             if element == "desert":
                 self.resistance.append("fire")
-                self.feature.append("as an action, you can touch a flammable object that isn't being worn or carried "
+                self.feature.append("As an action, you can touch a flammable object that isn't being worn or carried "
                                     "by anyone else and set it on fire.")
             if element == "sea":
                 self.resistance.append("lightning")
@@ -492,7 +404,7 @@ class Barbarian:
 
         def aspect():
             animal = raw_input("which totem spirit do you want for the second level? You can choose the same if you'd "
-                           "like. bear, eagle, wolf, elk, or tiger")
+                               "like. bear, eagle, wolf, elk, or tiger")
             if animal == "bear":
                 self.feature.append("Your carrying capacity (including maximum load and maximum lift) is doubled, "
                                     "and you have advantage on Strength checks made to push, pull, lift, "
@@ -511,9 +423,9 @@ class Barbarian:
                                     "incapacitated.")
             if animal == "tiger":
                 prof = raw_input("which first skill do you want to be proficient in? athletics, acrobatics, stealth, "
-                             "or survival?")
+                                 "or survival?")
                 prof_two = raw_input("which second skill, different from the first, do you want to be proficient in? "
-                                 "athletics, acrobatics, stealth, or survival?")
+                                     "athletics, acrobatics, stealth, or survival?")
                 self.skill.append(prof)
                 self.skill.append(prof_two)
 
@@ -524,7 +436,7 @@ class Barbarian:
 
         def attune():
             animal = raw_input("which animal do you want to have attributes of? you can choose the same one as before. "
-                           "bear, eagle, wolf, elk, or tiger")
+                               "bear, eagle, wolf, elk, or tiger")
             if animal == "bear":
                 self.feature.append("While you're raging, any creature within 5 feet of you that's hostile to you has "
                                     "disadvantage on attack rolls against targets other than you or another character "
@@ -560,42 +472,13 @@ class Barbarian:
 
     def zealot(self, level):
 
-        def divine():
-            beg = "you can channel divine fury into your weapon strikes. While you're raging, the first creature you " \
-                  "hit on each of your turns with a weapon attack takes extra damage equal to "
-            dice = math.floor(4 + level / 2)
-            end = "The extra damage is necrotic or radiant; you choose the type of damage when you gain this feature."
-            return beg + str(dice) + end
-
-        def warrior():
-            return "If a spell, such as raise dead, has the sole effect of restoring you to life (but not uncleath), " \
-                   "the caster doesn't need material components to cast the spell on you. "
-
-        def focus():
-            return "the divine power that fuels your rage can protect you. If you fail a saving throw while you're " \
-                   "raging, you can reroll it, and you must use the new roll. You can use this ability only once per " \
-                   "rage. "
-
-        def presence():
-            return "you learn to channel divine power to inspire zealotry in others. As a bonus action, you unleash a " \
-                   "battle cry infused with divine energy. Up to ten other creatures of your choice within 60 feet of " \
-                   "you that can hear you gain advantage on attack rolls and saving throws until the start of your " \
-                   "next turn. Once you use this feature, you can't use it again until you finish a long rest. "
-
-        def death():
-            return "the divine power that fuels your rage allows you to shrug off fatal blows. While you're raging, " \
-                   "having 0 hit points doesn't knock you unconscious. You still must make death saving throws, " \
-                   "and you suffer the normal effects of taking damage while at 0 hit points. However, if you would " \
-                   "die due to failing death saving throws, you don't die until your rage ends, and you die then only " \
-                   "if you still have 0 hit points. "
-
-        self.feature.append(divine())
-        self.feature.append(warrior())
+        self.feature.append("Divine Fury")
+        self.feature.append("Warrior of the Gods")
         if level > 5:
-            self.feature.append(focus())
+            self.feature.append("Fanatical Focus")
         if level > 9:
-            self.feature.append(presence())
+            self.feature.append("Zealous Presence")
         if level > 13:
-            self.feature.append(death())
+            self.feature.append("Rage Beyond Death")
 
         return "zealot"

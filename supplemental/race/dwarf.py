@@ -1,11 +1,11 @@
 class Dwarf:
     def __init__(self, level):
-        self.set_subrace(self)
-        self.level = level
+        self.level = int(level)
+        self.subrace = ""
         self.constitution = 2
         self.strength = 0
         self.wisdom = 0
-        self.hp_max = 0
+        self.max_hp = 0
         self.hp_increase = 0
         self.age_low = 40
         self.age_high = 300
@@ -17,9 +17,9 @@ class Dwarf:
         self.size = "medium"
         self.languages = ["common", "dwarvish"]
         self.resistance = ["poison"]
-        self.proficiency = ["darkvision", "battleaxe", "handaxe", "throwing hammer", "warhammer", self.stonecunning(), self.tool_prof()]
-
-
+        self.proficiency = ["darkvision", "battleaxe", "handaxe", "throwing hammer", "warhammer", self.stonecunning(),
+                            self.tool_prof()]
+        self.set_subrace(self.level)
 
     def stonecunning(self):
         return "whenever you make an intelligence (history) check related to the origin of stonework," \
@@ -30,21 +30,24 @@ class Dwarf:
     def tool_prof(self):
         tool = raw_input("what tool proficiency do you want? smith tools, brew tools, or mason tools?")
         tool = tool.lower()
-        if(tool == "smith"):
+        if tool == 'smith':
             return "smith's tools"
-        elif(tool == "brew"):
+        elif tool == "brew":
             return "brewing tools"
-        elif(tool == "mason"):
+        elif tool == "mason":
             return "mason's tools"
 
     def set_subrace(self, level):
-        subrace = raw_input("what subrace are you? hill or mountain?")
+        subrace = raw_input("what subrace are you? hill or mountain? ")
         subrace = subrace.lower()
-        if(subrace == "hill"):
+        if subrace == "hill":
+            self.subrace = "Hill Dwarf"
             self.wisdom = 1
-            while(level != 0):
-                self.hp_max = level + self.hp_max
-                level=level-1
-        if(subrace == "mountain"):
+            while level != 0:
+                self.max_hp = (level + self.max_hp)
+                level = level - 1
+        if subrace == "mountain":
+            self.subrace = "Mountain Dwarf"
             self.strength = 2
-            self.proficiency.append(str(["light armor", "medium armor"]))
+            self.proficiency.append("light armor")
+            self.proficiency.append("medium armor")

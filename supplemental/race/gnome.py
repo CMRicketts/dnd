@@ -11,10 +11,12 @@ class Gnome:
         self.weight_high = 45
         self.size = "small"
         self.speed = 25
-        self.magic = ""
+        self.magic = []
+        self.magic_throw = ""
         self.proficiency = ["darkvision"]
         self.resistance = ["intelligence", "wisdom", "charisma"]
         self.language = ["common", "gnomish"]
+        self.subrace = ""
         self.set_subrace()
 
     def speak(self):
@@ -49,17 +51,21 @@ class Gnome:
         subrace = raw_input("what is your subrace: forest, rock, or deep? ")
         subrace = subrace.lower()
         if(subrace == "forest"):
+            self.subrace = "Forest Gnome"
             self.dexterity = 1
-            str(self.magic) + "minor illusion "
+            self.magic.append("minor illusion")
+            self.magic_throw = "intelligence"
             self.proficiency.append(str(self.speak()))
 
         if(subrace == "rock"):
+            self.subrace = "Rock Gnome"
             self.constitution = 1
             self.proficiency.append(str(self.lore()))
             self.proficiency.append("artisan's tools (tinker tools")
             self.proficiency.append(str(self.tinker()))
 
         if(subrace == "deep"):
+            self.subrace = "Deep Gnome"
             self.dexterity = 1
             self.age_low = 25
             self.age_high = 225
