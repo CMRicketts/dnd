@@ -3,8 +3,8 @@ import random
 
 from supplemental.chr_clas.barbarian import Barbarian
 from supplemental.chr_clas.bard import Bard
-'''
 from supplemental.chr_clas.cleric import Cleric
+'''
 from supplemental.chr_clas.druid import Druid
 from supplemental.chr_clas.fighter import Fighter
 from supplemental.chr_clas.monk import Monk
@@ -51,12 +51,12 @@ class Character:
 
         self.level = 0
 
-        self.strength = 8
-        self.dexterity = 9
+        self.strength = 10
+        self.dexterity = 10
         self.constitution = 10
-        self.intelligence = 12
-        self.wisdom = 13
-        self.charisma = 15
+        self.intelligence = 10
+        self.wisdom = 10
+        self.charisma = 10
 
         self.proficiency_bonus = 0
         self.path = ""
@@ -346,11 +346,34 @@ class Character:
             self.lvl_nine.append(chr.lvl_nine) '''
             self.spells.append(chr.spells)
             self.spell_ct += chr.spell_ct
-
-
-    '''
         if clas == "cleric":
-            chr = Cleric
+            chr = Cleric(self.level, self.strength, self.dexterity, self.constitution, self.charisma, self.intelligence, self.wisdom)
+            self.archetype = chr.domain
+            self.strength = chr.strength
+            self.dexterity = chr.dexterity
+            self.intelligence = chr.intelligence
+            self.wisdom = chr.wisdom
+            self.charisma = chr.charisma
+            self.constitution = chr.constitution
+            self.proficiency.append(chr.proficiency)
+            self.proficiency_bonus = int(chr.proficiency_bonus)
+            self.save.append(chr.saving_throw)
+            self.feature.append(chr.feature)
+            self.equipment.append(chr.equipment)
+            self.max_hp = self.max_hp + chr.hp
+            self.hit_dice = chr.hit_dice
+            self.attack.append(chr.attack)
+            self.armor = chr.armor
+            self.magic.append(chr.magic)
+            self.magic_throw += str(chr.magic_throw)
+            self.spell_dc = chr.spell_dc
+            self.spell_attack += chr.spell_attack
+            self.cantrips.append(chr.cantrips)
+            self.skill.append(chr.skill)
+            self.weapon.append(chr.weapon)
+            self.spells.append(chr.spells)
+            self.spell_ct += chr.spell_ct
+    '''
         if clas == "druid":
             chr = Druid
         if clas == "fighter":
@@ -394,7 +417,7 @@ class Character:
             eqp = "No Equipment (something went wrong, dude)"
 
         spells = ""
-        for spell in self.magic:
+        for spell in self.spells:
             spells = spells + "Spell: \t\t\t\t" + str(spell)
         if spells == "":
             spells = "No known spells"
