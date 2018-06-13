@@ -334,16 +334,6 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
-
-            '''   self.lvl_one.append(chr.lvl_one)
-            self.lvl_two.append(chr.lvl_two)
-            self.lvl_three.append(chr.lvl_three)
-            self.lvl_four.append(chr.lvl_four)
-            self.lvl_five.append(chr.lvl_five)
-            self.lvl_six.append(chr.lvl_six)
-            self.lvl_seven.append(chr.lvl_seven)
-            self.lvl_eight.append(chr.lvl_eight)
-            self.lvl_nine.append(chr.lvl_nine) '''
             self.spells.append(chr.spells)
             self.spell_ct += chr.spell_ct
         if clas == "cleric":
@@ -359,7 +349,9 @@ class Character:
             self.proficiency_bonus = int(chr.proficiency_bonus)
             self.save.append(chr.saving_throw)
             self.feature.append(chr.feature)
+            self.resistance.append(chr.resistance)
             self.equipment.append(chr.equipment)
+            self.language.append(chr.language)
             self.max_hp = self.max_hp + chr.hp
             self.hit_dice = chr.hit_dice
             self.attack.append(chr.attack)

@@ -19,6 +19,8 @@ class Cleric:
         self.proficiency = ["light armor", "medium armor", "shields", "all simple weapons"]
         self.skill = []
         self.saving_throw = ["wisdom", "charisma"]
+        self.resistance = []
+        self.language = []
 
         self.domain = ""
         self.channel_divine_desc = []
@@ -291,71 +293,87 @@ class Cleric:
         elif domain == "ambition":
             self.domain = "Ambition Domain"
             ambition_spells = [["bane", "Disguise Self"], ["Mirror image", "ray of enfeeblement"], ["bestow curse", "vampiric touch"], ["death ward", "dimension door"], ["dominate person", "modify memory"]]
-            ambition_spf = [[], [], [], [], []]
-
+            ambition_spf = [[["skill", 0, "Warding Flare"]], [["divine", 1, "Invoke Duplicity"], ["divine", 5, "Cloak of Shadows"]], [["feature", 7, "Potent Spellcasting"], ["feature", 16, "Improved Duplicity"]]]
+            self.act_domain(ambition_spells, ambition_spf)
         elif domain == "city":
             self.domain = "City Domain"
-            city_spells = [["", ""], ["", ""], ["", ""], ["", ""], ["", ""]]
-
+            city_spells = [["comprehend languages", "remote access"], ["find vehicle", "heat metal"], ["lightning bolt", "protection from ballistics"], ["locate creature", "synchronicity"], ["commune with city", "shutdown"]]
+            city_spf = [[["spell", "cantrip", 1, 0, "On/Off"]], [["proficiency", 0, ["sidearms", "vehicles (land)"]]], [["feature", 0, "Heart of the City"], ["feature", 5, "Block Watch"], ["feature", 7, "Divine Strike (Psychic)"], ["feature", 16, "Express Transit"]], [["divine", 1, "Spirits of the City"]]]
+            self.act_domain(city_spells, city_spf)
         elif domain == "death":
             self.domain = "Death Domain"
-            self.death()
-
+            death_spells = [["false life", "ray of sickness"], ["blindness/deafness", "ray of enfeeblement"], ["animate dead", "vampiric touch"], ["blight", "death ward"], ["antilife shell", "cloudkill"]]
+            death_spf = [[["proficiency", 0, "martial weapons"]], [["spell", "cantrip", 1, 0, raw_input("Death Domain Initialization: What necromancy cantrip do you want to learn? Please input. ")]], [["feature", 0, "Reaper"], ["feature", 5, "Inescapable Destruction"], ["feature", 7, "Divine Strike (Necromancy)"], ["feature", 16, "Improved Reaper"]], [["divine", 1, "Touch of Death"]]]
+            self.act_domain(death_spells, death_spf)
         elif domain == "forge":
             self.domain = "Forge Domain"
-            self.forge()
-
+            forge_spells = [["identify", "searing smite"], ["heat metal", "magic weapon"], ["elemental weapon", "protection from energy"], ["fabricate", "wall of fire"], ["animate objects", "creation"]]
+            forge_spf = [[["proficiency", 0, ["heavy armor", "smith's tools"]]], [["feature", 0, "Blessing of the Forge"], ["feature", 5, "Soul of the Forge"], ["feature", 7, "Divine Strike (Fire)"], ["feature", 16, "Saint of Forge and Fire"]], [["divine", 1, "Artisan's Blessing"]], [["resistance", 5, "fire"], ["resistance", 16, "fire (immunity)"]]]
+            self.act_domain(forge_spells, forge_spf)
         elif domain == "grave":
             self.domain = "Grave Domain"
-            self.grave()
-
+            grave_spells = [["bane", "false life"], ["gentle repose", "ray of enfeeblement"], ["revivify", "vampiric touch"], ["blight", "death ward"], ["antilife shell", "raise dead"]]
+            grave_spf = [[["cantrip", 1, 0, "Spare the Dying"]], [["feature", 0, "Circle of Mortality"], ["feature", 0, "Eyes of the Grave"], ["feature", 5, "Sentinel at Death's Door"], ["feature", 7, "Potent Spellcasting"], ["feature", 16, "Keeper of Souls"]], [["divine", 1, "Path to the Grave"]]]
+            self.act_domain(grave_spells, grave_spf)
         elif domain == "knowledge":
             self.domain = "Knowledge Domain"
-            self.knowledge()
-
+            knowledge_spells = [["command", "identify"], ["augury", "suggestion"], ["nondetection", "speak with dead"], ["arcane eye", "confusion"], ["legend lore", "scrying"]]
+            knowledge_spf = [[["language", 0, raw_input("Knowledge Domain Initialization: What two extra languages do you want to learn? Please input. ")]], [["skill", 0, raw_input("What two skills do you want to be proficient in? \nArcana, History, Nature, or Religion? Please input both. ")]], [["feature", 0, "Blessing of Knowledge"]], [["divine", 1, "Knowledge of the Ages"], ["divine", 5, "Read Thoughts"]], [["feature", 7, "Potent Spellcasting"], ["feature", 16, "Visions of the Past"]]]
+            self.act_domain(knowledge_spells, knowledge_spf)
         elif domain == "zeal":
             self.domain = "Zeal Domain"
-            self.zeal()
-
+            zeal_spells = [["searing smite", "thunderous smite"], ["magic weapon", "shatter"], ["haste", "fireball"], ["fire shield (warm only)", "freedom of movement"], ["destructive wave", "flame strike"]]
+            zeal_spf = [[["proficiency", 0, ["martial weapons", "heavy armor"]]], [["feature", 0, "Priest of Zeal"], ["feature", 5, "Resounding Strike"], ["feature", 7, "Divine Strike"], ["feature", 16, "Blaze of Glory"]], [["divine", 1, "Consuming Fervor"]]]
+            self.act_domain(zeal_spells, zeal_spf)
         elif domain == "light":
             self.domain = "Light Domain"
-            self.light()
-
+            light_spells = [["burning hands", "faerie fire"], ["flaming sphere", "scorching ray"], ["daylight", "fireball"], ["guardian of faith", "wall of fire"], ["flame strike", "scrying"]]
+            light_spf = [[["cantrip", 1, 0, "light"]], [["feature", 0, "Warding Flame"], ["feature", 5, "Improved Flare"], ["feature", 7, "Potent Spellcasting"], ["feature", 16, "Corona of Light"]], [["divine", 1, "Radiance of the Dawn"]]]
+            self.act_domain(light_spells, light_spf)
         elif domain == "nature":
             self.domain = "Nature Domain"
-            self.nature()
-
+            nature_spells = [["animal friendship", "speak with animals"], ["barkskin", "spike growth"], ["plant growth", "wind wall"], ["dominate beast", "grasping vine"], ["insect plague", "tree stride"]]
+            nature_spf = [[["cantrip", 1, 0, raw_input("Nature Domain Initialization: What druid cantrip do you want to learn? Please input. ")]], [["proficiency", 0, "Heavy armor"]], [["divine", 1, "Charm Animals and Plants"]], [["feature", 5, "Dampen Elements"], ["feature", 7, "Divine Strike (nature)"], ["feature", 16, "Master of Nature"]]]
+            self.act_domain(nature_spells, nature_spf)
         elif domain == "order":
             self.domain = "Order Domain"
-            self.order()
-
+            order_spells = [["command", "heroism"], ["enhance ability", "hold person"], ["mass healing word", "slow"], ["compulsion", "locate creature"], ["commune", "dominate person"]]
+            order_spf = [[["proficiency", 0, "heavy armor"]], [["feature", 0, "Voice of Authority"], ["feature", 7, "Divine Strike (force)"], ["feature", 16, "Order's Wrath"]], [["divine", 1, "Order's Demand"]]]
+            self.act_domain(order_spells, order_spf)
         elif domain == "protection":
             self.domain = "Protection Domain"
-            self.protection()
-
+            protection_spells = [["compelled duel", "protection from good and evil"], ["aid", "protection from poison"], ["protection from energy", "slow"], ["guardian of faith", "Otiluke's resilient sphere"], ["antilife shell", "wall of force"]]
+            protection_spf = [[["proficiency", 0, "heavy armor"]], [["feature", 0, "Shield of the Faithful"], ["feature", 5, "Blessed Healer"], ["feature", 7, "Divine Strike (radiant)"], ["feature", 16, "Indomitable Defense"]], [["divine", 1, "Radiant Defense"]]]
+            self.act_domain(protection_spells, protection_spf)
         elif domain == "solidarity":
             self.domain = "Solidarity Domain"
-            self.solidarity()
+            solidarity_spells = [["bless", "guiding bolt"], ["aid", "warding bond"], ["beacon of hope", "crusader's mantle"], ["aura of life", "guardian of faith"], ["circle of power", "mass cure wounds"]]
+            solidarity_spf = [[["proficiency", 0, "heavy armor"]], [[]], [[]], [[]], [[]]]
 
         elif domain == "strength":
             self.domain = "Strength Domain"
-            self.strength_domain()
+            strength_spells = [["", ""], ["", ""], ["", ""], ["", ""], ["", ""]]
+            strength_spf = [[[]], [[]], [[]], [[]], [[]]]
 
         elif domain == "tempest":
             self.domain = "Tempest Domain"
-            self.tempest()
+            tempest_spells = [["", ""], ["", ""], ["", ""], ["", ""], ["", ""]]
+            tempest_spf = [[[]], [[]], [[]], [[]], [[]]]
 
         elif domain == "trickery":
             self.domain = "Trickery Domain"
-            self.trickery()
+            trick_spells = [["", ""], ["", ""], ["", ""], ["", ""], ["", ""]]
+            trick_spf = [[[]], [[]], [[]], [[]], [[]]]
 
         elif domain == "war":
             self.domain = "War Domain"
-            self.war()
+            war_spells = [["", ""], ["", ""], ["", ""], ["", ""], ["", ""]]
+            war_spf = [[[]], [[]], [[]], [[]], [[]]]
 
         else:
             self.domain = "Life Domain"
-            self.life()
+            life_spells = [["", ""], ["", ""], ["", ""], ["", ""], ["", ""]]
+            life_spf = [[[]], [[]], [[]], [[]], [[]]]
 
     def act_domain(self, spells, sfp):
         self.lvl_one[0] += 2
@@ -384,6 +402,9 @@ class Cleric:
                 if ind[0] == "proficiency":
                     if self.level > ind[1]:
                         self.proficiency.append(ind[2])
+                if ind[0] == "language":
+                    if self.level > ind[1]:
+                        self.language.append(ind[2])
                 if ind[0] == "spell":
                     if ind[1] == "cantrip":
                         self.cantrips[0] += ind[3]
@@ -407,5 +428,8 @@ class Cleric:
                 if ind[0] == "divine":
                     if self.level > ind[1]:
                         self.channel_divine_desc.append(ind[2])
+                if ind[0] == "resistance":
+                    if self.level > ind[1]:
+                        self.resistance.append(ind[2])
 
 
