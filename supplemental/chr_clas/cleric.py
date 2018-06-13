@@ -348,32 +348,33 @@ class Cleric:
         elif domain == "solidarity":
             self.domain = "Solidarity Domain"
             solidarity_spells = [["bless", "guiding bolt"], ["aid", "warding bond"], ["beacon of hope", "crusader's mantle"], ["aura of life", "guardian of faith"], ["circle of power", "mass cure wounds"]]
-            solidarity_spf = [[["proficiency", 0, "heavy armor"]], [[]], [[]], [[]], [[]]]
-
+            solidarity_spf = [[["proficiency", 0, "heavy armor"]], [["feature", 0, "Solidarity's Action"], ["feature", 5, "Oketra's Blessing"], ["feature", 7, "Divine Strike (normal)"], ["feature", 16, "Supreme Healing"]], [["divine", 1, "Preserve Life"]]]
+            self.act_domain(solidarity_spells, solidarity_spf)
         elif domain == "strength":
             self.domain = "Strength Domain"
-            strength_spells = [["", ""], ["", ""], ["", ""], ["", ""], ["", ""]]
-            strength_spf = [[[]], [[]], [[]], [[]], [[]]]
-
+            strength_spells = [["divine favor", "shield of faith"], ["enhance ability", "protection from poison"], ["haste", "protection from energy"], ["dominate beast", "stoneskin"], ["destructive wave", "insect plague"]]
+            strength_spf = [[["cantrip", 1, 0, raw_input("Strength Domain Initialization: What druid cantrip do you want to learn?")]], [["skill", 0, raw_input("Strength Domain Initialization: What extra skill do you want to be proficient in? Animal handling, athletics, nature, or survival?")]], [["proficiency", 0, "heavy armor"]], [["divine", 1, "Feat of Strength"], ["divine", 5, "Rhona's Blessing"]], [["feature", 7, "Divine Strike (normal)"]], [["resistance", 16, "bludgeoning, piercing, and slashing damage from nonmagical attacks (Avatar of Battle)"]]]
+            self.act_domain(strength_spells, strength_spf)
         elif domain == "tempest":
             self.domain = "Tempest Domain"
-            tempest_spells = [["", ""], ["", ""], ["", ""], ["", ""], ["", ""]]
-            tempest_spf = [[[]], [[]], [[]], [[]], [[]]]
-
+            tempest_spells = [["fog cloud", "thunderwave"], ["gust of wind", "shatter"], ["call lightning", "sleet storm"], ["control water", "ice storm"], ["destructive wave", "insect plague"]]
+            tempest_spf = [[["proficiency", 0, ["martial weapons", "heavy armor"]]], [["feature", 0, "Wrath of the Storm"], ["feature", 5, "Thunderbolt Strike"], ["feature", 7, "Divine Strike (thunder)"], ["feature", 16, "Stormborn"]], [["divine", 1, "Destructive Wrath"]], [[]], [[]]]
+            self.act_domain(tempest_spells, tempest_spf)
         elif domain == "trickery":
             self.domain = "Trickery Domain"
-            trick_spells = [["", ""], ["", ""], ["", ""], ["", ""], ["", ""]]
-            trick_spf = [[[]], [[]], [[]], [[]], [[]]]
-
+            trick_spells = [["charm person", "disguise self"], ["mirror image", "pass without trace"], ["blink", "dispel magic"], ["dimension door", "polymorph"], ["dominate person", "modify memory"]]
+            trick_spf = [[["feature", 0, "Blessing of the Trickster"], ["feature", 7, "Divine Strike (poison)"], ["feature", 16, "Improved Duplicity"]], [["divine", 1, "Invoke Duplicity"], ["divine", 5, "Cloak of Shadows"]]]
+            self.act_domain(trick_spells, trick_spf)
         elif domain == "war":
             self.domain = "War Domain"
-            war_spells = [["", ""], ["", ""], ["", ""], ["", ""], ["", ""]]
-            war_spf = [[[]], [[]], [[]], [[]], [[]]]
-
+            war_spells = [["divine favor", "shield of faith"], ["magic weapon", "spiritual weapon"], ["crusader's mantle", "spirit guardians"], ["freedom of movement", "stoneskin"], ["flame strike", "hold monster"]]
+            war_spf = [[["proficiency", 0, ["martial weapons", "heavy armor"]]], [["feature", 0, "War Priest"]], [["divine", 1, "Guided Strike"], ["divine", 5, "War God's Blessing"]], [["feature", 7, "Divine Strike (normal)"]], [["resistance", 16, "bludgeoning, piercing, and slashing damange from non-magical weapons (Avatar of Battle)"]]]
+            self.act_domain(war_spells, war_spf)
         else:
             self.domain = "Life Domain"
-            life_spells = [["", ""], ["", ""], ["", ""], ["", ""], ["", ""]]
-            life_spf = [[[]], [[]], [[]], [[]], [[]]]
+            life_spells = [["bless", "cure wounds"], ["lesser restoration", "spiritual weapon"], ["beacon of hope", "revivify"], ["death ward", "guardian of faith"], ["mass cure wounds", "raise dead"]]
+            life_spf = [[["proficiency", 0, "heavy armor"]], [["feature", 0, "Disciple of Life"], ["feature", 5, "Blessed Healer"], ["feature", 7, "Divine Strike (radiant)"], ["feature", 16, "Supreme Healing"]], [["divine", 1, "Preserve Life"]]]
+            self.act_domain(life_spells, life_spf)
 
     def act_domain(self, spells, sfp):
         self.lvl_one[0] += 2
@@ -431,5 +432,3 @@ class Cleric:
                 if ind[0] == "resistance":
                     if self.level > ind[1]:
                         self.resistance.append(ind[2])
-
-
