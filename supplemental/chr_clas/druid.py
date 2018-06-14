@@ -2,7 +2,7 @@ import math
 
 
 class Druid():
-    def __init__(self, level, stre, dex, wis, inte, cha, con):
+    def __init__(self, level, stre, dex, con, cha, inte, wis):
         self.strength = int(stre)
         self.constitution = int(con)
         self.dexterity = int(dex)
@@ -15,10 +15,10 @@ class Druid():
         self.level = int(level)
 
         self.circle = ""
-        self.circle_desc = []
 
         self.feature = ["Ritual Casting", "Spellcasting Focus (Druid)"]
-        self.proficiency = ["light armor", "medium armor", "shields", "clubs", "daggers", "darts", "javelins", "maces", "quarterstaffs", "scimitars", "sickles", "slings", "spears", "herbalism kit"]
+        self.proficiency = ["light armor", "medium armor", "shields", "clubs", "daggers", "darts", "javelins", "maces",
+                            "quarterstaffs", "scimitars", "sickles", "slings", "spears", "herbalism kit"]
         self.skill = []
         self.saving_throw = ["intelligence", "wisdom"]
         self.resistance = []
@@ -74,14 +74,14 @@ class Druid():
             self.ability()
         if self.level > 18:
             self.ability()
-            
+
         self.set_skill()
         self.set_equip()
         self.set_dc()
         self.set_mg_attack()
         self.set_cantrip()
         self.set_spells()
-        
+
         if self.level > 1:
             self.feature.append("Wild Shape")
         if self.level > 17:
@@ -174,27 +174,30 @@ class Druid():
 
     def set_mg_attack(self):
         self.spell_attack = self.proficiency_bonus + self.wisdom_mod()
-        
+
     def set_equip(self):
-        weapon_one = raw_input("Initialization: Which do you want, a wooden shield, or any simple weapon? Please input ")
+        weapon_one = raw_input(
+            "Initialization: Which do you want, a wooden shield, or any simple weapon? Please input ")
         if weapon_one != "wooden shield":
             self.equipment.append(weapon_one)
-        else: 
+        else:
             self.equipment.append("wooden shield")
-        weapon_two = raw_input("Initialization: Which do you want, a scimitar, or any simple melee weapon? Please input ")
+        weapon_two = raw_input(
+            "Initialization: Which do you want, a scimitar, or any simple melee weapon? Please input ")
         if weapon_two != "scimitar":
             self.equipment.append(weapon_two)
-        else: 
+        else:
             self.equipment.append(weapon_two)
         self.weapon.append([weapon_one, weapon_two])
-        
+
     def set_skill(self):
         i = 0
         while i < 2:
-            skill = raw_input("Initialization: What skill do you want to be proficient in? Arcana, Animal Handling, Insight, Medicine, Nature, Perception, Religion, or Survival? Please input ")
+            skill = raw_input(
+                "Initialization: What skill do you want to be proficient in? Arcana, Animal Handling, Insight, Medicine, Nature, Perception, Religion, or Survival? Please input ")
             self.skill.append(skill)
             i += 1
-    
+
     def set_cantrip(self):
         self.cantrips[0] = 2
         self.cantrips[1].append(raw_input("Initialization: What two cleric cantrips do you want to add?"))
@@ -262,7 +265,8 @@ class Druid():
             self.lvl_seven[1].append(raw_input("Level up: What final level seven spell do you want to learn?"))
 
     def set_circle(self):
-        circle = raw_input("Level up: Which circle do you want to join? dreams, land, moon, shepherd, spores, or twilight?")
+        circle = raw_input(
+            "Level up: Which circle do you want to join? dreams, land, moon, shepherd, spores, or twilight?")
         if circle == "dreams":
             self.circle = "Circle of Dreams"
             self.dream()
@@ -282,21 +286,125 @@ class Druid():
             self.circle = "Circle of Twilight"
             self.twilight()
 
-    def twilight(self):
-        pass
+    def shepherd(self):
+        self.language.append("sylvan")
+        self.feature.append("Speech of the Woods")
+        spirit = raw_input(
+            "Circle of the Shepherd: What spirit do you want to have? bear, hawk, or unicorn? Please input ")
+        if spirit == "bear":
+            self.feature.append("Spirit totem (bear)")
+        elif spirit == "hawk":
+            self.feature.append("spirit totem (hawk)")
+        else:
+            self.feature.append("spirit totem (unicorn)")
+        if self.level > 5:
+            self.feature.append("Mighty Summoner")
+        if self.level > 9:
+            self.feature.append("Guardian Spirit")
+        if self.level > 13:
+            self.feature.append("Faithful Summons")
 
     def spore(self):
-        pass
+        self.cantrips[0] += 1
+        self.cantrips[1].append("Chill Touch")
+        spells = [["gentle repose", "ray of enfeeblement"], ["animate dead", "gaseous form"],
+                  ["blight", "confusion"], ["cloudkill", "contagion"]]
+        if self.level > 2:
+            self.lvl_two[0] += 2
+            self.lvl_two[1].append(spells[0])
+        if self.level > 4:
+            self.lvl_three[0] += 2
+            self.lvl_three[1].append(spells[1])
+        if self.level > 6:
+            self.lvl_four[0] += 2
+            self.lvl_four[1].append(spells[2])
+        if self.level > 8:
+            self.lvl_five[0] += 2
+            self.lvl_five[1].append(spells[3])
+        self.feature.append("Halo of spores")
+        self.feature.append("symbiotic entity")
+        if self.level > 5:
+            self.feature.append("Fungal infestation")
+        if self.level > 9:
+            self.feature.append("Sperading spores")
+        if self.level > 13:
+            self.resistance.append(["blindness", "deafness", "frightened", "poison", "critical hits (Fungal Body)"])
+            self.feature.append("Fungal Body")
 
-    def shepherd(self):
-        pass
+    def twilight(self):
+        self.feature.append("Harvest's scythe")
+        if self.level > 5:
+            self.feature.append("Speech beyond the grave")
+        if self.level > 9:
+            self.feature.append("Watcher at the threshold")
+        if self.level > 13:
+            self.feature.append("Paths of the Dead")
 
     def land(self):
-        pass
+        self.cantrips[0] += 1
+        self.cantrips[1].append("Domain of the Land: What druid cantrip do you want to learn? Please input ")
+        self.feature.append("Natural Recovery")
+        lands = raw_input(
+            "Domain of the Land: What land did you become a druid (this is important)?\narctic, coast, desert, forest, grassland, mountain, swamp, or underdark?")
+        if lands == "arctic":
+            spells = [["Hold Person", "Spike Growth"], ["sleet storm", "slow"], ["freedom of movement", "ice storm"],
+                      ["commune with nature", "cone of cold"]]
+        elif lands == "coast":
+            spells = [["miror image", "misty step"], ["water breathing", "water walk"],
+                      ["control water", "freedom of movement"], ["conjure elemental", "scrying"]]
+        elif lands == "desert":
+            spells = [["blur", "silence"], ["create food and water", "protection from energy"],
+                      ["blight", "hallucinatory terrain"], ["insect plague", "wall of stone"]]
+        elif lands == "forest":
+            spells = [["barkskin", "spider climb"], ["call lightning", "plant growth"],
+                      ["divination", "freedom of mobement"], ["commune with nature", "tree stride"]]
+        elif lands == "grassland":
+            spells = [["invisibility", "pass without trace"], ["daylight", "haste"],
+                      ["divination", "freedom of movement"], ["dream", "insect plague"]]
+        elif lands == "mountain":
+            spells = [["spider climb", "spike growth"], ["lightning bolt", "meld into stone"],
+                      ["stone shape", "stoneskin"], ["passwall", "wall of stone"]]
+        elif lands == "swamp":
+            spells = [["darkness", "melf's acid arrow"], ["water walk", "stinking cloud"],
+                      ["freedom of movement", "locate creature"], ["insect plague", "scrying"]]
+        else:
+            spells = [["spider climb", "web"], ["gaseous form", "stinking cloud"],
+                      ["greater invisibility", "stone shape"], ["cloud kill", "insect plague"]]
+        if self.level > 2:
+            self.lvl_two[0] += 2
+            self.lvl_two[1].append(spells[0])
+        if self.level > 4:
+            self.lvl_three[0] += 2
+            self.lvl_three[1].append(spells[1])
+        if self.level > 6:
+            self.lvl_four[0] += 2
+            self.lvl_four[1].append(spells[2])
+        if self.level > 8:
+            self.lvl_five[0] += 2
+            self.lvl_five[1].append(spells[3])
+        if self.level > 5:
+            self.feature.append("Land's Stride")
+        if self.level > 9:
+            self.feature.append("Nature's Ward")
+            self.resistance.append(["poison", "disease"])
+        if self.level > 13:
+            self.feature.append("Nature's Sanctuary")
 
     def moon(self):
-        pass
+        self.feature.append("Combat Wild Shape")
+        self.feature.append("Circle Forms")
+        if self.level > 5:
+            self.feature.append("Primal Strike")
+        if self.level > 9:
+            self.feature.append("Elemental Wild Shape")
+        if self.level > 13:
+            self.feature.append("Thousand Forms")
 
     def dream(self):
         self.feature.append("Balm of the Summer Court")
-        pass
+        if self.level > 5:
+            self.feature.append("Hearth of moonlight and shadow")
+        if self.level > 9:
+            self.feature.append("Hidden Paths")
+        if self.level > 13:
+            self.feature.append("Walker in Dreams")

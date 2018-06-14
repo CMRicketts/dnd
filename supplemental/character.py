@@ -365,7 +365,6 @@ class Character:
             self.weapon.append(chr.weapon)
             self.spells.append(chr.spells)
             self.spell_ct += chr.spell_ct
-    '''
         if clas == "druid":
             chr = Druid
         if clas == "fighter":
