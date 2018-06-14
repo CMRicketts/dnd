@@ -5,7 +5,6 @@
 from supplemental.character import Character
 from supplemental.dictionary import dictionary as search
 
-
 import random
 
 
@@ -32,6 +31,7 @@ def main():
     while True:
         command = raw_input("what do you want to do? 'create' character, 'search' for any feature or proficiency, "
                             "'help', or 'exit'? \n")
+        command = command.strip()
         if command == "create":
             print("creation of character")
             chr = Character()
@@ -129,7 +129,6 @@ def main():
                     else:
                         print("charisma has already been accounted for")'''
 
-
             chr.set_race()
             chr.set_class()
 
@@ -149,21 +148,28 @@ def main():
         elif command == "help":
             print("Type in: "
                   "\ncreate: \tcreate a new character"
-                  "\nview: \t\tview created characters"
+                  "\nsearch: \tsearch for any feature, skill, or proficiency."
                   "\nhelp: \t\tdisplay this menu"
                   "\nexit: \t\texit the program")
 
         elif command == "search":
-            print("This will allow you to search for any feature (for now). \n"
-                  "Please type in the word or phrase you are searching for.")
-            word = raw_input("What feature are you looking for?")
-            try:
-                result = search[word]
-            except KeyError:
-                print "That was not found"
-            else:
-                print("\n" + word + ": " + result)
-            print("\n")
+            flag = True
+            while flag:
+                print("This will allow you to search for any feature (for now). \n"
+                      "Please type in the word or phrase you are searching for.\n"
+                      "Type 'exit' to exit searching")
+                word = raw_input("What feature are you looking for?\n")
+                srch = word.strip().lower()
+                if srch == "exit":
+                    flag = False
+                comp = dict((k.lower(), v.lower()) for k, v in search.iteritems())
+                try:
+                    result = comp[srch]
+                except KeyError:
+                    print srch + " was not found"
+                else:
+                    print("\n" + srch + ": " + result)
+                print("\n")
 
         elif command == "exit":
             print("thank you!")

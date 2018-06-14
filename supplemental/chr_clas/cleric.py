@@ -60,6 +60,8 @@ class Cleric:
         self.set_cantrip()
         self.set_spells()
         self.set_domain()
+        self.set_dc()
+        self.set_mg_attack()
 
         if self.level == 1:
             self.init_hp()
