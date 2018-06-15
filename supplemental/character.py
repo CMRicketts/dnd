@@ -112,6 +112,9 @@ class Character:
 
         self.jack_bonus = 0 # bard
 
+        self.divine_desc = []
+        self.divine_ct = 0
+
     def strength_mod(self):
         return math.floor((self.strength - 10) / 2)
 
@@ -365,6 +368,8 @@ class Character:
             self.weapon.append(chr.weapon)
             self.spells.append(chr.spells)
             self.spell_ct += chr.spell_ct
+            self.divine_ct += chr.channel_divine_ct
+            self.divine_desc.append(str(chr.channel_divine_desc))
         if clas == "druid":
             chr = Cleric(self.level, self.strength, self.dexterity, self.constitution, self.charisma, self.intelligence,
                          self.wisdom)
