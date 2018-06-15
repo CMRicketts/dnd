@@ -6,7 +6,7 @@ from supplemental.chr_clas.bard import Bard
 from supplemental.chr_clas.cleric import Cleric
 from supplemental.chr_clas.druid import Druid
 
-'''from supplemental.chr_clas.fighter import Fighter
+from supplemental.chr_clas.fighter import Fighter
 from supplemental.chr_clas.monk import Monk
 from supplemental.chr_clas.paladin import Paladin
 from supplemental.chr_clas.ranger import Ranger
@@ -14,7 +14,6 @@ from supplemental.chr_clas.rogue import Rogue
 from supplemental.chr_clas.sorcerer import Sorcerer
 from supplemental.chr_clas.warlock import Warlock
 from supplemental.chr_clas.wizard import Wizard
-'''
 
 from supplemental.race.dragonborn import Dragonborn
 from supplemental.race.dwarf import Dwarf
@@ -400,23 +399,245 @@ class Character:
             self.weapon.append(chr.weapon)
             self.spells.append(chr.spells)
             self.spell_ct += chr.spell_ct
-        '''if clas == "fighter":
-            chr = Fighter
+        if clas == "fighter":
+            chr = Fighter(self.level, self.strength, self.dexterity, self.constitution, self.charisma, self.intelligence,
+                         self.wisdom)
+            self.strength = chr.strength
+            self.dexterity = chr.dexterity
+            self.intelligence = chr.intelligence
+            self.wisdom = chr.wisdom
+            self.charisma = chr.charisma
+            self.constitution = chr.constitution
+            self.proficiency.append(chr.proficiency)
+            self.proficiency_bonus = int(chr.proficiency_bonus)
+            self.save.append(chr.saving_throw)
+            self.feature.append(chr.feature)
+            self.resistance.append(chr.resistance)
+            self.equipment.append(chr.equipment)
+            self.language.append(chr.language)
+            self.max_hp = self.max_hp + chr.hp
+            self.hit_dice = chr.hit_dice
+            self.attack.append(chr.attack)
+            self.armor = chr.armor
+            self.magic.append(chr.magic)
+            self.magic_throw += str(chr.magic_throw)
+            self.spell_dc = chr.spell_dc
+            self.spell_attack += chr.spell_attack
+            self.cantrips.append(chr.cantrips)
+            self.skill.append(chr.skill)
+            self.weapon.append(chr.weapon)
+            self.spells.append(chr.spells)
+            self.spell_ct += chr.spell_ct
         if clas == "monk":
-            chr = Monk
+            chr = Monk(self.level, self.strength, self.dexterity, self.constitution, self.charisma,
+                          self.intelligence,
+                          self.wisdom)
+            self.strength = chr.strength
+            self.dexterity = chr.dexterity
+            self.intelligence = chr.intelligence
+            self.wisdom = chr.wisdom
+            self.charisma = chr.charisma
+            self.constitution = chr.constitution
+            self.proficiency.append(chr.proficiency)
+            self.proficiency_bonus = int(chr.proficiency_bonus)
+            self.save.append(chr.saving_throw)
+            self.feature.append(chr.feature)
+            self.resistance.append(chr.resistance)
+            self.equipment.append(chr.equipment)
+            self.language.append(chr.language)
+            self.max_hp = self.max_hp + chr.hp
+            self.hit_dice = chr.hit_dice
+            self.attack.append(chr.attack)
+            self.armor = chr.armor
+            self.magic.append(chr.magic)
+            self.magic_throw += str(chr.magic_throw)
+            self.spell_dc = chr.spell_dc
+            self.spell_attack += chr.spell_attack
+            self.cantrips.append(chr.cantrips)
+            self.skill.append(chr.skill)
+            self.weapon.append(chr.weapon)
+            self.spells.append(chr.spells)
+            self.spell_ct += chr.spell_ct
         if clas == "paladin":
-            chr = Paladin
+            chr = Paladin(self.level, self.strength, self.dexterity, self.constitution, self.charisma, self.intelligence,
+                         self.wisdom)
+            self.strength = chr.strength
+            self.dexterity = chr.dexterity
+            self.intelligence = chr.intelligence
+            self.wisdom = chr.wisdom
+            self.charisma = chr.charisma
+            self.constitution = chr.constitution
+            self.proficiency.append(chr.proficiency)
+            self.proficiency_bonus = int(chr.proficiency_bonus)
+            self.save.append(chr.saving_throw)
+            self.feature.append(chr.feature)
+            self.resistance.append(chr.resistance)
+            self.equipment.append(chr.equipment)
+            self.language.append(chr.language)
+            self.max_hp = self.max_hp + chr.hp
+            self.hit_dice = chr.hit_dice
+            self.attack.append(chr.attack)
+            self.armor = chr.armor
+            self.magic.append(chr.magic)
+            self.magic_throw += str(chr.magic_throw)
+            self.spell_dc = chr.spell_dc
+            self.spell_attack += chr.spell_attack
+            self.cantrips.append(chr.cantrips)
+            self.skill.append(chr.skill)
+            self.weapon.append(chr.weapon)
+            self.spells.append(chr.spells)
+            self.spell_ct += chr.spell_ct
         if clas == "ranger":
-            chr = Ranger
+            chr = Ranger(self.level, self.strength, self.dexterity, self.constitution, self.charisma,
+                          self.intelligence,
+                          self.wisdom)
+            self.strength = chr.strength
+            self.dexterity = chr.dexterity
+            self.intelligence = chr.intelligence
+            self.wisdom = chr.wisdom
+            self.charisma = chr.charisma
+            self.constitution = chr.constitution
+            self.proficiency.append(chr.proficiency)
+            self.proficiency_bonus = int(chr.proficiency_bonus)
+            self.save.append(chr.saving_throw)
+            self.feature.append(chr.feature)
+            self.resistance.append(chr.resistance)
+            self.equipment.append(chr.equipment)
+            self.language.append(chr.language)
+            self.max_hp = self.max_hp + chr.hp
+            self.hit_dice = chr.hit_dice
+            self.attack.append(chr.attack)
+            self.armor = chr.armor
+            self.magic.append(chr.magic)
+            self.magic_throw += str(chr.magic_throw)
+            self.spell_dc = chr.spell_dc
+            self.spell_attack += chr.spell_attack
+            self.cantrips.append(chr.cantrips)
+            self.skill.append(chr.skill)
+            self.weapon.append(chr.weapon)
+            self.spells.append(chr.spells)
+            self.spell_ct += chr.spell_ct
         if clas == "rogue":
-            chr = Rogue
+            chr = Rogue(self.level, self.strength, self.dexterity, self.constitution, self.charisma,
+                          self.intelligence,
+                          self.wisdom)
+            self.strength = chr.strength
+            self.dexterity = chr.dexterity
+            self.intelligence = chr.intelligence
+            self.wisdom = chr.wisdom
+            self.charisma = chr.charisma
+            self.constitution = chr.constitution
+            self.proficiency.append(chr.proficiency)
+            self.proficiency_bonus = int(chr.proficiency_bonus)
+            self.save.append(chr.saving_throw)
+            self.feature.append(chr.feature)
+            self.resistance.append(chr.resistance)
+            self.equipment.append(chr.equipment)
+            self.language.append(chr.language)
+            self.max_hp = self.max_hp + chr.hp
+            self.hit_dice = chr.hit_dice
+            self.attack.append(chr.attack)
+            self.armor = chr.armor
+            self.magic.append(chr.magic)
+            self.magic_throw += str(chr.magic_throw)
+            self.spell_dc = chr.spell_dc
+            self.spell_attack += chr.spell_attack
+            self.cantrips.append(chr.cantrips)
+            self.skill.append(chr.skill)
+            self.weapon.append(chr.weapon)
+            self.spells.append(chr.spells)
+            self.spell_ct += chr.spell_ct
         if clas == "sorcerer":
-            chr = Sorcerer
+            chr = Sorcerer(self.level, self.strength, self.dexterity, self.constitution, self.charisma,
+                          self.intelligence,
+                          self.wisdom)
+            self.strength = chr.strength
+            self.dexterity = chr.dexterity
+            self.intelligence = chr.intelligence
+            self.wisdom = chr.wisdom
+            self.charisma = chr.charisma
+            self.constitution = chr.constitution
+            self.proficiency.append(chr.proficiency)
+            self.proficiency_bonus = int(chr.proficiency_bonus)
+            self.save.append(chr.saving_throw)
+            self.feature.append(chr.feature)
+            self.resistance.append(chr.resistance)
+            self.equipment.append(chr.equipment)
+            self.language.append(chr.language)
+            self.max_hp = self.max_hp + chr.hp
+            self.hit_dice = chr.hit_dice
+            self.attack.append(chr.attack)
+            self.armor = chr.armor
+            self.magic.append(chr.magic)
+            self.magic_throw += str(chr.magic_throw)
+            self.spell_dc = chr.spell_dc
+            self.spell_attack += chr.spell_attack
+            self.cantrips.append(chr.cantrips)
+            self.skill.append(chr.skill)
+            self.weapon.append(chr.weapon)
+            self.spells.append(chr.spells)
+            self.spell_ct += chr.spell_ct
         if clas == "warlock":
-            chr = Warlock
+            chr = Warlock(self.level, self.strength, self.dexterity, self.constitution, self.charisma,
+                          self.intelligence,
+                          self.wisdom)
+            self.strength = chr.strength
+            self.dexterity = chr.dexterity
+            self.intelligence = chr.intelligence
+            self.wisdom = chr.wisdom
+            self.charisma = chr.charisma
+            self.constitution = chr.constitution
+            self.proficiency.append(chr.proficiency)
+            self.proficiency_bonus = int(chr.proficiency_bonus)
+            self.save.append(chr.saving_throw)
+            self.feature.append(chr.feature)
+            self.resistance.append(chr.resistance)
+            self.equipment.append(chr.equipment)
+            self.language.append(chr.language)
+            self.max_hp = self.max_hp + chr.hp
+            self.hit_dice = chr.hit_dice
+            self.attack.append(chr.attack)
+            self.armor = chr.armor
+            self.magic.append(chr.magic)
+            self.magic_throw += str(chr.magic_throw)
+            self.spell_dc = chr.spell_dc
+            self.spell_attack += chr.spell_attack
+            self.cantrips.append(chr.cantrips)
+            self.skill.append(chr.skill)
+            self.weapon.append(chr.weapon)
+            self.spells.append(chr.spells)
+            self.spell_ct += chr.spell_ct
         if clas == "wizard":
-            chr = Wizard
-    '''
+            chr = Wizard(self.level, self.strength, self.dexterity, self.constitution, self.charisma,
+                          self.intelligence,
+                          self.wisdom)
+            self.strength = chr.strength
+            self.dexterity = chr.dexterity
+            self.intelligence = chr.intelligence
+            self.wisdom = chr.wisdom
+            self.charisma = chr.charisma
+            self.constitution = chr.constitution
+            self.proficiency.append(chr.proficiency)
+            self.proficiency_bonus = int(chr.proficiency_bonus)
+            self.save.append(chr.saving_throw)
+            self.feature.append(chr.feature)
+            self.resistance.append(chr.resistance)
+            self.equipment.append(chr.equipment)
+            self.language.append(chr.language)
+            self.max_hp = self.max_hp + chr.hp
+            self.hit_dice = chr.hit_dice
+            self.attack.append(chr.attack)
+            self.armor = chr.armor
+            self.magic.append(chr.magic)
+            self.magic_throw += str(chr.magic_throw)
+            self.spell_dc = chr.spell_dc
+            self.spell_attack += chr.spell_attack
+            self.cantrips.append(chr.cantrips)
+            self.skill.append(chr.skill)
+            self.weapon.append(chr.weapon)
+            self.spells.append(chr.spells)
+            self.spell_ct += chr.spell_ct
+
 
 
     # returns armor, ac, and weapon info
