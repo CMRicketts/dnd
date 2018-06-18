@@ -111,7 +111,7 @@ class Character:
 
         self.jack_bonus = 0 # bard
 
-        self.divine_desc = []
+        self.divine_desc = [] # cleric
         self.divine_ct = 0
 
     def strength_mod(self):
@@ -746,7 +746,6 @@ class Character:
                 "Rage Damage Modifier: +" + str(self.rage_dmg)
 
         return rage
-
 
     # returns name, player, xp, and all character information
     def character_to_string(self):
