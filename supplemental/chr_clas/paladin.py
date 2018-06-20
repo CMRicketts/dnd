@@ -14,16 +14,22 @@ class Paladin:
 
         self.level = int(level)
 
-        self.feature = []
-        self.proficiency = []
+        self.feature = ["Divine Sense", "Lay on Hands"]
+        self.proficiency = ["all armor", "shields", "simple weapons", "martial weapons"]
         self.skill = []
-        self.saving_throw = []
+        self.saving_throw = ["wisdom", "charisma"]
         self.resistance = []
         self.language = []
         self.attack = []
-        self.equipment = []
+        self.equipment = ["holy symbol"]
         self.weapon = []
-        self.armor = []
+        self.armor = ["chain mail", "16"]
+
+        self.oath = ""
+        self.oath_desc = []
+        self.divinity_desc = []
+        self.fighting_style = ""
+        self.fighting_style_desc = []
 
         if self.level == 1:
             self.init_hp()
@@ -72,6 +78,32 @@ class Paladin:
 
         self.set_skill()
         self.set_equip()
+        self.set_spells()
+
+        if self.level > 1:
+            self.feature.append("Fighting Style")
+            self.set_style()
+            self.feature.append("Divine Smite")
+            self.attack.append("Divine Smite")
+            self.feature.append("Spellcasting")
+            self.feature.append("Spellcasting Focus")
+            self.spell_dc = 8 + self.proficiency_bonus + self.charisma_mod()
+            self.spell_attack = self.proficiency_bonus + self.charisma_mod()
+        if self.level > 2:
+            self.feature.append("Divine Health")
+            self.resistance.append("immune to disease (Divine Health)")
+            self.set_oath()
+        if self.level > 4:
+            self.feature.append("Extra Attack")
+        if self.level > 5:
+            self.feature.append("Aura of Protection")
+        if self.level > 9:
+            self.feature.append("Aura of Courage")
+        if self.level > 10:
+            self.feature.append("Improved Divine Smite")
+            self.attack.append("Improved Divine Smite")
+        if self.level > 13:
+            self.attack.append("Cleansing Touch")
 
     def strength_mod(self):
         return math.floor((self.strength - 10) / 2)
@@ -152,9 +184,80 @@ class Paladin:
         i = 0
         while i < 2:
             skill = raw_input(
-                "Initialization: What skill do you want to be proficient in? Please input ")
+                "Initialization: What skill do you want to be proficient in? Athletics, Insight, Intimidation, Medicine, Persuasion, or Religion. Please input ")
             self.skill.append(skill)
             i += 1
 
     def set_equip(self):
+        pack = raw_input("Initialization: Do you want a 'priest' pack or 'explorer' pack?")
+        if pack == "priest":
+            self.equipment.append("Priest's pack")
+        else:
+            self.equipment.append("Explorer's pack")
+        throw = raw_input("Initialization: Do you want 5 'javelins' or any other simple melee weapon? Please input")
+        if throw != "javelins":
+            self.equipment.append(throw)
+            self.weapon.append(throw)
+        else:
+            self.weapon.append("5 javelins")
+            self.equipment.append("5 javelins")
+        one = raw_input("Initialization: Do you want one martial weapon and a 'shield', or 'two' martial weapons? Please input")
+        if one == "shield":
+            self.equipment.append("shield")
+            wpn = raw_input("Which martial weapon do you want?")
+            self.equipment.append(wpn)
+            self.weapon.append(wpn)
+        else:
+            wpns = raw_input("Which two martial weapons do you want? Please input ")
+            self.weapon.append(wpns)
+            self.equipment.append(wpns)
+
+    def set_spells(self):
+        if self.level > 1:
+            self.lvl_one[0] = 2
+            self.lvl_one[1].append(raw_input("Level up: What other level one spell do you want to learn?"))
+        if self.level > 2:
+            self.lvl_one[0] = 3
+            self.lvl_one[1].append(raw_input("Level up: What final level one spell do you want to learn?"))
+        if self.level > 4:
+            self.lvl_one[0] = 4
+            self.lvl_one[1].append(raw_input("Level up: What final level one spell do you want to learn?"))
+            self.lvl_two[0] = 2
+            self.lvl_two[1].append(raw_input("What two level two spells do you want to learn?"))
+        if self.level > 6:
+            self.lvl_two[0] = 3
+            self.lvl_two[1].append(raw_input("Level up: What final level two spell do you want to learn?"))
+        if self.level > 7:
+            self.lvl_four[0] = 2
+            self.lvl_four[1].append(raw_input("Level up: What level four spell do you want to learn?"))
+        if self.level > 8:
+            self.lvl_three[0] = 2
+            self.lvl_three[1].append(raw_input("Level up: What two level three spells do you want to learn?"))
+            self.lvl_four[0] = 3
+            self.lvl_four[1].append(raw_input("Level up: What final level four spell do you want to learn?"))
+        if self.level > 10:
+            self.lvl_three[0] = 3
+            self.lvl_three[1].append(raw_input("Level up: What final level three spells do you want to learn?"))
+        if self.level > 12:
+            self.lvl_four[0] = 1
+            self.lvl_four[1].append(raw_input("Level up: What level four spell do you want to learn?"))
+        if self.level > 14:
+            self.lvl_four[0] = 2
+            self.lvl_four[1].append(raw_input("Level up: What level four spell do you want to learn?"))
+            self.lvl_five[0] = 1
+            self.lvl_five[1].append(raw_input("What level five spell do you want to learn?"))
+        if self.level > 16:
+            self.lvl_four[0] = 3
+            self.lvl_four[1].append(raw_input("Level up: What final level four spell do you want to learn?"))
+        if self.level > 17:
+            self.lvl_five[0] = 3
+            self.lvl_five[1].append(raw_input("Level up: What final level five spell do you want to learn?"))
+        if self.level > 18:
+            self.lvl_five[0] = 2
+            self.lvl_five[1].append(raw_input("Level up: What level five spell do you want to learn?"))
+
+    def set_oath(self):
+        pass
+
+    def set_style(self):
         pass

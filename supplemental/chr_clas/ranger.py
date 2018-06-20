@@ -92,7 +92,7 @@ class Ranger:
         return math.floor((self.intelligence - 10) / 2)
 
     def ability(self):
-        choice = raw_input("levelling up: do you want to increase 'one' score by two, or 'two' scores by one each?")
+        choice = raw_input("leveling up: do you want to increase 'one' score by two, or 'two' scores by one each?")
         if choice == "one":
             score = raw_input("which ability do you want to increase by two?")
             if score == "strength":
@@ -155,6 +155,50 @@ class Ranger:
                 "Initialization: What skill do you want to be proficient in? Please input ")
             self.skill.append(skill)
             i += 1
+
+    def set_spells(self):
+        if self.level > 1:
+            self.lvl_one[0] = 2
+            self.lvl_one[1].append(raw_input("Level up: What other level one spell do you want to learn?"))
+        if self.level > 2:
+            self.lvl_one[0] = 3
+            self.lvl_one[1].append(raw_input("Level up: What final level one spell do you want to learn?"))
+        if self.level > 4:
+            self.lvl_one[0] = 4
+            self.lvl_one[1].append(raw_input("Level up: What final level one spell do you want to learn?"))
+            self.lvl_two[0] = 2
+            self.lvl_two[1].append(raw_input("What two level two spells do you want to learn?"))
+        if self.level > 6:
+            self.lvl_two[0] = 3
+            self.lvl_two[1].append(raw_input("Level up: What final level two spell do you want to learn?"))
+        if self.level > 7:
+            self.lvl_four[0] = 2
+            self.lvl_four[1].append(raw_input("Level up: What level four spell do you want to learn?"))
+        if self.level > 8:
+            self.lvl_three[0] = 2
+            self.lvl_three[1].append(raw_input("Level up: What two level three spells do you want to learn?"))
+            self.lvl_four[0] = 3
+            self.lvl_four[1].append(raw_input("Level up: What final level four spell do you want to learn?"))
+        if self.level > 10:
+            self.lvl_three[0] = 3
+            self.lvl_three[1].append(raw_input("Level up: What final level three spells do you want to learn?"))
+        if self.level > 12:
+            self.lvl_four[0] = 1
+            self.lvl_four[1].append(raw_input("Level up: What level four spell do you want to learn?"))
+        if self.level > 14:
+            self.lvl_four[0] = 2
+            self.lvl_four[1].append(raw_input("Level up: What level four spell do you want to learn?"))
+            self.lvl_five[0] = 1
+            self.lvl_five[1].append(raw_input("What level five spell do you want to learn?"))
+        if self.level > 16:
+            self.lvl_four[0] = 3
+            self.lvl_four[1].append(raw_input("Level up: What final level four spell do you want to learn?"))
+        if self.level > 17:
+            self.lvl_five[0] = 3
+            self.lvl_five[1].append(raw_input("Level up: What final level five spell do you want to learn?"))
+        if self.level > 18:
+            self.lvl_five[0] = 2
+            self.lvl_five[1].append(raw_input("Level up: What level five spell do you want to learn?"))
 
     def set_equip(self):
         pass

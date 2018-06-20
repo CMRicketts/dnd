@@ -336,6 +336,11 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
+            i = 0
+            while i < 9:
+                self.spells[i][0] += chr.spells[i][0]
+                self.spells[i][1].append(chr.spells[i][1])
+                i += 1
             self.spells.append(chr.spells)
             self.spell_ct += chr.spell_ct
         if clas == "cleric":
@@ -365,7 +370,11 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
-            self.spells.append(chr.spells)
+            i = 0
+            while i < 9:
+                self.spells[i][0] += chr.spells[i][0]
+                self.spells[i][1].append(chr.spells[i][1])
+                i += 1
             self.spell_ct += chr.spell_ct
             self.divine_ct += chr.channel_divine_ct
             self.divine_desc.append(str(chr.channel_divine_desc))
@@ -397,7 +406,11 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
-            self.spells.append(chr.spells)
+            i = 0
+            while i < 9:
+                self.spells[i][0] += chr.spells[i][0]
+                self.spells[i][1].append(chr.spells[i][1])
+                i += 1
             self.spell_ct += chr.spell_ct
         if clas == "fighter":
             chr = Fighter(self.level, self.strength, self.dexterity, self.constitution, self.charisma, self.intelligence,
@@ -426,7 +439,11 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
-            self.spells.append(chr.spells)
+            i = 0
+            while i < 9:
+                self.spells[i][0] += chr.spells[i][0]
+                self.spells[i][1].append(chr.spells[i][1])
+                i += 1
             self.spell_ct += chr.spell_ct
         if clas == "monk":
             chr = Monk(self.level, self.strength, self.dexterity, self.constitution, self.charisma,
@@ -456,7 +473,11 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
-            self.spells.append(chr.spells)
+            i = 0
+            while i < 9:
+                self.spells[i][0] += chr.spells[i][0]
+                self.spells[i][1].append(chr.spells[i][1])
+                i += 1
             self.spell_ct += chr.spell_ct
         if clas == "paladin":
             chr = Paladin(self.level, self.strength, self.dexterity, self.constitution, self.charisma, self.intelligence,
@@ -485,7 +506,11 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
-            self.spells.append(chr.spells)
+            i = 0
+            while i < 9:
+                self.spells[i][0] += chr.spells[i][0]
+                self.spells[i][1].append(chr.spells[i][1])
+                i += 1
             self.spell_ct += chr.spell_ct
         if clas == "ranger":
             chr = Ranger(self.level, self.strength, self.dexterity, self.constitution, self.charisma,
@@ -515,7 +540,11 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
-            self.spells.append(chr.spells)
+            i = 0
+            while i < 9:
+                self.spells[i][0] += chr.spells[i][0]
+                self.spells[i][1].append(chr.spells[i][1])
+                i += 1
             self.spell_ct += chr.spell_ct
         if clas == "rogue":
             chr = Rogue(self.level, self.strength, self.dexterity, self.constitution, self.charisma,
@@ -545,7 +574,11 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
-            self.spells.append(chr.spells)
+            i = 0
+            while i < 9:
+                self.spells[i][0] += chr.spells[i][0]
+                self.spells[i][1].append(chr.spells[i][1])
+                i += 1
             self.spell_ct += chr.spell_ct
         if clas == "sorcerer":
             chr = Sorcerer(self.level, self.strength, self.dexterity, self.constitution, self.charisma,
@@ -575,7 +608,11 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
-            self.spells.append(chr.spells)
+            i = 0
+            while i < 9:
+                self.spells[i][0] += chr.spells[i][0]
+                self.spells[i][1].append(chr.spells[i][1])
+                i += 1
             self.spell_ct += chr.spell_ct
         if clas == "warlock":
             chr = Warlock(self.level, self.strength, self.dexterity, self.constitution, self.charisma,
@@ -605,7 +642,11 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
-            self.spells.append(chr.spells)
+            i = 0
+            while i < 9:
+                self.spells[i][0] += chr.spells[i][0]
+                self.spells[i][1].append(chr.spells[i][1])
+                i += 1
             self.spell_ct += chr.spell_ct
         if clas == "wizard":
             chr = Wizard(self.level, self.strength, self.dexterity, self.constitution, self.charisma,
@@ -635,7 +676,11 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
-            self.spells.append(chr.spells)
+            i = 0
+            while i < 9:
+                self.spells[i][0] += chr.spells[i][0]
+                self.spells[i][1].append(chr.spells[i][1])
+                i += 1
             self.spell_ct += chr.spell_ct
 
 
@@ -769,6 +814,7 @@ class Character:
               "\nBonds: \t\t\t\t" + self.bond + \
               "\nAlignment: \t\t\t" + self.alignment
         return beg + color + "\n"
+
 
     # returns the entire character to string
     def to_string(self):
