@@ -14,16 +14,18 @@ class Ranger:
 
         self.level = int(level)
 
-        self.feature = []
-        self.proficiency = []
+        self.feature = ["Favored Enemy", "Natural Explorer"]
+        self.proficiency = ["light armor", "medium armor", "shields", "simple weapons", "martial weapons"]
         self.skill = []
-        self.saving_throw = []
+        self.saving_throw = ["strength", "dexterity"]
         self.resistance = []
         self.language = []
         self.attack = []
-        self.equipment = []
-        self.weapon = []
+        self.equipment = ["longbow and quiver of 20 arrows"]
+        self.weapon = ["longbow and quiver of 20 arrows"]
         self.armor = []
+        self.master = ""
+        self.master_desc = []
 
         if self.level == 1:
             self.init_hp()
@@ -69,6 +71,28 @@ class Ranger:
         self.spell_ct = 0
         self.spells = [self.lvl_one, self.lvl_two, self.lvl_three, self.lvl_four, self.lvl_five, self.lvl_six,
                        self.lvl_seven, self.lvl_eight, self.lvl_nine]
+
+        if self.level > 1:
+            self.feature.append("Spellcasting")
+            self.magic_throw = "wisdom"
+            self.spell_attack = self.proficiency_bonus + self.wisdom_mod()
+            self.spell_dc = self.proficiency_bonus + self.wisdom_mod() + 8
+            self.feature.append("Fighting Style (Ranger)")
+        if self.level > 2:
+            self.set_master()
+            self.feature.append("Primeval Awareness")
+        if self.level > 4:
+            self.feature.append("Extra Attack")
+        if self.level > 7:
+            self.feature.append("Land's Stride")
+        if self.level > 9:
+            self.feature.append("Hide in Plain Sight")
+        if self.level > 13:
+            self.feature.append("Vanish")
+        if self.level > 17:
+            self.feature.append("Feral Senses")
+        if self.level > 19:
+            self.feature.append("Foe Slayer")
 
         self.set_skill()
         self.set_equip()
@@ -150,9 +174,9 @@ class Ranger:
 
     def set_skill(self):
         i = 0
-        while i < 2:
+        while i < 3:
             skill = raw_input(
-                "Initialization: What skill do you want to be proficient in? Please input ")
+                "Initialization: What skill do you want to be proficient in? Animal Handling, Athletics, Insight, Investigation, Nature, Perception, Stealth, or Survival? Please input ")
             self.skill.append(skill)
             i += 1
 
@@ -201,4 +225,22 @@ class Ranger:
             self.lvl_five[1].append(raw_input("Level up: What level five spell do you want to learn?"))
 
     def set_equip(self):
+        armor = raw_input("Which armor do you want? 'scale' mail or 'leather' armor? Please input ")
+        if armor == "scale":
+            self.armor.append(["scale mail", "14"])
+        else:
+            self.armor.append(["leather", "11"])
+        weapons = raw_input("Which weapons do you want: two 'shortswords' or two 'simple' martial weapons? Please input ")
+        if weapons == "shortswords":
+            self.equipment.append("two shortswords")
+            self.weapon.append("two shortswords")
+        else:
+            two = raw_input("Which two weapons do you want? Please input ")
+            self.equipment.append(two)
+            self.weapon.append(two)
+        pack = raw_input("which pack do you want: 'dungeoneer' or 'explorer'? ")
+        self.equipment.append(pack)
+
+    def set_master(self):
         pass
+

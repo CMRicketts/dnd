@@ -12,18 +12,22 @@ class Warlock:
         self.hp = 0
         self.hit_dice = ""
 
+        self.patron = ""
+        self.pact = ""
+        self.pact_desc = []
+
         self.level = int(level)
 
         self.feature = []
-        self.proficiency = []
+        self.proficiency = ["light armor", "simple weapons"]
         self.skill = []
-        self.saving_throw = []
+        self.saving_throw = ["wisdom", "charisma"]
         self.resistance = []
         self.language = []
         self.attack = []
-        self.equipment = []
-        self.weapon = []
-        self.armor = []
+        self.equipment = ["two daggers", "any simple weapon"]
+        self.weapon = ["two daggers", "any simple weapon"]
+        self.armor = ["leather armor", "11"]
 
         if self.level == 1:
             self.init_hp()
@@ -67,11 +71,24 @@ class Warlock:
         self.lvl_nine = [0, []]
 
         self.spell_ct = 0
+        self.spell_slots = 0
+        self.slot_lvl = 0
+        self.invocation_ct = 0
+        self.invocations = []
         self.spells = [self.lvl_one, self.lvl_two, self.lvl_three, self.lvl_four, self.lvl_five, self.lvl_six,
                        self.lvl_seven, self.lvl_eight, self.lvl_nine]
 
+        if self.level > 1:
+            self.set_pact()
+        if self.level > 10:
+            self.feature.append("Mystic Arcanum")
+        if self.level > 19:
+            self.feature.append("Eldritch Master")
+
         self.set_skill()
         self.set_equip()
+        self.set_patron()
+        self.set_spells()
 
     def strength_mod(self):
         return math.floor((self.strength - 10) / 2)
@@ -136,25 +153,216 @@ class Warlock:
                 self.constitution = self.constitution + 1
 
     def init_hit_die(self):
-        self.hit_dice = str(self.level) + "d10"
+        self.hit_dice = str(self.level) + "d8"
 
     def init_hp(self):
         print(str(self.constitution_mod()))
-        self.hp = 10 + self.constitution_mod()
+        self.hp = 8 + self.constitution_mod()
         print(self.hp)
 
     def level_hp(self, level):
         print(self.constitution_mod())
-        self.hp = 10 + (self.constitution_mod() * int(level))
+        self.hp = 8 + (self.constitution_mod() * int(level))
         print(self.hp)
 
     def set_skill(self):
         i = 0
         while i < 2:
             skill = raw_input(
-                "Initialization: What skill do you want to be proficient in? Please input ")
+                "Initialization: What skill do you want to be proficient in? Arcana, Deception, History, Intimidation, Nature, or Religion? Please input ")
             self.skill.append(skill)
             i += 1
 
     def set_equip(self):
+        weapon_one = raw_input(
+            "Initialization: Which do you want, a light 'crossbow' and 20 bolts, or any simple weapon? Please input ")
+        if weapon_one != "crossbow":
+            self.equipment.append(weapon_one)
+            self.weapon.append(weapon_one)
+        else:
+            self.equipment.append("A light crossbow with 20 bolts")
+            self.weapon.append("A light crossbow with 20 bolts")
+        pack = raw_input(
+            "Which pack do you want? a 'dungeoneer' pack, or 'scholar' pack? Please input. ")
+        if pack == "dungeoneer":
+            self.equipment.append("Dungeoneer's pack")
+        else:
+            self.equipment.append("Scholar's pack")
+        arcana = raw_input("Do you want a component 'pouch' or an 'arcane' focus?")
+        if arcana == "pouch":
+            self.equipment.append("component pouch")
+        else:
+            self.equipment.append("an arcane focus")
+
+    def set_spells(self):
+        self.cantrips[0] = 2
+        self.spell_ct = 2
+        if self.level > 3:
+            self.cantrips[0] = 3
+        elif self.level > 9:
+            self.cantrips[0] = 4
+
+        if 0 < self.level < 10:
+            self.spell_ct = self.level + 1
+        elif 9 < self.level:
+            self.spell_ct = (math.ceil(self.level - 10)/2) + 10
+        if 0 < self.level < 9:
+            self.slot_lvl = math.ceil(self.level / 2)
+        elif self.level > 8:
+            self.slot_lvl = 5
+        if 1 < self.level < 11:
+            self.spell_slots = 2
+        elif self.level > 10:
+            self.spell_slots = 3
+        elif self.level > 16:
+            self.spell_slots = 4
+        if self.level == 1:
+            self.invocation_ct = 2
+        elif 2 < self.level < 11:
+            self.invocation_ct = math.ceil(self.level / 2)
+        elif self.level > 10:
+            self.invocation_ct = 5
+        elif self.level > 11:
+            self.invocation_ct = 6
+        elif self.level > 14:
+            self.invocation_ct = 7
+        elif self.level > 17:
+            self.invocation_ct = 8
+
+        for i in range(0, self.cantrips[0]):
+            self.cantrips[1].append(raw_input("What warlock cantrip do you want to learn?"))
+        for i in range(0, self.spell_ct):
+            if self.slot_lvl == 1:
+                self.lvl_one[0] += 1
+                self.lvl_one[1].append(raw_input("What level one warlock spell do you want to learn?"))
+            elif self.slot_lvl == 2:
+                self.lvl_two[0] += 1
+                self.lvl_two[1].append(raw_input("What level two warlock spell do you want to learn?"))
+            elif self.slot_lvl == 3:
+                self.lvl_three[0] += 1
+                self.lvl_three[1].append(raw_input("What level three warlock spell do you want to learn?"))
+            elif self.slot_lvl == 4:
+                self.lvl_four[0] += 1
+                self.lvl_four[1].append(raw_input("What level four warlock spell do you want to learn?"))
+            elif self.slot_lvl == 5:
+                self.lvl_five[0] += 1
+                self.lvl_five[1].append(raw_input("What level five warlock spell do you want to learn?"))
+        for i in range(0, self.invocation_ct):
+            self.choose_inv()
+
+    def choose_inv(self):
+        base_inv = ["Armor of Shadows", "Beast Speech", "Beguiling Influence", "Devil's Sight", "Eldritch Smite", "Eyes of the Rune Keeper",
+                    "Fiendish Vigor", "Gaze of Two Minds", "Mask of Many Faces", "Misty Visions", "Thief of Five Fates"]
+        prereq_inv = []
+
+        if self.level > 4:
+            prereq_inv.append("Cloak of Flies")
+            prereq_inv.append("Gift of the Depths")
+            prereq_inv.append("Mire the Mind")
+            prereq_inv.append("One with Shadows")
+            prereq_inv.append("Sign of Ill Omen")
+            prereq_inv.append("Tomb of Levistus")
+        if self.level > 6:
+            prereq_inv.append("Bewitching Whispers")
+            prereq_inv.append("Dreadful Word")
+            prereq_inv.append("Ghostly Gaze")
+            prereq_inv.append("Sculptor of Flesh")
+            prereq_inv.append("Trickster's Escape")
+        if self.level > 8:
+            prereq_inv.append("Ascendant Step")
+            prereq_inv.append("Minions of Chaos")
+            prereq_inv.append("Otherworldly Leap")
+            prereq_inv.append("Whispers of the Grave")
+        if self.level > 14:
+            prereq_inv.append("Master of Myriad Forms")
+            prereq_inv.append("Shroud of Shadow")
+            prereq_inv.append("Visions od Distant Realms")
+            prereq_inv.append("Witch Sight")
+        if "Eldritch Blast" in self.cantrips[1]:
+            prereq_inv.append("Agonizing Blast")
+            prereq_inv.append("Eldritch Spear")
+            prereq_inv.append("Grasp of Hadar")
+            prereq_inv.append("Lance of Lethargy")
+            prereq_inv.append("Repelling Blast")
+            if self.level > 4 and self.patron == "Fiend":
+                prereq_inv.append("Kiss of Mephistopheles")
+            if self.patron == "Raven Queen":
+                prereq_inv.append("Raven Queen's Blessing")
+        if self.pact == "Pact of the Blade":
+            prereq_inv.append("Arcane Gunslinger")
+            prereq_inv.append("Improved Pact Bringer")
+            if self.level > 4:
+                prereq_inv.append("Eldritch Smite")
+                prereq_inv.append("Thirsting Blade")
+            if self.level > 8:
+                prereq_inv.append("Superior Pact Weapon")
+            if self.level > 11:
+                prereq_inv.append("Lifedrinker")
+            if self.level > 14:
+                prereq_inv.append("Ultimate Pact Weapon")
+            if self.patron == "Great Old One":
+                prereq_inv.append("Claw of Acamar")
+            if self.patron == "Hexblade":
+                prereq_inv.append("Curse Bringer")
+            if self.patron == "Fiend":
+                prereq_inv.append("Mace of Dispater")
+            if self.patron == "Archfey":
+                prereq_inv.append("Moon Bow")
+        if self.pact == "Pact of the Tome":
+            prereq_inv.append("Aspect of the Moon")
+            prereq_inv.append("Book of Ancient Secrets")
+            if self.patron == "Raven Queen":
+                prereq_inv.append("Chronicle of the Raven Queen")
+        if self.pact == "Pact of the Chain":
+            prereq_inv.append("Gift of the Ever-Living Ones")
+            prereq_inv.append("Voice of the Chain Master")
+            if self.level > 14:
+                prereq_inv.append("Chains of Carceri")
+        if self.patron == "Hexblade":
+            prereq_inv.append("Burning Hex")
+            prereq_inv.append("Chilling Hex")
+        if self.patron == "Great Old One":
+            prereq_inv.append("Caiphon's Beacon")
+            if self.level > 6:
+                prereq_inv.append("Gaze of Khirad")
+            if self.level > 17:
+                prereq_inv.append("Shroud of Ulban")
+        if self.patron == "Fiend":
+            prereq_inv.append("Cloak of Baalzebul")
+        if self.patron == "Archfey":
+            prereq_inv.append("Green Lord's Gift")
+            prereq_inv.append("Sea Twins' Gift")
+        if self.patron == "Seeker":
+            prereq_inv.append("Path of the Seeker")
+            prereq_inv.append("Seeker's Speech")
+        if self.level > 6 and (any("hex" in feat for feat in self.feature) or any("hex" in spell for spell in self.magic)):
+            prereq_inv.append("Relentless Hex")
+
+        inv = list(set(base_inv).add(set(prereq_inv)) - set(self.invocations))
+        print("Which invocation do you want to learn? All invocations you can learn are listed below.")
+        for item in inv:
+            print(item)
+        print("")
+        choice = raw_input("")
+        self.invocations.append(choice)
+
+    def set_pact(self):
+        pact = raw_input("Which pact to do you want to join? Pact of the 'chain', Pact of the 'blade', or pact of the 'tome'? ")
+        if pact == "chain":
+            self.pact = "Pact of the Chain"
+            self.pact_desc.append("You learn the Find Familiar spell and can cast it as a ritual. The spell doesn't count against your number of spells known. When you cast the spell, you can choose one of the normal forms for your familiar or one of the following special forms: imp, pseudodragon, quasit or sprite. Additionally, when you take the Attack action, you can forgo one of your own attacks to allow your familiar to make one attack of its own with its reaction.")
+            self.lvl_one[0] += 1
+            self.lvl_one[1].append("Find Familiar")
+        elif pact == "tome":
+            self.pact = "Pact of the Tome"
+            self.pact_desc.append("Your patron gives you a grimoire called a Book of Shadows. When you gain this feature, choose three cantrips from any class's spell list (the three needn't be from the same list). While the book is on your person, you can cast those cantrips at will. They don't count against your number of cantrips known. If they don't appear on the warlock spell list, they are nonetheless warlock spells for you. If you lose your Book of Shadows, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and it destroys the previous book. The book turns to ash when you die.")
+            i = 0
+            while i < 3:
+                self.cantrips[0] += 1
+                self.cantrips[1].append(raw_input("Pact of the Tome: What cantrip do you want to learn? "))
+        else:
+            self.pact = "Pact of the Blade"
+            self.pact_desc.append("You can use your action to create a pact weapon in your empty hand. You can choose the form that this melee weapon takes each time you create it. You are proficient with it while you wield it. This weapon counts as magical for the purpose of overcoming resistance and immunity to non-magical attacks and damage. Your pact weapon disappears if it is more than 5 feet away from you for 1 minute or more. It also disappears if you use this feature again, if you dismiss the weapon (no action required), or if you die.\nYou can transform one magic weapon into your pact weapon by performing a special ritual while you hold the weapon. You perform the ritual over the course of 1 hour, which can be done during a short rest. You can then dismiss the weapon, shunting it into an extra-dimensional space, and it appears whenever you create your pact weapon thereafter. You can't affect an artifact or a sentient weapon in this way. The weapon ceases being your pact weapon if you die, if you perform the 1-hour ritual on a different weapon, or if you use a 1-hour ritual to break your bond to it. The weapon appears at your feet if it is in the extra-dimensional space when the bond breaks.")
+
+    def set_patron(self):
         pass

@@ -14,16 +14,21 @@ class Rogue:
 
         self.level = int(level)
 
-        self.feature = []
-        self.proficiency = []
+        self.feature = ["Thieves' Cant"]
+        self.proficiency = ["light armor", "simple weapons", "hand crossbow", "longswords", "rapiers", "shortswords", "thieves' tools"]
         self.skill = []
-        self.saving_throw = []
+        self.saving_throw = ["dexterity", "intelligence"]
         self.resistance = []
         self.language = []
         self.attack = []
-        self.equipment = []
-        self.weapon = []
-        self.armor = []
+        self.equipment = ["two daggers", "thieves' tools"]
+        self.weapon = ["two daggers"]
+        self.armor = ["leather armor", "11"]
+
+        self.archetype = ""
+
+        self.sneak_attack_desc = ["Sneak Attack"]
+        self.sneak_attack_dmg = ""
 
         if self.level == 1:
             self.init_hp()
@@ -70,8 +75,31 @@ class Rogue:
         self.spells = [self.lvl_one, self.lvl_two, self.lvl_three, self.lvl_four, self.lvl_five, self.lvl_six,
                        self.lvl_seven, self.lvl_eight, self.lvl_nine]
 
+        if self.level > 1:
+            self.feature.append("Cunning Action")
+        if self.level > 2:
+            self.set_archetype()
+        if self.level > 4:
+            self.feature.append("Uncanny Dodge")
+        if self.level > 6:
+            self.feature.append("Evasion")
+        if self.level > 10:
+            self.feature.append("Reliable Talent")
+        if self.level > 13:
+            self.feature.append("Blindsense")
+        if self.level > 15:
+            self.saving_throw.append("wisdom")
+        if self.level > 17:
+            self.feature.append("Elusive")
+        if self.level > 19:
+            self.feature.append("Stroke of Luck")
+
         self.set_skill()
         self.set_equip()
+        if self.level > 0:
+            self.set_expertise()
+        if self.level > 5:
+            self.set_expertise()
 
     def strength_mod(self):
         return math.floor((self.strength - 10) / 2)
@@ -90,6 +118,9 @@ class Rogue:
 
     def intelligence_mod(self):
         return math.floor((self.intelligence - 10) / 2)
+
+    def set_sneak_attack_dmg(self):
+        self.sneak_attack_dmg = str(math.ceil(self.level / 2)) + " d6"
 
     def ability(self):
         choice = raw_input("levelling up: do you want to increase 'one' score by two, or 'two' scores by one each?")
@@ -136,25 +167,51 @@ class Rogue:
                 self.constitution = self.constitution + 1
 
     def init_hit_die(self):
-        self.hit_dice = str(self.level) + "d10"
+        self.hit_dice = str(self.level) + "d8"
 
     def init_hp(self):
         print(str(self.constitution_mod()))
-        self.hp = 10 + self.constitution_mod()
+        self.hp = 8 + self.constitution_mod()
         print(self.hp)
 
     def level_hp(self, level):
         print(self.constitution_mod())
-        self.hp = 10 + (self.constitution_mod() * int(level))
+        self.hp = 8 + (self.constitution_mod() * int(level))
         print(self.hp)
 
     def set_skill(self):
         i = 0
-        while i < 2:
+        while i < 4:
             skill = raw_input(
-                "Initialization: What skill do you want to be proficient in? Please input ")
+                "Initialization: What skill do you want to be proficient in? Acrobatics, Athletics, Deception, Insight, Intimidation, Investigation, Perception, Performance, Persuasion, Sleight of Hand, or Stealth? Please input ")
             self.skill.append(skill)
             i += 1
 
     def set_equip(self):
+        pack = raw_input("Which pack do you want? 'burglar' pack, 'dungeoneer' pack, or 'explorer' pack? Please input. ")
+        if pack == "burglar":
+            self.equipment.append("Burglar's pack")
+        elif pack == "dungeoneer":
+            self.equipment.append("Dungeoneer's pack")
+        else:
+            self.equipment.append("Explorer's pack")
+        swood = raw_input("Which weapon do you want? a 'shortbow' and a quiver of 20 arrows, or a 'shortsword'? ")
+        if swood == "shortbow":
+            self.equipment.append("Shortbow and a quiver of 20 arrows")
+            self.weapon.append("Shortbow and a quiver of 20 arrows")
+        else:
+            self.equipment.append("Shortsword")
+            self.weapon.append("Shortsword")
+        weapon = raw_input("Which other weapon do you want? a 'shortsword' or a 'rapier'? ")
+        if weapon == "shortsword":
+            self.equipment.append("shortsword")
+            self.weapon.append("shortsword")
+        else:
+            self.weapon.append("rapier")
+            self.equipment.append("rapier")
+
+    def set_expertise(self):
+        pass
+
+    def set_archetype(self):
         pass
