@@ -104,6 +104,7 @@ class Character:
                        self.lvl_seven, self.lvl_eight, self.lvl_nine]
 
         # class/race specific things
+
         self.rage = False # barbarian
         self.rage_desc = []
         self.rage_ct = 0
@@ -113,6 +114,39 @@ class Character:
 
         self.divine_desc = [] # cleric
         self.divine_ct = 0
+
+        self.style = "" # fighter
+
+        self.ki_ct = 0 # monk
+        self.ki_dc = 0
+        self.ki_features = []
+        self.unarmored_mvmt = 0
+
+        self.oath_desc = [] # paladin
+        self.divinity_desc = []
+        self.fighting_style = ""
+        self.fighting_style_desc = []
+
+        self.master_desc = [] # ranger
+
+        self.sneak_attack_desc = [] # rogue
+        self.sneak_attack_dmg = ""
+        self.expert_skills = []
+
+        self.metamagic_desc = [] # sorcerer
+        self.sorcery_pts = 0
+
+        self.pact = "" # warlock
+        self.pact_desc = []
+        self.spell_slots = 0
+        self.slot_lvl = 0
+        self.invocation_ct = 0
+        self.invocations = []
+
+        self.tradition_desc = [] # wizard
+        self.spellbook_ct = 0
+        self.spell_master = []
+        self.sig_spells = []
 
     def strength_mod(self):
         return math.floor((self.strength - 10) / 2)
@@ -439,6 +473,8 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
+            self.archetype = chr.archetype
+            self.style = chr.style
             i = 0
             while i < 9:
                 self.spells[i][0] += chr.spells[i][0]
@@ -473,6 +509,12 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
+            self.archetype = chr.way
+            self.ki_features.append(chr.ki_features)
+            self.ki_ct = chr.ki_ct
+            self.ki_dc = chr.ki_dc
+            if not self.armor:
+                self.speed += chr.unarmored_mvmt
             i = 0
             while i < 9:
                 self.spells[i][0] += chr.spells[i][0]
@@ -506,6 +548,11 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
+            self.archetype = chr.oath
+            self.oath_desc.append(chr.oath_desc)
+            self.divinity_desc.append(chr.divinity_desc)
+            self.fighting_style = chr.fighting_style
+            self.fighting_style_desc.append(chr.fighting_style_desc)
             i = 0
             while i < 9:
                 self.spells[i][0] += chr.spells[i][0]
@@ -540,6 +587,8 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
+            self.archetype = chr.master
+            self.master_desc.append(chr.master_desc)
             i = 0
             while i < 9:
                 self.spells[i][0] += chr.spells[i][0]
@@ -574,6 +623,10 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
+            self.archetype = chr.archetype
+            self.sneak_attack_dmg = chr.sneak_attack_dmg
+            self.sneak_attack_desc.append(chr.sneak_attack_desc)
+            self.expert_skills.append(chr.expert_skills)
             i = 0
             while i < 9:
                 self.spells[i][0] += chr.spells[i][0]
@@ -608,6 +661,9 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
+            self.archetype = chr.origin
+            self.metamagic_desc.append(chr.metamagic_desc)
+            self.sorcery_pts += chr.sorcery_pts
             i = 0
             while i < 9:
                 self.spells[i][0] += chr.spells[i][0]
@@ -642,6 +698,13 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
+            self.archetype = chr.patron
+            self.pact_desc.append(chr.pact_desc)
+            self.pact = chr.pact
+            self.spell_slots += chr.spell_slots
+            self.slot_lvl += chr.slot_lvl
+            self.invocations.append(chr.invocations)
+            self.invocation_ct += chr.invocation_ct
             i = 0
             while i < 9:
                 self.spells[i][0] += chr.spells[i][0]
@@ -676,6 +739,11 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
+            self.archetype = chr.tradition
+            self.tradition_desc = chr.tradition_desc
+            self.spellbook_ct += chr.spellbook_ct
+            self.spell_master.append(chr.spell_master)
+            self.sig_spells.append(chr.sig_spells)
             i = 0
             while i < 9:
                 self.spells[i][0] += chr.spells[i][0]

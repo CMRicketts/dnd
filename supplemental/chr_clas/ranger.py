@@ -24,6 +24,7 @@ class Ranger:
         self.equipment = ["longbow and quiver of 20 arrows"]
         self.weapon = ["longbow and quiver of 20 arrows"]
         self.armor = []
+
         self.master = ""
         self.master_desc = []
 

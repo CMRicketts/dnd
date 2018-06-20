@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="689276d7-63d1-43d9-b9d8-da869b66afe6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/creation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/creation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/supplemental/character.py" beforeDir="false" afterPath="$PROJECT_DIR$/supplemental/character.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/supplemental/chr_clas/ranger.py" beforeDir="false" afterPath="$PROJECT_DIR$/supplemental/chr_clas/ranger.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/supplemental/chr_clas/rogue.py" beforeDir="false" afterPath="$PROJECT_DIR$/supplemental/chr_clas/rogue.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/supplemental/chr_clas/sorcerer.py" beforeDir="false" afterPath="$PROJECT_DIR$/supplemental/chr_clas/sorcerer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/supplemental/chr_clas/warlock.py" beforeDir="false" afterPath="$PROJECT_DIR$/supplemental/chr_clas/warlock.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/supplemental/chr_clas/wizard.py" beforeDir="false" afterPath="$PROJECT_DIR$/supplemental/chr_clas/wizard.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,53 +15,70 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="creation.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/creation.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="53" column="12" lean-forward="true" selection-start-line="53" selection-start-column="12" selection-end-line="54" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="character.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/supplemental/character.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11940">
-              <caret line="821" selection-start-line="821" selection-end-line="821" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sorcerer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/sorcerer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="153" column="17" lean-forward="true" selection-start-line="153" selection-start-column="17" selection-end-line="153" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="warlock.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/warlock.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="343" column="21" lean-forward="true" selection-start-line="343" selection-start-column="21" selection-end-line="343" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wizard.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/wizard.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="457">
-              <caret line="103" column="16" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="creation.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/creation.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="431">
+                  <caret line="53" column="12" lean-forward="true" selection-start-line="53" selection-start-column="12" selection-end-line="54" selection-end-column="34" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ranger.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/ranger.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-382">
+                  <caret line="40" column="32" lean-forward="true" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="sorcerer.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/sorcerer.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1266">
+                  <caret line="99" lean-forward="true" selection-start-line="99" selection-end-line="99" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="warlock.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/warlock.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="185">
+                  <caret line="85" column="50" lean-forward="true" selection-start-line="85" selection-start-column="50" selection-end-line="85" selection-end-column="50" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="wizard.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/wizard.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-2194">
+                  <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="character.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/supplemental/character.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="445">
+                  <caret line="743" column="17" selection-start-line="743" selection-start-column="17" selection-end-line="743" selection-end-column="17" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -84,21 +99,21 @@
         <option value="$PROJECT_DIR$/supplemental/chr_clas/druid.py" />
         <option value="$PROJECT_DIR$/supplemental/chr_clas/fighter.py" />
         <option value="$PROJECT_DIR$/supplemental/chr_clas/monk.py" />
-        <option value="$PROJECT_DIR$/supplemental/character.py" />
         <option value="$PROJECT_DIR$/supplemental/chr_clas/paladin.py" />
-        <option value="$PROJECT_DIR$/supplemental/chr_clas/ranger.py" />
         <option value="$PROJECT_DIR$/supplemental/chr_clas/sorcerer.py" />
-        <option value="$PROJECT_DIR$/supplemental/chr_clas/rogue.py" />
         <option value="$PROJECT_DIR$/src/creation.py" />
         <option value="$PROJECT_DIR$/supplemental/chr_clas/warlock.py" />
+        <option value="$PROJECT_DIR$/supplemental/chr_clas/ranger.py" />
+        <option value="$PROJECT_DIR$/supplemental/chr_clas/rogue.py" />
         <option value="$PROJECT_DIR$/supplemental/chr_clas/wizard.py" />
+        <option value="$PROJECT_DIR$/supplemental/character.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="793" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="334" />
     <option name="y" value="23" />
-    <option name="width" value="887" />
+    <option name="width" value="1346" />
     <option name="height" value="1027" />
   </component>
   <component name="ProjectView">
@@ -211,10 +226,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="793" y="23" width="887" height="1027" extended-state="0" />
+    <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.11576542" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10622711" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32903227" />
       <window_info anchor="right" id="R Packages" order="4" />
       <window_info anchor="right" id="R Graphics" order="3" />
@@ -474,13 +489,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/fighter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3180">
-          <caret line="212" column="24" selection-start-line="212" selection-start-column="24" selection-end-line="212" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/supplemental/race/dragonborn.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -491,45 +499,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/monk.py">
+    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/druid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2132">
-          <caret line="176" column="5" lean-forward="true" selection-start-line="176" selection-start-column="5" selection-end-line="176" selection-end-column="5" />
+        <state relative-caret-position="2760">
+          <caret line="184" column="31" lean-forward="true" selection-start-line="184" selection-start-column="31" selection-end-line="184" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/paladin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3375">
+        <state relative-caret-position="3355">
           <caret line="225" column="96" lean-forward="true" selection-start-line="225" selection-start-column="96" selection-end-line="225" selection-end-column="96" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/character.py">
+    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/monk.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11940">
-          <caret line="821" selection-start-line="821" selection-end-line="821" />
+        <state relative-caret-position="436">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/rogue.py">
+    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/fighter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="178" column="19" selection-start-line="178" selection-start-column="19" selection-end-line="178" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/ranger.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-607">
-          <caret line="102" column="28" lean-forward="true" selection-start-line="102" selection-start-column="28" selection-end-line="102" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/druid.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="178" column="8" lean-forward="true" selection-start-line="178" selection-start-column="8" selection-end-line="190" selection-end-column="52" />
+        <state relative-caret-position="2249">
+          <caret line="212" column="24" selection-start-line="212" selection-start-column="24" selection-end-line="212" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -540,24 +534,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/warlock.py">
+    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/rogue.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="343" column="21" lean-forward="true" selection-start-line="343" selection-start-column="21" selection-end-line="343" selection-end-column="21" />
+        <state relative-caret-position="-746">
+          <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/ranger.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-382">
+          <caret line="40" column="32" lean-forward="true" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/sorcerer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="153" column="17" lean-forward="true" selection-start-line="153" selection-start-column="17" selection-end-line="153" selection-end-column="17" />
+        <state relative-caret-position="1266">
+          <caret line="99" lean-forward="true" selection-start-line="99" selection-end-line="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/warlock.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="85" column="50" lean-forward="true" selection-start-line="85" selection-start-column="50" selection-end-line="85" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/wizard.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="103" column="16" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
+        <state relative-caret-position="-2194">
+          <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplemental/character.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="743" column="17" selection-start-line="743" selection-start-column="17" selection-end-line="743" selection-end-column="17" />
         </state>
       </provider>
     </entry>

@@ -29,6 +29,7 @@ class Rogue:
 
         self.sneak_attack_desc = ["Sneak Attack"]
         self.sneak_attack_dmg = ""
+        self.expert_skills = []
 
         if self.level == 1:
             self.init_hp()
@@ -96,6 +97,7 @@ class Rogue:
 
         self.set_skill()
         self.set_equip()
+        self.set_sneak_attack_dmg()
         if self.level > 0:
             self.set_expertise()
         if self.level > 5:

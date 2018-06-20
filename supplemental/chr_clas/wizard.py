@@ -15,7 +15,7 @@ class Wizard:
         self.level = int(level)
 
         self.tradition = ""
-        self.tradiiton_desc = []
+        self.tradition_desc = []
 
         self.feature = ["Ritual Casting", "Spellcasting Focus", "Arcane Recovery"]
         self.proficiency = ["daggers", "darts", "slings", "quarterstaffs", "light crossbows"]
@@ -55,7 +55,7 @@ class Wizard:
             self.ability()
 
         self.magic = []
-        self.magic_throw = ""
+        self.magic_throw = "intelligence"
         self.spell_dc = 0
         self.spell_attack = 0
         self.cantrips = [0, []]
@@ -219,6 +219,8 @@ class Wizard:
             self.cantrips[1].append(raw_input("Level up: what other cantrip do you want to add?"))
 
     def set_spells(self):
+        self.spell_dc = 8 + self.proficiency_bonus + self.intelligence_mod()
+        self.spell_attack = self.proficiency_bonus + self.intelligence_mod()
         self.lvl_one[0] = 6
         for i in range(0, self.spellbook_ct):
             self.lvl_one[1].append(raw_input("What level one spell do you want to learn?"))
