@@ -85,6 +85,7 @@ class Warlock:
         if self.level > 19:
             self.feature.append("Eldritch Master")
 
+        self.init_hit_die()
         self.set_skill()
         self.set_equip()
         self.set_patron()
@@ -156,14 +157,10 @@ class Warlock:
         self.hit_dice = str(self.level) + "d8"
 
     def init_hp(self):
-        print(str(self.constitution_mod()))
         self.hp = 8 + self.constitution_mod()
-        print(self.hp)
 
     def level_hp(self, level):
-        print(self.constitution_mod())
         self.hp = 8 + (self.constitution_mod() * int(level))
-        print(self.hp)
 
     def set_skill(self):
         i = 0
@@ -205,9 +202,9 @@ class Warlock:
         if 0 < self.level < 10:
             self.spell_ct = self.level + 1
         elif 9 < self.level:
-            self.spell_ct = (math.ceil(self.level - 10)/2) + 10
+            self.spell_ct = (int(math.ceil(self.level - 10)/2) + 10)
         if 0 < self.level < 9:
-            self.slot_lvl = math.ceil(self.level / 2)
+            self.slot_lvl = int(math.ceil(self.level / 2))
         elif self.level > 8:
             self.slot_lvl = 5
         if 1 < self.level < 11:
@@ -219,7 +216,7 @@ class Warlock:
         if self.level == 1:
             self.invocation_ct = 2
         elif 2 < self.level < 11:
-            self.invocation_ct = math.ceil(self.level / 2)
+            self.invocation_ct = int(math.ceil(self.level / 2))
         elif self.level > 10:
             self.invocation_ct = 5
         elif self.level > 11:
@@ -338,7 +335,11 @@ class Warlock:
         if self.level > 6 and (any("hex" in feat for feat in self.feature) or any("hex" in spell for spell in self.magic)):
             prereq_inv.append("Relentless Hex")
 
-        inv = list(set(base_inv).add(set(prereq_inv)) - set(self.invocations))
+        base = set(base_inv)
+        pre = set(prereq_inv)
+        invs = set(self.invocations)
+        inv_set = (base.union(pre)) - invs
+        inv = list(inv_set)
         print("Which invocation do you want to learn? All invocations you can learn are listed below.")
         for item in inv:
             print(item)

@@ -101,7 +101,7 @@ class Wizard:
                 print("")
                 choice = raw_input("")
                 self.sig_spells.append(choice)
-
+        self.init_hit_die()
         self.set_skill()
         self.set_equip()
         self.set_cantrip()

@@ -95,6 +95,7 @@ class Rogue:
         if self.level > 19:
             self.feature.append("Stroke of Luck")
 
+        self.init_hit_die()
         self.set_skill()
         self.set_equip()
         self.set_sneak_attack_dmg()

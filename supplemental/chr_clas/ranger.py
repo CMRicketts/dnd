@@ -95,6 +95,7 @@ class Ranger:
         if self.level > 19:
             self.feature.append("Foe Slayer")
 
+        self.init_hit_die()
         self.set_skill()
         self.set_equip()
 

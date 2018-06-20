@@ -15,13 +15,14 @@ class Barbarian:
 
         self.rage_description = []
 
-        self.level = level
-        self.strength = str(stre)
-        self.wisdom = str(wis)
-        self.intelligence = str(inte)
-        self.dexterity = str(dex)
-        self.charisma = str(cha)
-        self.constitution = str(con)
+        self.level = int(level)
+        level = self.level
+        self.strength = int(stre)
+        self.wisdom = int(wis)
+        self.intelligence = int(inte)
+        self.dexterity = int(dex)
+        self.charisma = int(cha)
+        self.constitution = int(con)
         self.hit_dice = ""
 
         self.hp = 0

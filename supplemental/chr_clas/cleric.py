@@ -55,6 +55,7 @@ class Cleric:
         self.weapon = []
         self.armor = []
 
+        self.init_hit_die()
         self.equip()
         self.skills()
         self.set_cantrip()

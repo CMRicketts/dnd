@@ -295,6 +295,7 @@ class Character:
             self.size = chr.size
             self.language.append("\n\t\t\t" + str(chr.language))
         else:
+            print("default is Tiefling")
             chr = Tiefling(self.level)
             self.dexterity = self.dexterity + chr.dexterity
             self.intelligence = self.intelligence + chr.intelligence
@@ -711,7 +712,8 @@ class Character:
                 self.spells[i][1].append(chr.spells[i][1])
                 i += 1
             self.spell_ct += chr.spell_ct
-        if clas == "wizard":
+        else:
+            print("Default class is wizard")
             chr = Wizard(self.level, self.strength, self.dexterity, self.constitution, self.charisma,
                           self.intelligence,
                           self.wisdom)
@@ -756,10 +758,11 @@ class Character:
     # returns armor, ac, and weapon info
     def combat_to_string(self):
 
-        print(str(self.armor))
-
-        combat = "Armor type wearing: " + str(self.armor[0][0]) + \
-                 "\nArmor AC: \t\t\t" + str(self.armor[0][1]) + "\n"
+        if self.armor:
+            combat = "Armor type wearing: " + str(self.armor[0]) + \
+                     "\nArmor AC: \t\t\t" + str(self.armor[1]) + "\n"
+        else:
+            combat = "No Armor\n"
         wpn_string = ""
         for wpn in self.weapon:
             wpn_string = wpn_string + "Weapon: \t\t\t" + str(wpn)

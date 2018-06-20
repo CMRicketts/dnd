@@ -82,6 +82,7 @@ class Druid():
         self.set_cantrip()
         self.set_spells()
 
+        self.init_hit_die()
         if self.level > 1:
             self.feature.append("Wild Shape")
         if self.level > 17:

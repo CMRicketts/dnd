@@ -126,6 +126,7 @@ class Monk:
         if self.level > 19:
             self.ki_features.append("Perfect Self")
 
+        self.init_hit_die()
         self.set_ac()
 
     def strength_mod(self):

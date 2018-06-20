@@ -11,25 +11,11 @@ class Sorcerer:
         self.wisdom = int(wis)
         self.hp = 0
         self.hit_dice = ""
+        self.level = int(level)
 
         self.origin = ""
         self.metamagic_desc = []
         self.sorcery_pts = 0
-        if self.level > 1:
-            self.sorcery_pts = self.level
-            self.feature.append("Sorcery Points")
-            self.feature.append("Flexible Casting")
-        if self.level > 2:
-            self.feature.append("Metamagic")
-            self.set_metamagic()
-        if self.level > 9:
-            self.set_metamagic()
-        if self.level > 16:
-            self.set_metamagic()
-        if self.level > 19:
-            self.feature.append("Sorcerous Restoration")
-
-        self.level = int(level)
 
         self.feature = ["Spellcasting Focus"]
         self.proficiency = ["daggers", "darts", "slings", "quarterstaffs", "light crossbows"]
@@ -87,6 +73,21 @@ class Sorcerer:
         self.spells = [self.lvl_one, self.lvl_two, self.lvl_three, self.lvl_four, self.lvl_five, self.lvl_six,
                        self.lvl_seven, self.lvl_eight, self.lvl_nine]
 
+        if self.level > 1:
+            self.sorcery_pts = self.level
+            self.feature.append("Sorcery Points")
+            self.feature.append("Flexible Casting")
+        if self.level > 2:
+            self.feature.append("Metamagic")
+            self.set_metamagic()
+        if self.level > 9:
+            self.set_metamagic()
+        if self.level > 16:
+            self.set_metamagic()
+        if self.level > 19:
+            self.feature.append("Sorcerous Restoration")
+
+        self.init_hit_die()
         self.set_skill()
         self.set_equip()
         self.set_cantrip()

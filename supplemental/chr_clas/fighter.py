@@ -80,6 +80,7 @@ class Fighter():
         self.spells = [self.lvl_one, self.lvl_two, self.lvl_three, self.lvl_four, self.lvl_five, self.lvl_six,
                        self.lvl_seven, self.lvl_eight, self.lvl_nine]
 
+        self.init_hit_die()
         self.set_skill()
         self.set_equip()
         self.set_style()
