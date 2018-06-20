@@ -30,6 +30,7 @@ class Paladin:
         self.divinity_desc = []
         self.fighting_style = ""
         self.fighting_style_desc = []
+        self.style = ""
 
         if self.level == 1:
             self.init_hp()
@@ -75,7 +76,6 @@ class Paladin:
         self.spell_ct = 0
         self.spells = [self.lvl_one, self.lvl_two, self.lvl_three, self.lvl_four, self.lvl_five, self.lvl_six,
                        self.lvl_seven, self.lvl_eight, self.lvl_nine]
-
 
         self.init_hit_die()
         self.set_skill()
@@ -262,4 +262,26 @@ class Paladin:
         pass
 
     def set_style(self):
-        pass
+        style = raw_input("Initialization: Which of the following fighting styles do you want to learn? Please input. "
+                          "\ndefense, dueling, great 'weapon' fighting, protection, mariner, close quarter 'shooter', or 'tunnel' fighter?")
+        if style == "dueling":
+            self.style = "dueling"
+            self.feature.append("fighting style: " + str(style))
+        elif style == "weapon":
+            self.style = "great weapon fighting"
+            self.feature.append("fighting style: " + "great weapon fighting")
+        elif style == "protection":
+            self.style = "protection"
+            self.feature.append("fighting style: " + str(style))
+        elif style == "mariner":
+            self.style = "mariner"
+            self.feature.append(str(style))
+        elif style == "shooter":
+            self.style = "close quarters shooter"
+            self.feature.append("fighting style: " + "close quarters shooter")
+        elif style == "tunnel":
+            self.style = "tunnel fighter"
+            self.feature.append("fighting style: " + "tunnel fighter")
+        else:
+            self.style = "Defense"
+            self.feature.append("fighting style: " + "Defense")

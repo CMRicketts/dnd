@@ -27,6 +27,7 @@ class Ranger:
 
         self.master = ""
         self.master_desc = []
+        self.style = ""
 
         if self.level == 1:
             self.init_hp()
@@ -78,7 +79,7 @@ class Ranger:
             self.magic_throw = "wisdom"
             self.spell_attack = self.proficiency_bonus + self.wisdom_mod()
             self.spell_dc = self.proficiency_bonus + self.wisdom_mod() + 8
-            self.feature.append("Fighting Style (Ranger)")
+            self.set_style()
         if self.level > 2:
             self.set_master()
             self.feature.append("Primeval Awareness")
@@ -242,6 +243,31 @@ class Ranger:
             self.weapon.append(two)
         pack = raw_input("which pack do you want: 'dungeoneer' or 'explorer'? ")
         self.equipment.append(pack)
+
+    def set_style(self):
+        style = raw_input("Initialization: Which of the following fighting styles do you want to learn? Please input. "
+                          "\narchery, defense, dueling, 'two' weapon fighting, mariner, close quarter 'shooter', or 'tunnel' fighter?")
+        if style == "archery":
+            self.style = "archery"
+            self.feature.append("fighting style: " + str(style))
+        elif style == "dueling":
+            self.style = "dueling"
+            self.feature.append("fighting style: " + str(style))
+        elif style == "two":
+            self.style = "two weapon fighting"
+            self.feature.append("fighting style: " + "two weapon fighting")
+        elif style == "mariner":
+            self.style = "mariner"
+            self.feature.append(str(style))
+        elif style == "shooter":
+            self.style = "close quarters shooter"
+            self.feature.append("fighting style: " + "close quarters shooter")
+        elif style == "tunnel":
+            self.style = "tunnel fighter"
+            self.feature.append("fighting style: " + "tunnel fighter")
+        else:
+            self.style = "Defense"
+            self.feature.append("fighting style: " + "Defense")
 
     def set_master(self):
         pass

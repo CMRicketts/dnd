@@ -546,6 +546,7 @@ class Character:
             self.magic_throw += str(chr.magic_throw)
             self.spell_dc = chr.spell_dc
             self.spell_attack += chr.spell_attack
+            self.style = chr.style
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
@@ -588,6 +589,7 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
+            self.style = chr.style
             self.archetype = chr.master
             self.master_desc.append(chr.master_desc)
             i = 0

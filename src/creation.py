@@ -167,7 +167,14 @@ def main():
                 except KeyError:
                     print srch + " was not found"
                 else:
-                    print("\n" + srch + ": " + result)
+                    response = "\n" + srch + ": "
+                    line = " "
+                    for word in result.split(" "):
+                        line = line + word + " "
+                        if len(line) > 120:
+                            response += "\n" + line
+                            line = ""
+                    print(response)
                 print("\n")
 
         elif command == "exit":

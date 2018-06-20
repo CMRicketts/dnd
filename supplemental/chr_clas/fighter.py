@@ -209,31 +209,31 @@ class Fighter():
                           "\narchery, defense, dueling, great 'weapon' fighting, protection, 'two' weapon fighting, mariner, close quarter 'shooter', or 'tunnel' fighter?")
         if style == "archery":
             self.style = "archery"
-            self.feature.append(str(style))
+            self.feature.append("fighting style: " + str(style))
         elif style == "dueling":
             self.style = "dueling"
-            self.feature.append(str(style))
+            self.feature.append("fighting style: " + str(style))
         elif style == "weapon":
             self.style = "great weapon fighting"
-            self.feature.append("great weapon fighting")
+            self.feature.append("fighting style: " + "great weapon fighting")
         elif style == "protection":
             self.style = "protection"
-            self.feature.append(str(style))
+            self.feature.append("fighting style: " + str(style))
         elif style == "two":
             self.style = "two weapon fighting"
-            self.feature.append("two weapon fighting")
+            self.feature.append("fighting style: " + "two weapon fighting")
         elif style == "mariner":
             self.style = "mariner"
             self.feature.append(str(style))
         elif style == "shooter":
             self.style = "close quarters shooter"
-            self.feature.append("close quarters shooter")
+            self.feature.append("fighting style: " + "close quarters shooter")
         elif style == "tunnel":
             self.style = "tunnel fighter"
-            self.feature.append("tunnel fighter")
+            self.feature.append("fighting style: " + "tunnel fighter")
         else:
             self.style = "Defense"
-            self.feature.append("Defense")
+            self.feature.append("fighting style: " + "Defense")
 
     def set_archetype(self):
         arch = raw_input("Level up: Which archetype do you want to join? arcane, battle, brute, cavalier, champion, eldritch, monster, purple, samurai, scout, or sharpshooter?")

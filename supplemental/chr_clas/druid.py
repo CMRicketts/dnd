@@ -327,7 +327,7 @@ class Druid():
         if self.level > 5:
             self.feature.append("Fungal infestation")
         if self.level > 9:
-            self.feature.append("Sperading spores")
+            self.feature.append("Spreading spores")
         if self.level > 13:
             self.resistance.append(["blindness", "deafness", "frightened", "poison", "critical hits (Fungal Body)"])
             self.feature.append("Fungal Body")

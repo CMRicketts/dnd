@@ -248,7 +248,7 @@ class Warlock:
             self.choose_inv()
 
     def choose_inv(self):
-        base_inv = ["Armor of Shadows", "Beast Speech", "Beguiling Influence", "Devil's Sight", "Eldritch Smite", "Eyes of the Rune Keeper",
+        base_inv = ["Armor of Shadows", "Beast Speech", "Beguiling Influence", "Devil's Sight", "Eyes of the Rune Keeper",
                     "Fiendish Vigor", "Gaze of Two Minds", "Mask of Many Faces", "Misty Visions", "Thief of Five Fates"]
         prereq_inv = []
 
