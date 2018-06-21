@@ -243,8 +243,8 @@ class Warlock:
                 self.lvl_four[1].append(raw_input("What level four warlock spell do you want to learn?"))
             elif self.slot_lvl == 5:
                 self.lvl_five[0] += 1
-                self.lvl_five[1].append(raw_input("What level five warlock spell do you want to learn?"))
-        for i in range(0, self.invocation_ct):
+                self.lvl_five[1].append(raw_input("Level Up: What level five warlock spell do you want to learn?"))
+        for i in range(0, int(self.invocation_ct)):
             self.choose_inv()
 
     def choose_inv(self):
@@ -275,7 +275,7 @@ class Warlock:
             prereq_inv.append("Shroud of Shadow")
             prereq_inv.append("Visions od Distant Realms")
             prereq_inv.append("Witch Sight")
-        if "Eldritch Blast" in self.cantrips[1]:
+        if "eldritch blast" in self.cantrips[1]:
             prereq_inv.append("Agonizing Blast")
             prereq_inv.append("Eldritch Spear")
             prereq_inv.append("Grasp of Hadar")

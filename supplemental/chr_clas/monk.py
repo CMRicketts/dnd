@@ -15,19 +15,10 @@ class Monk:
         self.ki_ct = 0
         self.ki_dc = 0
         self.ki_features = []
-        if self.level != 1:
-            self.ki_ct = self.level
-        self.unarmored_mvmt = 0
-        if 1 < self.level < 6:
-            self.unarmored_mvmt = 10
-        if 5 < self.level < 10:
-            self.unarmored_mvmt = 15
-        if 9 < self.level < 14:
-            self.unarmored_mvmt = 20
-        if 13 < self.level < 18:
-            self.unarmored_mvmt = 25
-        if 17 < self.level:
-            self.unarmored_mvmt = 30
+
+        #NEW
+        self.elem_feat = []
+        #NEW
 
         self.level = int(level)
 
@@ -88,6 +79,20 @@ class Monk:
         self.spell_ct = 0
         self.spells = [self.lvl_one, self.lvl_two, self.lvl_three, self.lvl_four, self.lvl_five, self.lvl_six,
                        self.lvl_seven, self.lvl_eight, self.lvl_nine]
+
+        if self.level != 1:
+            self.ki_ct = self.level
+        self.unarmored_mvmt = 0
+        if 1 < self.level < 6:
+            self.unarmored_mvmt = 10
+        if 5 < self.level < 10:
+            self.unarmored_mvmt = 15
+        if 9 < self.level < 14:
+            self.unarmored_mvmt = 20
+        if 13 < self.level < 18:
+            self.unarmored_mvmt = 25
+        if 17 < self.level:
+            self.unarmored_mvmt = 30
 
         self.set_skill()
         self.set_equip()
@@ -245,4 +250,128 @@ class Monk:
             self.armor = ["Unarmored", str(10 + self.dexterity_mod() + self.wisdom_mod())]
 
     def set_way(self):
-        pass
+        choice = raw_input("Which monastic tradition do you want to join? 'Drunken' Master, 'Four' Elements, 'Kensei', 'Long' Death, 'Open' Hand, 'Shadow', 'Sun' Soul, or 'Tranquility'?")
+        choice = choice.lower()
+        if choice == "drunken":
+            self.drunk()
+            self.way = "Way of the Drunken Master"
+        elif choice == "four":
+            self.four()
+            self.way = "Way of the Four Elements"
+        elif choice == "Kensei":
+            self.ken()
+            self.way = "Way of the Kensei"
+        elif choice == "long":
+            self.long()
+            self.way = "Way of the Long Death"
+        elif choice == "open":
+            self.open()
+            self.way = "Way of the Open Hand"
+        elif choice == "shadow":
+            self.shadow()
+            self.way = "Way of the Shadow"
+        elif choice == "sun":
+            self.sun()
+            self.way = "Way of the Sum Soul"
+        else:
+            self.tran()
+            self.way = "Way of Tranquility"
+
+    def tran(self):
+        self.feature.append("Path of Tranquility")
+        self.feature.append("Healing Hands")
+        if self.level > 5:
+            self.feature.append("Emissary of Peace")
+            self.skill.append(raw_input("Which do you want to become proficient in: Performance or Persuasion?"))
+        if self.level > 10:
+            self.feature.append("Douse the Flames of War")
+        if self.level > 16:
+            self.feature.append("Anger of a Gentle Soul")
+
+    def sun(self):
+        self.feature.append("Radiant Sun Bolt")
+        self.attack.append("Radiant Sun Bolt")
+        if self.level > 5:
+            self.feature.append("Searing Arc Strike")
+            self.ki_features.append("Searing Arc Strike")
+        if self.level > 10:
+            self.feature.append("Searing Sunburst")
+            self.attack.append("Searing Sunburst")
+        if self.level > 16:
+            self.feature.append("Sun Shield")
+
+    def shadow(self):
+        self.ki_features.append("Shadow Arts")
+        self.cantrips[0] += 1
+        self.cantrips[1].append("Minor Illusion")
+        if self.level > 5:
+            self.feature.append("Shadow Step")
+        if self.level > 10:
+            self.feature.append("Cloak of Shadows")
+        if self.level > 16:
+            self.feature.append("Opportunist")
+
+    def open(self):
+        self.feature.append("Open Hand Technique")
+        if self.level > 5:
+            self.feature.append("Wholeness of Body")
+        if self.level > 10:
+            self.feature.append("Tranquility")
+        if self.level > 16:
+            self.feature.append("Quivering Palm")
+        #V2: generic 'archetype' class for each character class, to input features to not repeat code
+
+    def long(self):
+        self.feature.append("Touch of Death")
+        if self.level > 5:
+            self.feature.append("Hour of Reaping")
+        if self.level > 10:
+            self.feature.append("Mastery of Death")
+        if self.level > 16:
+            self.feature.append("Touch of the Long Death")
+
+    def ken(self):
+        self.feature.append("Path of the Kensei")
+        if self.level > 5:
+            self.feature.append("One with the Blade")
+        if self.level > 10:
+            self.ki_features.append("Sharpen the Blade")
+        if self.level > 16:
+            self.feature.append("Unerring Accuracy")
+
+    def four(self):
+        self.elem_feat.append("Elemental Attunement")
+        self.set_elem()
+        if self.level > 5:
+            self.set_elem()
+        if self.level > 10:
+            self.set_elem()
+        if self.level > 16:
+            self.set_elem()
+
+    def drunk(self):
+        self.skill.append("Performance")
+        self.proficiency.append("Brewer's Supplies")
+        self.feature.append("Drunken Technique")
+        if self.level > 5:
+            self.feature.append("Leap to Your Feet")
+            self.feature.append("Redirect Attack")
+        if self.level > 10:
+            self.ki_features.append("Drunkard's Luck")
+        if self.level > 16:
+            self.feature.append("Intoxicated Frenzyj")
+
+    def set_elem(self):
+        base_elem = ["Fangs of the Fire Snake", "Fist of Four Thunders", "Fist of Unbroken Air", "Rush of the Gale Spirits",
+                     "Shape the Flowing River", "Sweeping Cinder Strike", "Water Whip"]
+        if self.level > 5:
+            base_elem.append(["Clench of the North Wind", "Gong of the Summit"])
+        if self.level > 10:
+            base_elem.append(["Flames of the Phoenix", "Mist Stance", "Ride the Wind"])
+        if self.level > 16:
+            base_elem.append(["River of Hungry Flame", "Breath of Winter", "Eternal Mountain Defense"])
+        elem = list(set(base_elem)-set(self.elem_feat))
+        print("Which elemental discipline do you want to learn? They are printed below")
+        for item in elem:
+            print item
+        self.elem_feat.append(raw_input(""))

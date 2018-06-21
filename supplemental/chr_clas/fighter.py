@@ -17,6 +17,16 @@ class Fighter():
         self.archetype = ""
         self.style = ""
 
+        #NEW
+        self.arcane_choices = []
+        self.arcane_shot_desc = []
+        self.arcane_dc = 0
+        self.maneuver_opt = []
+        self.sup_dice_ct = 0
+        self.sup_dice = ""
+        self.man_dc = 0
+        #NEW
+
         self.feature = ["Second Wind"]
         self.proficiency = ["all armors", "all shields", "all weapons"]
         self.skill = []
@@ -56,6 +66,8 @@ class Fighter():
 
         if self.level > 1:
             self.feature.append("Action Surge")
+        if self.level > 2:
+            self.set_archetype()
         if self.level > 4:
             self.feature.append("Extra attack")
         if self.level > 8:
@@ -84,6 +96,7 @@ class Fighter():
         self.set_skill()
         self.set_equip()
         self.set_style()
+        self.init_arcane_dc()
 
     def strength_mod(self):
         return math.floor((self.strength - 10) / 2)
@@ -147,6 +160,9 @@ class Fighter():
             else:
                 self.constitution = self.constitution + 1
 
+    def init_arcane_dc(self):
+        self.arcane_dc = 8 + self.proficiency_bonus + self.intelligence_mod()
+
     def init_hit_die(self):
         self.hit_dice = str(self.level) + "d10"
 
@@ -205,7 +221,7 @@ class Fighter():
             self.equipment.append("explorer's pack")
 
     def set_style(self):
-        style = raw_input("Initialization: Which of the following fighting styles do you want to learn? Please input. "
+        style = raw_input("Which of the following fighting styles do you want to learn? Please input. "
                           "\narchery, defense, dueling, great 'weapon' fighting, protection, 'two' weapon fighting, mariner, close quarter 'shooter', or 'tunnel' fighter?")
         if style == "archery":
             self.style = "archery"
@@ -271,35 +287,251 @@ class Fighter():
             self.archetype = "sharpshooter"
             self.sharpshooter()
 
-    def sharpshooter(self):
-        pass
-
-    def scout(self):
-        pass
-
-    def samurai(self):
-        pass
-
-    def purple(self):
-        pass
-
-    def monster(self):
-        pass
-
-    def eld(self):
-        pass
-
-    def champion(self):
-        pass
-
-    def cavalier(self):
-        pass
-
-    def brute(self):
-        pass
+    def arcane(self):
+        skill = raw_input("Arcane Archer: Which skill do you want to be proficient in? Arcana or Nature? ")
+        if skill.lower() == "arcana":
+            self.skill.append("arcana")
+        else:
+            self.skill.append("nature")
+        cantrip = raw_input("Arcane Archer: Which cantrip do you want to learn? Prestidigitation, or Druidcraft? (default is prestidigitation) ")
+        self.cantrips[0] += 1
+        if cantrip.lower() == "druidcraft":
+            self.cantrips[1].append("druidcraft")
+        else:
+            self.cantrips[1].append("prestidigitation")
+        self.set_arcane_shot(2)
+        if self.level > 6:
+            self.set_arcane_shot(1)
+        if self.level > 9:
+            self.set_arcane_shot(1)
+        if self.level > 14:
+            self.set_arcane_shot(1)
+        if self.level > 17:
+            self.set_arcane_shot(1)
+        if self.level > 6:
+            self.feature.append("Magic Arrow")
+            self.feature.append("Curving Shot")
+        if self.level > 14:
+            self.feature.append("Ever-Ready Shot")
 
     def battle(self):
-        pass
+        self.set_maneuver(3)
+        if self.level > 6:
+            self.set_maneuver(2)
+        if self.level > 9:
+            self.set_maneuver(2)
+        if self.level > 14:
+            self.set_maneuver(2)
+        self.sup_dice_ct = 4
+        if self.level > 6:
+            self.sup_dice_ct += 1
+        if self.level > 14:
+            self.sup_dice_ct += 1
+        self.sup_dice = str(self.sup_dice_ct) + "d8"
+        self.feature.append("Maneuvers")
+        self.feature.append("Superiority Dice")
+        print("Maneuver DC: do you want strength or dex as your modifier? Both are printed below ")
+        print("Strength: " + str(self.strength))
+        print("Dexterity: " + str(self.dexterity))
+        choice = raw_input("")
+        if choice == "strength":
+            choice = self.strength
+        else:
+            choice = self.dexterity
+        self.man_dc = self.proficiency_bonus + 8 + choice
+        self.proficiency.append(raw_input("Which artisan's tools do you want to become proficient in?"))
+        if self.level > 6:
+            self.feature.append("Know Your Enemy")
+        if self.level > 9:
+            self.sup_dice = str(self.sup_dice_ct) + "d10"
+        if self.level > 17:
+            self.sup_dice = str(self.sup_dice_ct) + "d12"
+        if self.level > 14:
+            self.feature.append("Relentless")
 
-    def arcane(self):
-        pass
+    def brute(self):
+        self.feature.append("Brute Force")
+        if self.level > 6:
+            self.feature.append("Brutish Durability")
+        if self.level > 9:
+            self.set_style()
+        if self.level > 14:
+            self.feature.append("Devastating Critical")
+        if self.level > 17:
+            self.feature.append("Survivor")
+
+    def cavalier(self):
+        choice = raw_input("Cavalier: Do you want to learn a new 'language' or become proficient in a new 'skill'?")
+        if choice == "language":
+            self.language.append(raw_input("Which language do you want to learn?"))
+        else:
+            self.skill.append(raw_input("Which skill do you want to become proficient in? Animal Handling, History, Insight, Performance, or Persuasion? Please input "))
+            # V2: all potential skills in array, subtracting set to find actual potential learning
+        self.feature.append("Born to the Saddle")
+        self.feature.append("Unwavering Mark")
+        if self.level > 9:
+            self.feature.append("Hold the Line")
+        if self.level > 14:
+            self.feature.append("Ferocious Charger")
+        if self.level > 17:
+            self.feature.append("Vigilant Defender")
+
+    def champion(self):
+        self.feature.append("Improved Critical") # holy shit
+        if self.level > 6:
+            self.feature.append("Remarkable Athlete")
+        if self.level > 9:
+            self.set_style()
+        if self.level > 14:
+            self.feature.append("Superior Critical")
+        if self.level > 17:
+            self.feature.append("Survivor")
+
+    def eld(self):
+        if self.level > 2:
+            self.cantrips[0] += 2
+            self.lvl_one[0] += 2
+        if self.level > 3:
+            self.lvl_one[0] += 1
+        if self.level > 6:
+            self.lvl_one[0] += 1
+            self.lvl_two[0] += 2
+        if self.level > 9:
+            self.cantrips[0] += 1
+            self.lvl_two[0] += 1
+        if self.level > 12:
+            self.lvl_three[0] += 2
+        if self.level > 15:
+            self.lvl_three += 1
+        if self.level > 18:
+            self.lvl_four += 1
+        i = 1
+        for level in self.spells:
+            for i in range(0, level[0]):
+                level[1].append(raw_input("What level " + str(i) + " spell do you want to learn?"))
+            i += 1
+        for i in range(0, self.cantrips[0]):
+            self.cantrips[1].append("What cantrip do you want to learn?")
+        self.spell_dc = 8 + self.proficiency_bonus + self.intelligence_mod()
+        self.spell_attack = self.proficiency_bonus + self.intelligence_mod()
+        self.feature.append("Weapon Bond")
+        if self.level > 6:
+            self.feature.append("War Magic")
+        if self.level > 9:
+            self.feature.append("Eldritch Strike")
+        if self.level > 14:
+            self.feature.append("Arcane Charge")
+        if self.level > 17:
+            self.feature.append("Improved War Magic")
+
+    def monster(self):
+        choice = raw_input("Cavalier: Do you want to become proficient in a new 'skill' or a new 'tool'?")
+        if choice == "tool":
+            self.proficiency.append(raw_input("Which tool do you want to be proficient in?"))
+        else:
+            for i in range(0, 2):
+                self.skill.append(raw_input(
+                    "Which skill do you want to become proficient in? Arcana, History, Insight, Investigation, Nature, or Perception? Please input "))
+        self.sup_dice_ct = 4
+        if self.level > 6:
+            self.sup_dice_ct += 1
+        if self.level > 14:
+            self.sup_dice_ct += 1
+        self.sup_dice = str(self.sup_dice_ct) + "d8"
+        self.feature.append("Superiority Dice")
+        if self.level > 9:
+            self.sup_dice = str(self.sup_dice_ct) + "d10"
+        if self.level > 17:
+            self.sup_dice = str(self.sup_dice_ct) + "d12"
+        self.feature.append("Hunter's Mysticism")
+        if self.level > 6:
+            self.feature.append("Monster Slayer")
+        if self.level > 14:
+            self.feature.append("Relentless")
+
+    def purple(self):
+        self.feature.append("Rallying Cry")
+        if self.level > 6:
+            self.skill.append("Persuasion")
+            self.skill.append(raw_input("Purple Dragon Knight: What skill do you want to be proficient in? Animal Handling, Insight, Intimidation, or Performance?"))
+            self.skill.append("Persuasion")
+        if self.level > 9:
+            self.feature.append("Inspiring Surge")
+        if self.level > 14:
+            self.feature.append("Bulwark")
+
+    def samurai(self):
+        self.skill.append(raw_input("Samurai: Which skill do you want to become proficient in? History, Insight, Performance, or Persuasion? "))
+        self.feature.append("Fighting Spirit")
+        if self.level > 6:
+            self.feature.append("Elegant Courtier")
+        if self.level > 6:
+            self.feature.append("Tireless Spirit")
+        if self.level > 14:
+            self.feature.append("Rapid Strike")
+        if self.level > 18:
+            self.feature.append("Strength Before Death")
+
+    def scout(self):
+        for i in range(0, 3):
+            self.skill.append("Which skill do you want to have proficiency in? Acrobatics, Athletics, Investigation, "
+                              "Medicine, Nature, Perception, Stealth, or Survival? ")
+        self.feature.append("Natural Explorer (Fighter)")
+        self.sup_dice_ct = 4
+        if self.level > 6:
+            self.sup_dice_ct += 1
+        if self.level > 14:
+            self.sup_dice_ct += 1
+        self.sup_dice = str(self.sup_dice_ct) + "d8"
+        self.feature.append("Superiority Dice")
+        if self.level > 9:
+            self.sup_dice = str(self.sup_dice_ct) + "d10"
+        if self.level > 17:
+            self.sup_dice = str(self.sup_dice_ct) + "d12"
+        if self.level > 14:
+            self.feature.append("Relentless")
+
+    def sharpshooter(self):
+        self.feature.append("Steady Aim")
+        if self.level > 6:
+            self.feature.append("Careful Eyes")
+            self.skill.append(raw_input("Careful Eyes: Do you want to be proficient in Perception, Investigation, or Survival?"))
+        if self.level > 9:
+            self.feature.append("Close-Quarters Shooting")
+        if self.level > 14:
+            self.feature.append("Rapid Strike")
+        if self.level > 17:
+            self.feature.append("Snap Shot")
+
+    def set_arcane_shot(self, amt):
+        base_opt = ["Banishing Arrow", "Beguiling Arrow", "Bursting Arrow", "Enfeebling Arrow", "Grasping Arrow", "Piercing Arrow", "Seeking Arrow", "Shadow Arrow"]
+        fin_opt = set(base_opt) - set(self.arcane_choices)
+        for i in range(0, amt):
+            print("Which Arcane Shot Feature do you want to take? They're printed below")
+            for item in fin_opt:
+                print item
+            choice = raw_input("")
+            flag = True
+            while flag:
+                if choice in fin_opt:
+                    self.arcane_choices.append(choice)
+                    flag = False
+                else:
+                    print("That's not in the list. Try again")
+
+    def set_maneuver(self, amt):
+        base_opt = ["Commander's Strike", "Disarming Attack", "Distracting Strike", "Evasive Footwork", "Feinting Attack", "Goading Attack", "Lunging Attack", "Maneuvering Attack"
+                    "Menacing Attack", "Parry", "Riposte", "Sweeping Attack", "Trip Attack"]
+        fin_opt = set(base_opt) - set(self.maneuver_opt)
+        for i in range(0, amt):
+            print("Which Battle Master Maneuver do you want to take? They're printed below")
+            for item in fin_opt:
+                print item
+            choice = raw_input("")
+            flag = True
+            while flag:
+                if choice in fin_opt:
+                    self.maneuver_opt.append(choice)
+                    flag = False
+                else:
+                    print("That's not in the list. Try again")

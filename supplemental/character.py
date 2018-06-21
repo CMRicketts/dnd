@@ -378,7 +378,7 @@ class Character:
                 i += 1
             self.spells.append(chr.spells)
             self.spell_ct += chr.spell_ct
-        if clas == "cleric":
+        elif clas == "cleric":
             chr = Cleric(self.level, self.strength, self.dexterity, self.constitution, self.charisma, self.intelligence, self.wisdom)
             self.archetype = chr.domain
             self.strength = chr.strength
@@ -413,7 +413,7 @@ class Character:
             self.spell_ct += chr.spell_ct
             self.divine_ct += chr.channel_divine_ct
             self.divine_desc.append(str(chr.channel_divine_desc))
-        if clas == "druid":
+        elif clas == "druid":
             chr = Cleric(self.level, self.strength, self.dexterity, self.constitution, self.charisma, self.intelligence,
                          self.wisdom)
             self.archetype = chr.circle
@@ -447,7 +447,7 @@ class Character:
                 self.spells[i][1].append(chr.spells[i][1])
                 i += 1
             self.spell_ct += chr.spell_ct
-        if clas == "fighter":
+        elif clas == "fighter":
             chr = Fighter(self.level, self.strength, self.dexterity, self.constitution, self.charisma, self.intelligence,
                          self.wisdom)
             self.strength = chr.strength
@@ -482,7 +482,7 @@ class Character:
                 self.spells[i][1].append(chr.spells[i][1])
                 i += 1
             self.spell_ct += chr.spell_ct
-        if clas == "monk":
+        elif clas == "monk":
             chr = Monk(self.level, self.strength, self.dexterity, self.constitution, self.charisma,
                           self.intelligence,
                           self.wisdom)
@@ -522,7 +522,7 @@ class Character:
                 self.spells[i][1].append(chr.spells[i][1])
                 i += 1
             self.spell_ct += chr.spell_ct
-        if clas == "paladin":
+        elif clas == "paladin":
             chr = Paladin(self.level, self.strength, self.dexterity, self.constitution, self.charisma, self.intelligence,
                          self.wisdom)
             self.strength = chr.strength
@@ -561,7 +561,7 @@ class Character:
                 self.spells[i][1].append(chr.spells[i][1])
                 i += 1
             self.spell_ct += chr.spell_ct
-        if clas == "ranger":
+        elif clas == "ranger":
             chr = Ranger(self.level, self.strength, self.dexterity, self.constitution, self.charisma,
                           self.intelligence,
                           self.wisdom)
@@ -598,7 +598,7 @@ class Character:
                 self.spells[i][1].append(chr.spells[i][1])
                 i += 1
             self.spell_ct += chr.spell_ct
-        if clas == "rogue":
+        elif clas == "rogue":
             chr = Rogue(self.level, self.strength, self.dexterity, self.constitution, self.charisma,
                           self.intelligence,
                           self.wisdom)
@@ -636,7 +636,7 @@ class Character:
                 self.spells[i][1].append(chr.spells[i][1])
                 i += 1
             self.spell_ct += chr.spell_ct
-        if clas == "sorcerer":
+        elif clas == "sorcerer":
             chr = Sorcerer(self.level, self.strength, self.dexterity, self.constitution, self.charisma,
                           self.intelligence,
                           self.wisdom)
@@ -673,7 +673,7 @@ class Character:
                 self.spells[i][1].append(chr.spells[i][1])
                 i += 1
             self.spell_ct += chr.spell_ct
-        if clas == "warlock":
+        elif clas == "warlock":
             chr = Warlock(self.level, self.strength, self.dexterity, self.constitution, self.charisma,
                           self.intelligence,
                           self.wisdom)
@@ -799,7 +799,7 @@ class Character:
                "\nWisdom, Mod: \t\t" + str(self.wisdom) + ", + " + str(self.wisdom_mod()) + \
                "\nCharisma, Mod: \t\t" + str(self.charisma) + ", + " + str(self.charisma_mod()) + \
                "\nHit Dice: \t\t\t" + str(self.hit_dice) + \
-               "\nMax HP: \t\t\t" + str(self.max_hp) + \
+               "\nMax HP: \t\t\t" + str(int(self.max_hp)) + \
                "\nSpeed: \t\t\t\t" + str(self.speed) + \
                "\nSwimming Speed: \t" + str(self.swim_speed) + \
                 "\nFlying Speed: \t\t" + str(self.fly_speed) + "\n"
