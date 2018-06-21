@@ -270,5 +270,165 @@ class Ranger:
             self.feature.append("fighting style: " + "Defense")
 
     def set_master(self):
-        pass
+        circle = raw_input(
+            "Level up: Which archetype do you want to join? beast, gloom, horizon, hunter, monster, or primeval?")
+        if circle == "beast":
+            self.master = "Beast Master"
+            self.beast()
+        elif circle == "gloom":
+            self.master = "Gloom Stalker"
+            self.gloom()
+        elif circle == "horizon":
+            self.master = "Horizon Walker"
+            self.hzn()
+        elif circle == "hunter":
+            self.master = "Hunter"
+            self.hunter()
+        elif circle == "monster":
+            self.master = "Monster Slayer"
+            self.monster()
+        else:
+            self.master = "Primeval Guardian"
+            self.prim()
+
+    def prim(self):
+        self.lvl_one[0] += 1
+        self.lvl_one[1].append("Entangle")
+        if self.level > 4:
+            self.lvl_two[0] += 1
+            self.lvl_two[1].append(
+                "Enhance Ability")  # V2 - make a 'add spell' function, takes in its level and name, automatically adds to character
+        if self.level > 8:
+            self.lvl_three[0] += 1
+            self.lvl_three[1].append("Conjure Animals")
+        if self.level > 12:
+            self.lvl_four[0] += 1
+            self.lvl_four[1].append("Giant Insect")
+        if self.level > 16:
+            self.lvl_five[0] += 1
+            self.lvl_five[1].append("Insect Plague")
+        self.feature.append("Guardian Soul")
+        self.feature.append("Piercing Thorns")
+        if self.level > 6:
+            self.feature.append("Ancient Fortitude")
+        if self.level > 10:
+            self.feature.append("Rooted Defense")
+        if self.level > 14:
+            self.feature.append("Guardian Aura")
+
+    def monster(self):
+        self.lvl_one[0] += 1
+        self.lvl_one[1].append("Protection from Good and Evil")
+        if self.level > 4:
+            self.lvl_two[0] += 1
+            self.lvl_two[1].append(
+                "Zone of Truth")  # V2 - make a 'add spell' function, takes in its level and name, automatically adds to character
+        if self.level > 8:
+            self.lvl_three[0] += 1
+            self.lvl_three[1].append("Magic circle")
+        if self.level > 12:
+            self.lvl_four[0] += 1
+            self.lvl_four[1].append("Banishment")
+        if self.level > 16:
+            self.lvl_five[0] += 1
+            self.lvl_five[1].append("hold monster")
+        self.feature.append("Hunter's Sense")
+        self.feature.append("Slayer's Prey")
+        if self.level > 6:
+            self.feature.append("Supernatural Defense")
+        if self.level > 10:
+            self.feature.append("Magic-User's Nemesis")
+        if self.level > 14:
+            self.feature.append("Slayer's Counter")
+
+    def hunter(self):
+        choice = raw_input("Which feature do you want? colossus 'slayer', giant 'killer', or horde 'breaker? ")
+        if choice == "slayer":
+            self.feature.append("Colossus Slayer")
+        elif choice == "killer":
+            self.feature.append("Giant Killer")
+        else:
+            self.feature.append("Horder Breaker")
+        if self.level > 6:
+            choice = raw_input("Which feature do you want? escape the 'horde', multiattack 'defense', or steel 'will'? ")
+            if choice == "horde":
+                self.feature.append("Escape the Horde")
+            elif choice == "defense":
+                self.feature.append("Multiattack Defense")
+            else:
+                self.feature.append("Steel Will")
+        if self.level > 10:
+            choice = raw_input("Which feature do you want? 'volley', or whirlwind 'attack'? ")
+            if choice == "volley":
+                self.feature.append("Volley")
+            else:
+                self.feature.append("Whirlwind Attack")
+        if self.level > 14:
+            choice = raw_input("Which feature do you want? 'evasion', 'stand' against the tide, or uncanny 'dodge'? ")
+            if choice == "evasion":
+                self.feature.append("Evasion")
+            elif choice == "stand":
+                self.feature.append("Stand Against the Tide")
+            else:
+                self.feature.append("Uncanny Dodge")
+
+    def hzn(self):
+        self.lvl_one[0] += 1
+        self.lvl_one[1].append("Protection from Good and Evil")
+        if self.level > 4:
+            self.lvl_two[0] += 1
+            self.lvl_two[1].append("Misty Step")  # V2 - make a 'add spell' function, takes in its level and name, automatically adds to character
+        if self.level > 8:
+            self.lvl_three[0] += 1
+            self.lvl_three[1].append("Haste")
+        if self.level > 12:
+            self.lvl_four[0] += 1
+            self.lvl_four[1].append("Banishment")
+        if self.level > 16:
+            self.lvl_five[0] += 1
+            self.lvl_five[1].append("Teleportation Circle")
+        self.feature.append("Detect Portal")
+        self.feature.append("Planar Warrior")
+        if self.level > 6:
+            self.feature.append("Ethereal Step")
+        if self.level > 10:
+            self.feature.append("Distant Strike")
+        if self.level > 14:
+            self.feature.append("Spectral Defense")
+
+    def gloom(self):
+        self.lvl_one[0] += 1
+        self.lvl_one[1].append("Disguise Self")
+        if self.level > 4:
+            self.lvl_two[0] += 1
+            self.lvl_two[1].append("Rope Trick") #V2 - make a 'add spell' function, takes in its level and name, automatically adds to character
+        if self.level > 8:
+            self.lvl_three[0] += 1
+            self.lvl_three[1].append("Fear")
+        if self.level > 12:
+            self.lvl_four[0] += 1
+            self.lvl_four[1].append("Greater Invisibility")
+        if self.level > 16:
+            self.lvl_five[0] += 1
+            self.lvl_five[1].append("Seeming")
+        self.feature.append("Dread Ambusher")
+        self.feature.append("Umbral Sight")
+        if self.level > 6:
+            if "wisdom" in self.saving_throw:
+                self.saving_throw.append(raw_input("Do you want advantage on charisma or intelligence saving throws?"))
+            else:
+                self.saving_throw.append("wisdom")
+        if self.level > 10:
+            self.feature.append("Stalker's Flurry")
+        if self.level > 14:
+            self.feature.append("Shadowy Dodge")
+
+    def beast(self):
+        self.feature.append("Ranger's Companion")
+        if self.level > 6:
+            self.feature.append("Exceptional Training")
+        if self.level > 10:
+            self.feature.append("Bestial Fury")
+        if self.level > 14:
+            self.feature.append("Share Spells")
 

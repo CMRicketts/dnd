@@ -27,7 +27,7 @@ class Paladin:
 
         self.oath = ""
         self.oath_desc = []
-        self.divinity_desc = []
+        self.divinity_feat = []
         self.fighting_style = ""
         self.fighting_style_desc = []
         self.style = ""
@@ -126,7 +126,7 @@ class Paladin:
         return math.floor((self.intelligence - 10) / 2)
 
     def ability(self):
-        choice = raw_input("levelling up: do you want to increase 'one' score by two, or 'two' scores by one each?")
+        choice = raw_input("leveling up: do you want to increase 'one' score by two, or 'two' scores by one each?")
         if choice == "one":
             score = raw_input("which ability do you want to increase by two?")
             if score == "strength":
@@ -258,9 +258,6 @@ class Paladin:
             self.lvl_five[0] = 2
             self.lvl_five[1].append(raw_input("Level up: What level five spell do you want to learn?"))
 
-    def set_oath(self):
-        pass
-
     def set_style(self):
         style = raw_input("Initialization: Which of the following fighting styles do you want to learn? Please input. "
                           "\ndefense, dueling, great 'weapon' fighting, protection, mariner, close quarter 'shooter', or 'tunnel' fighter?")
@@ -285,3 +282,150 @@ class Paladin:
         else:
             self.style = "Defense"
             self.feature.append("fighting style: " + "Defense")
+
+    def set_oath(self):
+        circle = raw_input(
+            "Level up: Which oath do you want to join? ancients, conquest, crown, devotion, redemption, vengeance, oathbreaker (have to be evil), or treachery (also have to be evil)?")
+        if circle == "ancients":
+            self.oath = "Oath of the Ancients"
+            self.anc()
+        elif circle == "conquest":
+            self.oath = "Oath of Conquest"
+            self.conq()
+        elif circle == "crown":
+            self.oath = "Oath of the Crown"
+            self.crown()
+        elif circle == "devotion":
+            self.oath = "Oath of Devotion"
+            self.devotion()
+        elif circle == "redemption":
+            self.oath = "Oath of Redemption"
+            self.redemp()
+        elif circle == "oathbreaker":
+            self.oath = "Oathbreaker Paladin"
+            self.oathbreaker()
+        elif circle == "treachery":
+            self.oath = "Oath of Treachery"
+            self.treach()
+        else:
+            self.oath = "Oath of Vengeance"
+            self.veng()
+    
+    def learn_spell(self, list):
+        if self.level > 2:
+            self.lvl_one[0] += 2
+            self.lvl_one[1].append([list[0], list[1]])
+        if self.level > 4:
+            self.lvl_two[0] += 2
+            self.lvl_two[1].append([list[2], list[3]])
+        if self.level > 8:
+            self.lvl_three[0] += 2
+            self.lvl_three[1].append([list[4], list[5]])
+        if self.level > 12:
+            self.lvl_four[0] += 2
+            self.lvl_four.append([list[6], list[7]])
+        if self.level > 16:
+            self.lvl_five[0] += 2
+            self.lvl_five.append([list[8], list[9]])
+
+    def veng(self):
+        self.oath_desc.append("Tenets of Vengeance")
+        self.learn_spell(["bane", "hunter's mark", "haste", "protection from energy", "banishment", "dimension door", "hold monster", "scrying"])
+        self.divinity_feat.append("Anjure Enemy")
+        self.divinity_feat.append("Vow of Enmity")
+        if self.level > 6:
+            self.feature.append("Relentless Avenger")
+        if self.level > 14:
+            self.feature.append("Sould of Vengeance")
+        if self.level > 19:
+            self.feature.append("Avenging Angel")
+
+    def redemp(self):
+        self.oath_desc.append("Tenets of Redemption")
+        self.learn_spell(["sanctuary", "sleep", "calm emotions", "hold person", "Counterspell", "hypnotic pattern",
+                          "Otiluke's Resilient Sphere", "stoneskin", "hold monster", "wall of force"])
+        self.divinity_feat.append("Emissary of Peace")
+        self.divinity_feat.append("Rebuke the Violent")
+        if self.level > 6:
+            self.feature.append("Aura of the Guardian")
+        if self.level > 14:
+            self.feature.append("Protection of Spirit")
+        if self.level > 19:
+            self.feature.append("Emissary of Redemption")
+            self.resistance.append("all damage (Emissary of Redemption")
+
+    def devotion(self):
+        self.oath_desc.append("Tenets of Devotion")
+        self.learn_spell(["protection from good and evil", "sanctuary", "lesser restoration", "zone of truth", "beacon of hope",
+                          "dispel magic", "freedom of movement", "guardian of faith", "commune", "flame strike"])
+        self.divinity_feat.append("Sacred weapon")
+        self.divinity_feat.append("Turn the Unholy")
+        if self.level > 6:
+            self.feature.append("Aura of Devotion")
+        if self.level > 14:
+            self.feature.append("Purity of Spirit")
+        if self.level > 19:
+            self.feature.append("Holy Nimbus")
+
+    def crown(self):
+        self.oath_desc.append("Tenets of the Crown")
+        self.learn_spell(["Command", "compelled duel", "warding bond", "zone of truth", "aura of vitality", "spirit guardians", "banishment", "guardian of faith", "circle of power", "geas"])
+        self.divinity_feat.append("Chamption Challenge")
+        self.divinity_feat.append("Turn the Tide")
+        if self.level > 6:
+            self.feature.append("Divine Allegiance")
+        if self.level > 14:
+            self.resistance.append(str(["paralysis", "being stunned"]))
+        if self.level > 19:
+            self.feature.append("Exalted Champion")
+
+    def conq(self):
+        self.oath_desc.append("Tenets of Conquest")
+        self.learn_spell(["Armor of Agathys", "command", "hold person", "spiritual weapon", "bestow curse", "fear", "dominate beast", "stoneskin", "cloudkill", "dominate person"])
+        self.divinity_feat.append("Conquering Presence")
+        self.divinity_feat.append("Guided Strike")
+        if self.level > 6:
+            self.feature.append("Aura of Conquest")
+        if self.level > 14:
+            self.feature.append("Scornful Rebuke")
+        if self.level > 19:
+            self.feature.append("Invincible Conqueror")
+
+    def anc(self):
+        self.oath_desc.append("Tenets of the Ancients")
+        self.learn_spell(["Ensnaring Strike", "Speak with Animals", "Moonbeam", "Misty Step", "plant growth", "protection from energy", "ice storm", "stoneskin", "commune with nature", "tree stride"])
+        self.divinity_feat.append("Nature's Wrath")
+        self.divinity_feat.append("Turn the Faithless")
+        if self.level > 6:
+            self.feature.append("Aura of Warding")
+        if self.level > 14:
+            self.feature.append("Undying Sentinel")
+        if self.level > 19:
+            self.feature.append("Elder Champion")
+
+    def treach(self):
+        self.learn_spell(["charm person", "expeditious retreat", "invisibility", "mirror image",
+                          "gaseous form", "haste", "confusion", "greater invisibility", "dominate person", "passwall"])
+        self.divinity_feat.append("Conjure Duplicate")
+        self.divinity_feat.append("Poison Strike")
+        if self.level > 6:
+            self.feature.append("Cull the Herd")
+            self.feature.append("Treacherous Strike")
+        if self.level > 14:
+            self.feature.append("Blackguard's Escape")
+        if self.level > 19:
+            self.feature.append("Icon of Deceit")
+
+    def oathbreaker(self):
+        self.learn_spell(["hellish rebuke", "inflict wounds", "crown of madness", "darkness",
+                          "animate dead", "bestow curse", "blight", "confusion", "contagion", "dominate person"])
+        self.divinity_feat.append("Control Undead")
+        self.divinity_feat.append("Dreadful Aspect")
+        if self.level > 6:
+            self.feature.append("Aura of Hate")
+        if self.level > 14:
+            self.feature.append("Supernatural Resistance")
+            self.resistance.append("Bludgeoning", "piercing", "slashing")
+        if self.level > 19:
+            self.feature.append("Dread Lord")
+
