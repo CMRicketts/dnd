@@ -366,4 +366,142 @@ class Warlock:
             self.pact_desc.append("You can use your action to create a pact weapon in your empty hand. You can choose the form that this melee weapon takes each time you create it. You are proficient with it while you wield it. This weapon counts as magical for the purpose of overcoming resistance and immunity to non-magical attacks and damage. Your pact weapon disappears if it is more than 5 feet away from you for 1 minute or more. It also disappears if you use this feature again, if you dismiss the weapon (no action required), or if you die.\nYou can transform one magic weapon into your pact weapon by performing a special ritual while you hold the weapon. You perform the ritual over the course of 1 hour, which can be done during a short rest. You can then dismiss the weapon, shunting it into an extra-dimensional space, and it appears whenever you create your pact weapon thereafter. You can't affect an artifact or a sentient weapon in this way. The weapon ceases being your pact weapon if you die, if you perform the 1-hour ritual on a different weapon, or if you use a 1-hour ritual to break your bond to it. The weapon appears at your feet if it is in the extra-dimensional space when the bond breaks.")
 
     def set_patron(self):
-        pass
+        arch = raw_input(
+            "Level up: Which patron do you want to join? the 'archfey', celestial, fiend, 'ghost' in the (shell) machine, 'great' old one, 'hexblade', 'raven' queen, 'seeker', or 'undying'? ")
+        if arch == "archfey":
+            self.patron = "Archfey"
+            self.archfey()
+        elif arch == "celestial":
+            self.patron = "Celestial"
+            self.celeste()
+        elif arch == "fiend":
+            self.patron = "Fiend"
+            self.fiend()
+        elif arch == "ghost":
+            self.patron = "Ghost in the Machine"
+            self.ghost()
+        elif arch == "great":
+            self.patron = "Great Old One"
+            self.goo()
+        elif arch == "hexblade":
+            self.patron = "Hexblade"
+            self.hex()
+        elif arch == "raven":
+            self.patron = "Raven Queen"
+            self.raven()
+        elif arch == "seeker":
+            self.patron = "Seeker"
+            self.seeker()
+        else:
+            self.patron = "Undying"
+            self.undyne() #if you find this, you're rad.
+
+    def undyne(self):
+        self.feature.append("Expanded Spell List (undying)")
+        self.cantrips[0] += 1
+        self.cantrips[1].append("Spare the dying")
+        self.feature.append("Among the Dead")
+        if self.level > 5:
+            self.feature.append("Defy Death")
+        if self.level > 9:
+            self.feature.append("Undying Nature")
+        if self.level > 13:
+            self.feature.append("Indestructible Life")
+
+    def seeker(self):
+        self.feature.append("Expanded Spell List (seeker)")
+        self.feature.append("Shielding Aurora")
+        if self.level > 2:
+            self.feature.append("Pact of the Star Chain")
+        if self.level > 5:
+            self.feature.append("Astral Refuge")
+        if self.level > 9:
+            self.resistance.append(str(["fire damage", "cold damage"]))
+            self.feature.append("Far Wanderer")
+        if self.level > 13:
+            self.feature.append("Astral Sequestration")
+
+    def raven(self):
+        self.feature.append("Expanded Spell List (raven)")
+        self.feature.append("Sentinel Raven")
+        if self.level > 5:
+            self.feature.append("Soul of the Rae")
+        if self.level > 9:
+            self.resistance.append("necrotic damage")
+            self.resistance.append("immunity to being frightened")
+            self.proficiency.append("death saving throws")
+            self.feature.append("Raven's Shield")
+        if self.level > 13:
+            self.feature.append("Queen's Right Hand")
+
+    def hex(self):
+        self.feature.append("Expanded Spell List (hexblade)")
+        self.proficiency.append(str(["medium armor", "shields", "martial weapons"]))
+        self.feature.append("Hex Warrior")
+        self.feature.append("Hexblade's Curse")
+        if self.level > 5:
+            self.feature.append("Accursed Specter")
+        if self.level > 9:
+            self.feature.append("Armor of Hexes")
+        if self.level > 13:
+            self.feature.append("Master of Hexes")
+
+    def goo(self):
+        self.feature.append("Expanded Spell List (great old one)")
+        self.feature.append("Awakened Mind")
+        if self.level > 5:
+            self.feature.append("Entropic Ward")
+        if self.level > 9:
+            self.resistance.append("psychic damage")
+            self.feature.append("Thought Shield")
+        if self.level > 13:
+            self.feature.append("Create Thrall")
+
+
+    def ghost(self):
+        self.feature.append("Expanded Spell List (ghost)")
+        self.cantrips[0] += 1
+        self.cantrips[1].append("On/Off")
+        self.proficiency.append("Hacking Tools")
+        self.feature.append("Information Surge")
+        if self.level > 5:
+            self.feature.append("Wire Walk")
+        if self.level > 9:
+            self.feature.append("Personal Encryption")
+        if self.level > 13:
+            self.feature.append("Technovirus")
+
+    def fiend(self):
+        self.feature.append("Expanded Spell List (fiend)")
+        self.feature.append("Dark One's Blessing")
+        if self.level > 5:
+            self.feature.append("Dark One's Own Luck")
+        if self.level > 9:
+            self.feature.append("Fiendish Resilience")
+        if self.level > 13:
+            self.feature.append("Hurl Through Hell")
+
+    def celeste(self):
+        self.feature.append("Expanded Spell List (celestial)")
+        self.cantrips[0] += 2
+        self.cantrips[1].append(str(["sacred flame", "light"]))
+        self.feature.append("Healing Light")
+        if self.level > 5:
+            self.resistance.append("radiant damage")
+            self.feature.append("Radiant Soul")
+        if self.level > 9:
+            self.feature.append("Celestial Resilience")
+        if self.level > 13:
+            self.feature.append("Searing Vengeance")
+
+    def archfey(self):
+        self.feature.append("Expanded Spell List (archfey)")
+        self.feature.append("Fey Presence")
+        if self.level > 5:
+            self.feature.append("Misty Escape")
+        if self.level > 9:
+            self.feature.append("Beguiling Defenses")
+            self.resistance.append("immunity to being charmed")
+        if self.level > 13:
+            self.feature.append("Dark Delirium")
+
