@@ -638,8 +638,7 @@ class Character:
             self.spell_ct += chr.spell_ct
         elif clas == "sorcerer":
             chr = Sorcerer(self.level, self.strength, self.dexterity, self.constitution, self.charisma,
-                          self.intelligence,
-                          self.wisdom)
+                          self.intelligence, self.wisdom, self.alignment)
             self.strength = chr.strength
             self.dexterity = chr.dexterity
             self.intelligence = chr.intelligence

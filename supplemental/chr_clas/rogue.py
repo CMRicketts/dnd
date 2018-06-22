@@ -25,6 +25,11 @@ class Rogue:
         self.weapon = ["two daggers"]
         self.armor = ["leather armor", "11"]
 
+        #NEW
+        self.speed = 0
+        self.swim_spd = 0
+        #NEW
+
         self.archetype = ""
 
         self.sneak_attack_desc = ["Sneak Attack"]
@@ -214,7 +219,154 @@ class Rogue:
             self.equipment.append("rapier")
 
     def set_expertise(self):
-        pass
+        choice = raw_input("Do you want 'two' doubled proficiencies, or 'one' and thieves tools?")
+        if choice == "two":
+            for i in range(0, 2):
+                for item in self.skill:
+                    if item in self.expert_skills:
+                        pass
+                    else:
+                        print item
+                choice = raw_input("Which skill do you want doubled?")
+                self.expert_skills.append(choice)
+        else:
+            for item in self.skill:
+                if item in self.expert_skills:
+                    pass
+                else:
+                    print item
+            choice = raw_input("Which skill do you want doubled?")
+            self.expert_skills.append(choice)
+            self.expert_skills.append("thieves tools")
 
     def set_archetype(self):
-        pass
+        circle = raw_input(
+            "Level up: Which archetype do you want to join? 'arcane' trickster, assassin, inquisitive, mastermind, scout, thief, or swashbuckler?")
+        if circle == "arcane":
+            self.archetype = "Arcane Trickster"
+            self.arcane()
+        elif circle == "assassin":
+            self.archetype = "Assassin"
+            self.ass()
+        elif circle == "inquisitive":
+            self.archetype = "Inquisitive"
+            self.inq()
+        elif circle == "mastermind":
+            self.archetype = "Mastermind"
+            self.master()
+        elif circle == "scout":
+            self.archetype = "Scout"
+            self.scout()
+        elif circle == "swashbuckler":
+            self.archetype = "Swashbuckler"
+            self.swashbuckle()
+        else:
+            self.archetype = "thief"
+            self.thief()
+
+    def thief(self):
+        self.feature.append("Fast Hands")
+        self.feature.append("Second-Story Work")
+        if self.level > 8:
+            self.feature.append("Supreme Sneak")
+        if self.level > 12:
+            self.feature.append("Use Magic Device")
+        if self.level > 16:
+            self.feature.append("Thief's Reflexes")
+
+    def swashbuckle(self):
+        self.feature.append("Fancy Footwork")
+        self.feature.append("Rakish Audacity")
+        if self.level > 8:
+            self.feature.append("Panache")
+        if self.level > 12:
+            self.feature.append("Elegant Maneuver")
+        if self.level > 16:
+            self.feature.append("Master Duelist")
+
+    def scout(self):
+        self.feature.append("Skirmisher")
+        self.skill.append("Nature")
+        self.skill.append("Survival")
+        self.feature.append("Survivalist")
+        if self.level > 8:
+            self.speed = 10
+            self.swim_spd = 10
+        if self.level > 12:
+            self.proficiency.append("initiative rolls")
+            self.feature.append("Ambush Master")
+        if self.level > 16:
+            self.feature.append("Sudden Strike")
+
+    def master(self):
+        self.proficiency.append("Disguise Kit")
+        self.proficiency.append("Forgery Kit")
+        self.proficiency.append(raw_input("What gaming set do you want proficiency in? "))
+        self.language.append(raw_input("Which new language do you want to learn?"))
+        self.language.append(raw_input("Which second new language do you want to learn?"))
+        self.feature.append("Master of Intrigue")
+        self.feature.append("Master of Tactics")
+        if self.level > 8:
+            self.feature.append("Insightful Manipulator")
+        if self.level > 12:
+            self.feature.append("Misdirection")
+        if self.level > 16:
+            self.feature.append("Soul of Deceit")
+
+    def inq(self):
+        self.feature.append("Ear for Deceit")
+        self.feature.append("Eye for Detail")
+        self.feature.append("Insightful Fighting")
+        if self.level > 8:
+            self.feature.append("Steady Eye")
+        if self.level > 12:
+            self.feature.append("Unerring Eye")
+        if self.level > 16:
+            self.feature.append("Eye for Weakness")
+
+    def ass(self): #ass
+        self.proficiency.append(str(["Disguise Kit", "Poisoner's Kit"]))
+        self.feature.append("Assassinate")
+        if self.level > 8:
+            self.feature.append("Infiltration Expertise")
+        if self.level > 12:
+            self.feature.append("Imposter")
+        if self.level > 16:
+            self.feature.append("Death Strike")
+
+    def arcane(self):
+        if self.level > 2:
+            self.cantrips[0] += 2
+            self.lvl_one[0] += 2
+        if self.level > 3:
+            self.lvl_one[0] += 1
+        if self.level > 6:
+            self.lvl_one[0] += 1
+            self.lvl_two[0] += 2
+        if self.level > 9:
+            self.cantrips[0] += 1
+            self.lvl_two[0] += 1
+        if self.level > 12:
+            self.lvl_three[0] += 2
+        if self.level > 15:
+            self.lvl_three += 1
+        if self.level > 18:
+            self.lvl_four += 1
+        i = 1
+        for level in self.spells:
+            for i in range(0, level[0]):
+                level[1].append(raw_input("What level " + str(i) + " spell do you want to learn?"))
+            i += 1
+        for i in range(0, self.cantrips[0]):
+            self.cantrips[1].append("What cantrip do you want to learn?")
+        self.spell_dc = 8 + self.proficiency_bonus + self.intelligence_mod()
+        self.spell_attack = self.proficiency_bonus + self.intelligence_mod()
+        self.cantrips[0] += 1
+        self.cantrips[1].append("Mage Hand")
+        self.feature.append("Mage hand Legerdemain")
+        if self.level > 8:
+            self.feature.append("Magical Ambush")
+        if self.level > 12:
+            self.feature.append("Versatile Trickster")
+        if self.level > 16:
+            self.feature.append("Spell Thief")
