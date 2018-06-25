@@ -15,7 +15,8 @@ class Elf:
         self.magic = []
         self.magic_throw = "charisma"
         self.disadvantage = ""
-        self.proficiency = ["darkvision", "perception", "charm", "magic", self.trance()]
+        self.proficiency = ["perception", "charm", "magic", self.trance()]
+        self.feature = ["darkvision"]
         self.language = ["common", "elvish"]
         self.subrace = ""
 

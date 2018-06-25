@@ -363,7 +363,7 @@ class Rogue:
         self.spell_attack = self.proficiency_bonus + self.intelligence_mod()
         self.cantrips[0] += 1
         self.cantrips[1].append("Mage Hand")
-        self.feature.append("Mage hand Legerdemain")
+        self.feature.append("Mage Hand Legerdemain")
         if self.level > 8:
             self.feature.append("Magical Ambush")
         if self.level > 12:
