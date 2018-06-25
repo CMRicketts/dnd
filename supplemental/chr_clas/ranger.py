@@ -348,7 +348,7 @@ class Ranger:
         elif choice == "killer":
             self.feature.append("Giant Killer")
         else:
-            self.feature.append("Horder Breaker")
+            self.feature.append("Horde Breaker")
         if self.level > 6:
             choice = raw_input("Which feature do you want? escape the 'horde', multiattack 'defense', or steel 'will'? ")
             if choice == "horde":
@@ -431,4 +431,3 @@ class Ranger:
             self.feature.append("Bestial Fury")
         if self.level > 14:
             self.feature.append("Share Spells")
-

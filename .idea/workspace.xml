@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="689276d7-63d1-43d9-b9d8-da869b66afe6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/supplemental/chr_clas/fighter.py" beforeDir="false" afterPath="$PROJECT_DIR$/supplemental/chr_clas/fighter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/supplemental/chr_clas/monk.py" beforeDir="false" afterPath="$PROJECT_DIR$/supplemental/chr_clas/monk.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/supplemental/chr_clas/paladin.py" beforeDir="false" afterPath="$PROJECT_DIR$/supplemental/chr_clas/paladin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/supplemental/dictionary.py" beforeDir="false" afterPath="$PROJECT_DIR$/supplemental/dictionary.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,8 +27,8 @@
       <file leaf-file-name="dictionary.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/supplemental/dictionary.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="360" column="18" selection-start-line="360" selection-start-column="18" selection-end-line="360" selection-end-column="18" />
+            <state relative-caret-position="338">
+              <caret line="475" column="6" selection-start-line="475" selection-start-column="6" selection-end-line="475" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -79,9 +80,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1334" />
+    <option name="x" value="575" />
     <option name="y" value="23" />
-    <option name="width" value="1334" />
+    <option name="width" value="1105" />
     <option name="height" value="1027" />
   </component>
   <component name="ProjectView">
@@ -194,10 +195,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1334" y="23" width="1334" height="1027" extended-state="0" />
+    <frame x="575" y="23" width="1105" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.08513932" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10348071" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32903227" />
       <window_info anchor="right" id="R Packages" order="4" />
       <window_info anchor="right" id="R Graphics" order="3" />
@@ -550,8 +551,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/supplemental/dictionary.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="360" column="18" selection-start-line="360" selection-start-column="18" selection-end-line="360" selection-end-column="18" />
+        <state relative-caret-position="338">
+          <caret line="475" column="6" selection-start-line="475" selection-start-column="6" selection-end-line="475" selection-end-column="6" />
         </state>
       </provider>
     </entry>

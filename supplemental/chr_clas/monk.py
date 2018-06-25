@@ -272,7 +272,7 @@ class Monk:
             self.way = "Way of the Shadow"
         elif choice == "sun":
             self.sun()
-            self.way = "Way of the Sum Soul"
+            self.way = "Way of the Sun Soul"
         else:
             self.tran()
             self.way = "Way of Tranquility"
@@ -359,7 +359,7 @@ class Monk:
         if self.level > 10:
             self.ki_features.append("Drunkard's Luck")
         if self.level > 16:
-            self.feature.append("Intoxicated Frenzyj")
+            self.feature.append("Intoxicated Frenzy")
 
     def set_elem(self):
         base_elem = ["Fangs of the Fire Snake", "Fist of Four Thunders", "Fist of Unbroken Air", "Rush of the Gale Spirits",

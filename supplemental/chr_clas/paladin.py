@@ -310,7 +310,7 @@ class Paladin:
         else:
             self.oath = "Oath of Vengeance"
             self.veng()
-    
+
     def learn_spell(self, list):
         if self.level > 2:
             self.lvl_one[0] += 2
@@ -336,7 +336,7 @@ class Paladin:
         if self.level > 6:
             self.feature.append("Relentless Avenger")
         if self.level > 14:
-            self.feature.append("Sould of Vengeance")
+            self.feature.append("Soul of Vengeance")
         if self.level > 19:
             self.feature.append("Avenging Angel")
 
@@ -358,7 +358,7 @@ class Paladin:
         self.oath_desc.append("Tenets of Devotion")
         self.learn_spell(["protection from good and evil", "sanctuary", "lesser restoration", "zone of truth", "beacon of hope",
                           "dispel magic", "freedom of movement", "guardian of faith", "commune", "flame strike"])
-        self.divinity_feat.append("Sacred weapon")
+        self.divinity_feat.append("Sacred Weapon")
         self.divinity_feat.append("Turn the Unholy")
         if self.level > 6:
             self.feature.append("Aura of Devotion")
@@ -370,7 +370,7 @@ class Paladin:
     def crown(self):
         self.oath_desc.append("Tenets of the Crown")
         self.learn_spell(["Command", "compelled duel", "warding bond", "zone of truth", "aura of vitality", "spirit guardians", "banishment", "guardian of faith", "circle of power", "geas"])
-        self.divinity_feat.append("Chamption Challenge")
+        self.divinity_feat.append("Champion Challenge")
         self.divinity_feat.append("Turn the Tide")
         if self.level > 6:
             self.feature.append("Divine Allegiance")
@@ -428,4 +428,3 @@ class Paladin:
             self.resistance.append("Bludgeoning", "piercing", "slashing")
         if self.level > 19:
             self.feature.append("Dread Lord")
-
