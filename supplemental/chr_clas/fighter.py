@@ -358,7 +358,7 @@ class Fighter():
         if self.level > 14:
             self.feature.append("Devastating Critical")
         if self.level > 17:
-            self.feature.append("Survivor")
+            self.feature.append("Survivor") # I'm a survivor. We're a dying breed
 
     def cavalier(self):
         choice = raw_input("Cavalier: Do you want to learn a new 'language' or become proficient in a new 'skill'?")
@@ -425,7 +425,7 @@ class Fighter():
             self.feature.append("Improved War Magic")
 
     def monster(self):
-        choice = raw_input("Cavalier: Do you want to become proficient in a new 'skill' or a new 'tool'?")
+        choice = raw_input("Monster Hunter: Do you want to become proficient in a new 'skill' or a new 'tool'?")
         if choice == "tool":
             self.proficiency.append(raw_input("Which tool do you want to be proficient in?"))
         else:
