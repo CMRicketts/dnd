@@ -425,7 +425,7 @@ class Warlock:
         self.feature.append("Expanded Spell List (raven)")
         self.feature.append("Sentinel Raven")
         if self.level > 5:
-            self.feature.append("Soul of the Rae")
+            self.feature.append("Soul of the Raven")
         if self.level > 9:
             self.resistance.append("necrotic damage")
             self.resistance.append("immunity to being frightened")
@@ -504,4 +504,3 @@ class Warlock:
             self.resistance.append("immunity to being charmed")
         if self.level > 13:
             self.feature.append("Dark Delirium")
-
