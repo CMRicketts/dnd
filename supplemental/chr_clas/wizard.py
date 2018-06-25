@@ -278,5 +278,217 @@ class Wizard:
             self.lvl_seven[1].append(raw_input("Level up: What final level seven spell do you want to learn?"))
 
     def set_tradition(self):
-        pass
+        circle = raw_input(
+            "Level up: Which tradition do you want to join? artificer, bladeslinging, 'lore' master, abjuration, conjuration, "
+            "divination, enchantment, evocation, illusion, invention, necromancy, transmutation, technomancy, theurgy, or 'war' magic?\n")
+        if circle == "artificer":
+            self.tradition = "Artificer"
+            self.artifice()
+        elif circle == "bladeslinging":
+            self.tradition = "Bladeslinging"
+            self.blade()
+        elif circle == "lore":
+            self.tradition = "Lore Mastery"
+            self.lore()
+        elif circle == "abjuration":
+            self.tradition = "School of Abjuration"
+            self.abjuration()
+        elif circle == "conjuration":
+            self.tradition = "School of Conjuration"
+            self.conj()
+        elif circle == "divination":
+            self.tradition = "School of Divination"
+            self.divin()
+        elif circle == "enchantment":
+            self.tradition = "School of Enchantment"
+            self.ench()
+        elif circle == "evocation":
+            self.tradition = "School of Evocation"
+            self.evoc()
+        elif circle == "illusion":
+            self.tradition = "School of Illusion"
+            self.illusion()
+        elif circle == "invention":
+            self.tradition = "School of Invention"
+            self.invent()
+        elif circle == "necromancy":
+            self.tradition = "School of Necromancy"
+            self.necromancy()
+        elif circle == "transmutation":
+            self.tradition = "School of Transmutation"
+            self.transmut()
+        elif circle == "technomancy":
+            self.tradition = "Technomancy"
+            self.techno()
+        elif circle == "theurgy":
+            self.tradition = "Theurgy"
+            self.theurgy()
+        else:
+            self.tradition = "War Magic"
+            self.war()
+
+    def theurgy(self):
+        self.feature.append("Divine Inspiration")
+        self.feature.append("Arcane Initiate")
+        self.feature.append("Channel Arcana")
+        if self.level > 5:
+            self.feature.append("Arcane Acolyte")
+        if self.level > 9:
+            self.feature.append("Arcane Priest")
+        if self.level > 13:
+            self.feature.append("Arcane High Priest")
+
+    def war(self):
+        self.feature.append("Arcane Deflection")
+        self.feature.append("Tactical Wit")
+        if self.level > 5:
+            self.feature.append("Power Surge")
+        if self.level > 9:
+            self.feature.append("Durable Magic")
+        if self.level > 13:
+            self.feature.append("Deflecting Shroud")
+
+    def techno(self):
+        self.proficiency.append(str(["sidearms", "hacking tools"]))
+        self.feature.append("Technological Savant")
+        if self.level > 5:
+            self.feature.append("Program Spell")
+        if self.level > 9:
+            self.feature.append("Online Casting")
+        if self.level > 13:
+            self.feature.append("Chained Device")
+
+    def transmut(self):
+        self.feature.append("Transmutation Savant")
+        self.feature.append("Minor Alchemy")
+        if self.level > 5:
+            self.feature.append("Transmuter's Stone")
+        if self.level > 9:
+            self.feature.append("Shapechanger")
+            self.lvl_four[0] += 1
+            self.lvl_four[1].append("Polymorph")
+        if self.level > 13:
+            self.feature.append("Master Transmuter")
+
+    def necromancy(self):
+        self.feature.append("Necromancy Savant")
+        self.feature.append("Grim Harvest")
+        if self.level > 5:
+            self.feature.append("Undead Thralls")
+            self.lvl_three[0] += 1
+            self.lvl_three[1].append("Animate Dead")
+        if self.level > 9:
+            self.feature.append("Inured to Undeath")
+            self.resistance.append("Necrotic Damage")
+        if self.level > 13:
+            self.feature.append("Command Undead")
+
+    def invent(self):
+        self.proficiency.append(raw_input("What two tools do you want to be proficient in? Please input. "))
+        self.proficiency.append("light armor")
+        self.equipment.append("Suit of Arcanomechanical Armor")
+        self.armor = ["Arcanomechanical Armor", str(12 + self.dexterity_mod())]
+        self.feature.append("Arcanomechanical Armor")
+        self.feature.append("Reckless Casting")
+        if self.level > 5:
+            self.feature.append("Alchemical Casting")
+        if self.level > 9:
+            self.feature.append("Prodigious Inspiration")
+        if self.level > 13:
+            self.feature.append("Controlled Chaos")
+
+    def illusion(self):
+        self.feature.append("Illusion Savant")
+        self.feature.append("Improved Minor Illusion")
+        self.cantrips[0] += 1
+        self.cantrips[1].append("Minor Illusion" if not self.cantrips[1] else raw_input("What cantrip do you want to learn"))
+        if self.level > 5:
+            self.feature.append("Malleable Illusions")
+        if self.level > 9:
+            self.feature.append("Illusory Self")
+        if self.level > 13:
+            self.feature.append("Illusory Reality")
+
+    def evoc(self):
+        self.feature.append("Evocation Savant")
+        self.feature.append("Sculpt Spells")
+        if self.level > 5:
+            self.feature.append("Potent Cantrip")
+        if self.level > 9:
+            self.feature.append("Empowered Evocation")
+        if self.level > 13:
+            self.feature.append("Overchannel")
+
+    def ench(self):
+        self.feature.append("Enchantment Savant")
+        self.feature.append("Hypnotic Gaze")
+        if self.level > 5:
+            self.feature.append("Instinctive Charm")
+        if self.level > 9:
+            self.feature.append("Split Enchantment")
+        if self.level > 13:
+            self.feature.append("Alter Memories")
+
+    def divin(self):
+        self.feature.append("Divination Savant")
+        self.feature.append("Portent")
+        if self.level > 5:
+            self.feature.append("Expert Divination")
+        if self.level > 9:
+            self.feature.append("The Third Eye")
+        if self.level > 13:
+            self.feature.append("Greater Portent")
+
+    def conj(self):
+        self.feature.append("Conjuration Savant")
+        self.feature.append("Minor Conjuration")
+        if self.level > 5:
+            self.feature.append("Benign Transposition")
+        if self.level > 9:
+            self.feature.append("Focused Conjuration")
+        if self.level > 13:
+            self.feature.append("Durable Summons")
+
+    def abjuration(self):
+        self.feature.append("Abjuration Savant")
+        self.feature.append("Arcane Ward")
+        if self.level > 5:
+            self.feature.append("Projected Ward")
+        if self.level > 9:
+            self.feature.append("Improved Abjuration")
+        if self.level > 13:
+            self.resistance.append("Spell Damage: Spell Resistance")
+            self.feature.append("Spell Resistance")
+
+    def lore(self):
+        self.feature.append("Lore Master")
+        self.feature.append("Spell Secrets")
+        if self.level > 5:
+            self.feature.append("Alchemical Casting")
+        if self.level > 9:
+            self.feature.append("Prodigious Memory")
+        if self.level > 13:
+            self.feature.append("Master of Magic")
+
+    def blade(self):
+        self.proficiency.append("Light armor")
+        self.proficiency.append(raw_input("What one-handed melee weapon do you want to be proficient in?"))
+        self.skill.append("Performance")
+        self.feature.append("Bladesong")
+        if self.level > 5:
+            self.feature.append("Extra Attack")
+        if self.level > 9:
+            self.feature.append("Song of Defense")
+        if self.level > 13:
+            self.feature.append("Song of Victory")
+
+    def artifice(self):
+        self.feature.append("Infuse Potions")
+        self.feature.append("Infuse Scrolls")
+        if self.level > 5:
+            self.feature.append("Infuse Weapons and Armor")
+        if self.level > 9:
+            self.feature.append("Superior Artificer")
+        if self.level > 13:
+            self.feature.append("Master Artificer")
 

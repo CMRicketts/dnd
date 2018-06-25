@@ -50,12 +50,12 @@ class Character:
 
         self.level = 0
 
-        self.strength = 10
-        self.dexterity = 10
-        self.constitution = 10
-        self.intelligence = 10
-        self.wisdom = 10
-        self.charisma = 10
+        self.strength = 0
+        self.dexterity = 0
+        self.constitution = 0
+        self.intelligence = 0
+        self.wisdom = 0
+        self.charisma = 0
 
         self.proficiency_bonus = 0
         self.path = ""
@@ -759,9 +759,8 @@ class Character:
     # returns armor, ac, and weapon info
     def combat_to_string(self):
 
-        if self.armor:
-            combat = "Armor type wearing: " + str(self.armor[0]) + \
-                     "\nArmor AC: \t\t\t" + str(self.armor[1]) + "\n"
+        if self.armor: #combat = "Armor type wearing: " + str(self.armor[0]) + "\nArmor AC: \t\t\t" + str(self.armor[1]) + "\n"
+            combat = ""
         else:
             combat = "No Armor\n"
         wpn_string = ""

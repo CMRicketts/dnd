@@ -294,8 +294,6 @@ class Barbarian:
         return "battlerager"
 
     def beserker(self, level):
-
-
         def mindless():
             self.resistance.append(["charm (while raging)", "frighten (while raging)"])
 
