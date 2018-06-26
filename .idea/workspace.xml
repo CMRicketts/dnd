@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="689276d7-63d1-43d9-b9d8-da869b66afe6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/creation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/creation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/supplemental/character.py" beforeDir="false" afterPath="$PROJECT_DIR$/supplemental/character.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,46 +13,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="creation.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/creation.py">
+      <file leaf-file-name="elf.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/supplemental/race/elf.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1404">
-              <caret line="66" column="31" lean-forward="true" selection-start-line="66" selection-start-column="31" selection-end-line="66" selection-end-column="31" />
-              <folding>
-                <element signature="e#48#92#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="244">
+              <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="character.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/supplemental/character.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="792" column="37" selection-start-line="792" selection-start-column="37" selection-end-line="792" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-                <element signature="e#4534#12536#0" />
-                <element signature="e#12571#32573#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wizard.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/wizard.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="72" column="25" selection-start-line="72" selection-start-column="13" selection-end-line="72" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="rogue.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/rogue.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="450">
+                <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -86,6 +62,8 @@
       <find>subtle spell</find>
       <find>’</find>
       <find>-</find>
+      <find>spellbook_ct</find>
+      <find>V2</find>
     </findStrings>
     <replaceStrings>
       <replace>int(math.ceil(</replace>
@@ -102,7 +80,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/supplemental/chr_clas/druid.py" />
         <option value="$PROJECT_DIR$/supplemental/chr_clas/cleric.py" />
         <option value="$PROJECT_DIR$/supplemental/chr_clas/paladin.py" />
@@ -122,11 +99,12 @@
         <option value="$PROJECT_DIR$/supplemental/chr_clas/bard.py" />
         <option value="$PROJECT_DIR$/supplemental/character.py" />
         <option value="$PROJECT_DIR$/src/creation.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1807" />
+    <option name="x" value="-1591" />
     <option name="y" value="23" />
     <option name="width" value="1476" />
     <option name="height" value="1057" />
@@ -242,15 +220,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1807" y="23" width="1476" height="1057" extended-state="0" />
+    <frame x="-1591" y="23" width="1476" height="1057" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32903227" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30416667" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.30416667" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32903227" />
       <window_info anchor="bottom" id="Python Console" order="9" weight="0.27096775" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32903227" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4986226" visible="true" weight="0.08368201" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4986226" visible="true" weight="0.08368201" />
       <window_info anchor="right" id="R Packages" order="4" />
       <window_info anchor="right" id="R Graphics" order="3" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -274,13 +253,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/bard.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="194" column="11" selection-start-line="194" selection-start-column="11" selection-end-line="194" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -411,87 +383,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lambda/Jenkinsfile.build" />
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="360">
-            <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/race/tiefling.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-285" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/race/human.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$USER_HOME$/PycharmProjects/dnd/supplemental/chr_clas/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/race/dragonborn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/race/dwarf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/race/gnome.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/race/half_elf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1605">
-          <caret line="107" selection-start-line="107" selection-end-line="107" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/race/half_orc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/race/halfling.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/druid.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="355" column="31" lean-forward="true" selection-start-line="355" selection-start-column="31" selection-end-line="355" selection-end-column="31" />
-        </state>
-      </provider>
     </entry>
     <entry file="file:///System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/random.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="185" selection-start-line="185" selection-end-line="185" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/race/elf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -509,10 +407,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/dictionary.py">
+    <entry file="file://$PROJECT_DIR$/src/creation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="698" column="284" selection-start-line="698" selection-start-column="284" selection-end-line="698" selection-end-column="284" />
+        <state relative-caret-position="990">
+          <caret line="66" column="31" lean-forward="true" selection-start-line="66" selection-start-column="31" selection-end-line="66" selection-end-column="31" />
+          <folding>
+            <element signature="e#48#92#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -520,34 +421,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/monk.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/ranger.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2813">
-          <caret line="279" column="24" lean-forward="true" selection-start-line="279" selection-start-column="24" selection-end-line="279" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/sorcerer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/warlock.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5020">
-          <caret line="408" column="52" selection-start-line="408" selection-start-column="52" selection-end-line="408" selection-end-column="52" />
         </state>
       </provider>
     </entry>
@@ -560,58 +433,158 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/cleric.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5166">
+        <state relative-caret-position="599">
           <caret line="358" column="530" selection-start-line="358" selection-start-column="530" selection-end-line="358" selection-end-column="530" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/druid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="599">
+          <caret line="355" column="31" lean-forward="true" selection-start-line="355" selection-start-column="31" selection-end-line="355" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/fighter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+        <state relative-caret-position="193">
+          <caret line="366" column="16" selection-start-line="366" selection-start-column="14" selection-end-line="366" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/monk.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="319" column="11" selection-start-line="319" selection-start-column="9" selection-end-line="319" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/paladin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-845">
+        <state relative-caret-position="15">
           <caret line="275" column="11" selection-start-line="275" selection-start-column="11" selection-end-line="275" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/rogue.py">
+    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/ranger.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="193">
+          <caret line="403" column="52" selection-start-line="403" selection-start-column="50" selection-end-line="403" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/sorcerer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/wizard.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="72" column="25" selection-start-line="72" selection-start-column="13" selection-end-line="72" selection-end-column="25" />
+        <state relative-caret-position="198">
+          <caret line="191" column="12" selection-start-line="191" selection-start-column="10" selection-end-line="191" selection-end-column="12" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/warlock.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="573">
+          <caret line="408" column="52" selection-start-line="408" selection-start-column="52" selection-end-line="408" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplemental/chr_clas/rogue.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplemental/race/dragonborn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplemental/race/dwarf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplemental/race/gnome.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplemental/race/half_elf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="107" selection-start-line="107" selection-end-line="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplemental/race/half_orc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplemental/race/halfling.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplemental/race/human.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplemental/race/tiefling.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-26" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplemental/alignment.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/supplemental/character.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="792" column="37" selection-start-line="792" selection-start-column="37" selection-end-line="792" selection-end-column="37" />
+        <state relative-caret-position="298">
+          <caret line="193" column="32" lean-forward="true" selection-start-line="193" selection-start-column="32" selection-end-line="193" selection-end-column="32" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#4534#12536#0" />
-            <element signature="e#12571#32573#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/creation.py">
+    <entry file="file://$PROJECT_DIR$/supplemental/dictionary.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1404">
-          <caret line="66" column="31" lean-forward="true" selection-start-line="66" selection-start-column="31" selection-end-line="66" selection-end-column="31" />
-          <folding>
-            <element signature="e#48#92#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="573">
+          <caret line="698" column="284" selection-start-line="698" selection-start-column="284" selection-end-line="698" selection-end-column="284" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplemental/race/elf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="450">
+            <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
