@@ -19,6 +19,8 @@
 ## Build
 
 ### Building
+* Download into a python ide (PyCharm or IDLE), and run through that.
+* Main is found in dnd/src/creation.py
 
 ### Online
 
