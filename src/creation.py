@@ -43,17 +43,17 @@ def main():
             print("creation of character")
             chr = Character()
 
-            name = raw_input("What is the name of your character?")
+            '''name = raw_input("What is the name of your character?")
             chr.name = name
             plr = raw_input("What is your name (the player)")
             chr.player = plr
             sex = raw_input("What is the gender (or sex) of your character?")
-            chr.sex = sex
+            chr.sex = sex'''
 
             lvl = raw_input("what level is your character? ")
             chr.level = lvl
 
-            print("\n")
+            '''print("\n")
             print("Let's talk about some of your stats.")
             choice = raw_input("Do you want to do a dice 'roll' for your stats, or the standard 'array'?")
             stats = []
@@ -133,12 +133,12 @@ def main():
                         else:
                             print("this number isn't in the stats list")
                     else:
-                        print("charisma has already been accounted for")
+                        print("charisma has already been accounted for")'''
 
             chr.set_race()
             chr.set_class()
 
-            bg = raw_input("Tell me a bit about your character's personality")
+            '''bg = raw_input("Tell me a bit about your character's personality")
             chr.personality_trait = bg
             ideal = raw_input("What are your character's ideals?")
             chr.ideal = ideal
@@ -147,7 +147,7 @@ def main():
             bond = raw_input("What are your character's bonds?")
             chr.bond = bond
             agn = raw_input("What is your alignment?")
-            chr.alignment = agn
+            chr.alignment = agn'''
 
             print(chr.to_string())
 

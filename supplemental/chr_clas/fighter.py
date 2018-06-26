@@ -369,6 +369,8 @@ class Fighter():
             # V2: all potential skills in array, subtracting set to find actual potential learning
         self.feature.append("Born to the Saddle")
         self.feature.append("Unwavering Mark")
+        if self.level > 6:
+            self.feature.append("Warding Maneuver")
         if self.level > 9:
             self.feature.append("Hold the Line")
         if self.level > 14:
