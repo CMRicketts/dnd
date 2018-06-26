@@ -28,76 +28,76 @@ from supplemental.race.tiefling import Tiefling
 
 class Character:
     def __init__(self):
-        self.name = "name"
-        self.player = "player"
-        self.sex = "m/f"
-        self.age = "age"
-        self.height = "height"
-        self.weight = "weight"
+        self.name = ""
+        self.player = ""
+        self.sex = ""
+        self.age = ""
+        self.height = ""
+        self.weight = ""
 
-        self.race = "race"
-        self.subrace = "subrace"
-        self.chr_class = "class"
-        self.archetype = "archetype"
-        self.size = "big size"
-        self.color = "this color" #Dragonborn, Sorcerer
-        self.background = "background"
-        self.personality_trait = "personality trait"
-        self.ideal = "ideal"
-        self.flaw = "flaw"
-        self.bond = "bond"
-        self.alignment = "alignment"
+        self.race = ""
+        self.subrace = ""
+        self.chr_class = ""
+        self.archetype = ""
+        self.size = ""
+        self.color = "" #Dragonborn, Sorcerer
+        self.background = ""
+        self.personality_trait = ""
+        self.ideal = ""
+        self.flaw = ""
+        self.bond = ""
+        self.alignment = ""
 
-        self.level = 5
+        self.level = 0
 
-        self.strength = 12
-        self.dexterity = 10
-        self.constitution = 8
-        self.intelligence = 6
-        self.wisdom = 14
-        self.charisma = 20
+        self.strength = 0
+        self.dexterity = 0
+        self.constitution = 0
+        self.intelligence = 0
+        self.wisdom = 0
+        self.charisma = 0
 
-        self.proficiency_bonus = 5
-        self.path = "path"
+        self.proficiency_bonus = 0
+        self.path = ""
 
-        self.hit_dice = "4d10 hit dice"
-        self.max_hp = 50
-        self.speed = 30
+        self.hit_dice = ""
+        self.max_hp = 0
+        self.speed = 0
         self.swim_speed = 15
         self.fly_speed = 0
 
-        self.skill = ["skill1", "skill2", "skill3"]
+        self.skill = []
 
-        self.save = ["saving throw 1", "saving throw 2", "saving throw 3"]
+        self.save = []
 
-        self.language = ["language1", "language2", "language3"]
-        self.proficiency = ["prof1", "prof2", "prof3"]
-        self.feature = ["feature1", "feature2", "feature3"]
-        self.feat = ["feat1", "feat2", "feat3"]
-        self.resistance = ["res 1", "res 2", "res 3"]
-        self.advantage = ["adv1", "adv2", "adv3"]
-        self.disadvantage = ["disadv1", "disadv2", "disadv3"]
+        self.language = []
+        self.proficiency = []
+        self.feature = []
+        self.feat = []
+        self.resistance = []
+        self.advantage = []
+        self.disadvantage = []
 
-        self.armor = ["test armor", "10"]
+        self.armor = ["test", "13"]
 
-        self.attack = ["attack1", "attack2", "attack3"]
-        self.equipment = ["eq1", "eq2", "eq3"]
-        self.gold = 500.0
-        self.weapon = ["weapon1", "weapon2", "weapon3"]
-        self.magic = ["test magic will delete", "test magic will delete2", "test magic will delete3"]
-        self.magic_throw = "magic throw"
-        self.spell_dc = 20
-        self.spell_attack = 20
-        self.cantrips = [2, ["cantrip1", "cantrip2"]]
-        self.lvl_one = [2, ["one1", "one2"]]
-        self.lvl_two = [2, ["two1", "two2"]]
-        self.lvl_three = [2, ["3spell1", "spell2"]]
-        self.lvl_four = [2, ["s4pell1", "spell2"]]
-        self.lvl_five = [2, ["5spell1", "spell2"]]
-        self.lvl_six = [2, ["6spell1", "spell2"]]
-        self.lvl_seven = [2, ["7spell1", "spell2"]]
-        self.lvl_eight = [2, ["8spell1", "spell2"]]
-        self.lvl_nine = [2, ["s9pell1", "spell2"]]
+        self.attack = []
+        self.equipment = []
+        self.gold = 0.0
+        self.weapon = []
+        self.magic = []
+        self.magic_throw = ""
+        self.spell_dc = 0
+        self.spell_attack = 0
+        self.cantrips = [0, []]
+        self.lvl_one = [0, []]
+        self.lvl_two = [0, []]
+        self.lvl_three = [0, []]
+        self.lvl_four = [0, []]
+        self.lvl_five = [0, []]
+        self.lvl_six = [0, []]
+        self.lvl_seven = [0, []]
+        self.lvl_eight = [0, []]
+        self.lvl_nine = [0, []]
 
         self.spell_ct = 0
         self.spells = [self.lvl_one, self.lvl_two, self.lvl_three, self.lvl_four, self.lvl_five, self.lvl_six,
@@ -787,8 +787,10 @@ class Character:
     # returns armor, ac, and weapon info
     def combat_to_string(self):
 
-        if self.armor: #combat = "Armor type wearing: " + str(self.armor[0]) + "\nArmor AC: \t\t\t" + str(self.armor[1]) + "\n"
-            combat = ""
+        combat = ""
+        if len(self.armor) > 1:
+            combat += "\nArmor: \t\t\t\t" + self.armor[0]
+            combat += "\nAC: \t\t\t\t" + self.armor[1]
         else:
             combat = "No Armor\n"
         wpn_string = ""
@@ -796,7 +798,7 @@ class Character:
             wpn_string = wpn_string + "\nWeapon: \t\t\t" + str(wpn)
 
         if wpn_string == "":
-            wpn_string = "No Weapons"
+            wpn_string = "\nNo Weapons"
 
         eqp = ""
         for ep in self.equipment:
@@ -896,7 +898,7 @@ class Character:
         if atv == "":
             atv = "No Advantages"
 
-        return skil + "\n" + sav + "\n" + lang + "\n" + profs + "\n" + feats + "\n" + featts + "\n" + "Resistance: " + res + "\n" + dis + "\n" + atv + "\n"
+        return skil + "\n" + sav + "\n" + lang + "\n" + profs + "\n" + feats + "\n" + featts + "\n" + res + "\n" + dis + "\n" + atv + "\n"
 
     # returns class/race specific things
     def special_to_string(self):
