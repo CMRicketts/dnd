@@ -16,9 +16,7 @@ class Monk:
         self.ki_dc = 0
         self.ki_features = []
 
-        #NEW
         self.elem_feat = []
-        #NEW
 
         self.level = int(level)
 

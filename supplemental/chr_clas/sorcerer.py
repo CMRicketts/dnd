@@ -29,11 +29,9 @@ class Sorcerer:
         self.weapon = ["two daggers"]
         self.armor = []
 
-        #NEW
         self.color = ""
         self.swim_spd_mult = 1
         self.fly_speed = 0
-        #NEW
 
         if self.level == 1:
             self.init_hp()

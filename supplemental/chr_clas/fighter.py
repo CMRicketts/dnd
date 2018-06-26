@@ -17,7 +17,6 @@ class Fighter():
         self.archetype = ""
         self.style = ""
 
-        #NEW
         self.arcane_choices = []
         self.arcane_shot_desc = []
         self.arcane_dc = 0
@@ -25,7 +24,6 @@ class Fighter():
         self.sup_dice_ct = 0
         self.sup_dice = ""
         self.man_dc = 0
-        #NEW
 
         self.feature = ["Second Wind"]
         self.proficiency = ["all armors", "all shields", "all weapons"]

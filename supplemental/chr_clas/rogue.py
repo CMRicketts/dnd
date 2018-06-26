@@ -25,10 +25,8 @@ class Rogue:
         self.weapon = ["two daggers"]
         self.armor = ["leather armor", "11"]
 
-        #NEW
         self.speed = 0
         self.swim_spd = 0
-        #NEW
 
         self.archetype = ""
 

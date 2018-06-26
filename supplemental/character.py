@@ -40,7 +40,7 @@ class Character:
         self.chr_class = ""
         self.archetype = ""
         self.size = ""
-        self.color = ""
+        self.color = "" #Dragonborn, Sorcerer
         self.background = ""
         self.personality_trait = ""
         self.ideal = ""
@@ -115,12 +115,20 @@ class Character:
         self.divine_desc = [] # cleric
         self.divine_ct = 0
 
-        self.style = "" # fighter
+        self.style = ""  # fighter
+        self.arcane_choices = []
+        self.arcane_shot_desc = []
+        self.arcane_dc = 0
+        self.maneuver_opt = []
+        self.sup_dice_ct = 0
+        self.sup_dice = ""
+        self.man_dc = 0
 
         self.ki_ct = 0 # monk
         self.ki_dc = 0
         self.ki_features = []
         self.unarmored_mvmt = 0
+        self.elem_feat = []
 
         self.oath_desc = [] # paladin
         self.divinity_desc = []
@@ -135,6 +143,7 @@ class Character:
 
         self.metamagic_desc = [] # sorcerer
         self.sorcery_pts = 0
+        self.swim_spd_mult = 1
 
         self.pact = "" # warlock
         self.pact_desc = []
@@ -476,6 +485,13 @@ class Character:
             self.weapon.append(chr.weapon)
             self.archetype = chr.archetype
             self.style = chr.style
+            self.arcane_choices.append(chr.arcane_choices)
+            self.arcane_shot_desc.append(chr.arcane_shot_desc)
+            self.arcane_dc += chr.arcane_dc
+            self.maneuver_opt.append(chr.maneuver_opt)
+            self.sup_dice_ct += chr.sup_dice_ct
+            self.sup_dice = chr.sup_dice
+            self.man_dc += chr.man_dc
             i = 0
             while i < 9:
                 self.spells[i][0] += chr.spells[i][0]
@@ -514,6 +530,7 @@ class Character:
             self.ki_features.append(chr.ki_features)
             self.ki_ct = chr.ki_ct
             self.ki_dc = chr.ki_dc
+            self.elem_feat.append(chr.elem_feat)
             if not self.armor:
                 self.speed += chr.unarmored_mvmt
             i = 0
@@ -630,6 +647,8 @@ class Character:
             self.sneak_attack_dmg = chr.sneak_attack_dmg
             self.sneak_attack_desc.append(chr.sneak_attack_desc)
             self.expert_skills.append(chr.expert_skills)
+            self.speed += chr.speed
+            self.swim_speed += chr.swim_spd
             i = 0
             while i < 9:
                 self.spells[i][0] += chr.spells[i][0]
@@ -666,6 +685,9 @@ class Character:
             self.archetype = chr.origin
             self.metamagic_desc.append(chr.metamagic_desc)
             self.sorcery_pts += chr.sorcery_pts
+            self.color += " " + chr.color
+            self.fly_speed += chr.fly_speed
+            self.swim_speed *= chr.swim_spd_mult
             i = 0
             while i < 9:
                 self.spells[i][0] += chr.spells[i][0]
