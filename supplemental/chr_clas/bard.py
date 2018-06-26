@@ -40,6 +40,7 @@ class Bard:
                        self.lvl_seven, self.lvl_eight, self.lvl_nine]
 
         self.jack_bonus = 1 # see jack of all trades feature
+        self.jack_skill = []
         self.proficiency_bonus = 2
         if self.level > 4:
             self.proficiency_bonus = 3
@@ -83,7 +84,7 @@ class Bard:
             self.feature.append("Expertise")
             good_skill = raw_input("What first skill do you want to double the proficiency bonus?")
             good_two = raw_input("What second skill do you want to double the proficiency bonus?")
-            self.proficiency.append([good_skill, good_two, "doubled"])
+            self.jack_skill.append([good_skill, good_two])
         if self.level > 4:
             self.feature.append("Font of Inspiration")
         if self.level > 5:
@@ -92,7 +93,7 @@ class Bard:
             self.feature.append("Magical Secrets")
             good_skill = raw_input("What first skill do you want to double the proficiency bonus?")
             good_two = raw_input("What second skill do you want to double the proficiency bonus?")
-            self.proficiency.append([good_skill, good_two, "doubled"])
+            self.jack_skill.append([good_skill, good_two])
         if self.level > 13:
             self.feature.append("Magical Secrets x2")
         if self.level > 17:

@@ -28,76 +28,76 @@ from supplemental.race.tiefling import Tiefling
 
 class Character:
     def __init__(self):
-        self.name = ""
-        self.player = ""
-        self.sex = ""
-        self.age = ""
-        self.height = ""
-        self.weight = ""
+        self.name = "name"
+        self.player = "player"
+        self.sex = "m/f"
+        self.age = "age"
+        self.height = "height"
+        self.weight = "weight"
 
-        self.race = ""
-        self.subrace = ""
-        self.chr_class = ""
-        self.archetype = ""
-        self.size = ""
-        self.color = "" #Dragonborn, Sorcerer
-        self.background = ""
-        self.personality_trait = ""
-        self.ideal = ""
-        self.flaw = ""
-        self.bond = ""
-        self.alignment = ""
+        self.race = "race"
+        self.subrace = "subrace"
+        self.chr_class = "class"
+        self.archetype = "archetype"
+        self.size = "big size"
+        self.color = "this color" #Dragonborn, Sorcerer
+        self.background = "background"
+        self.personality_trait = "personality trait"
+        self.ideal = "ideal"
+        self.flaw = "flaw"
+        self.bond = "bond"
+        self.alignment = "alignment"
 
-        self.level = 0
+        self.level = 5
 
-        self.strength = 0
-        self.dexterity = 0
-        self.constitution = 0
-        self.intelligence = 0
-        self.wisdom = 0
-        self.charisma = 0
+        self.strength = 12
+        self.dexterity = 10
+        self.constitution = 8
+        self.intelligence = 6
+        self.wisdom = 14
+        self.charisma = 20
 
-        self.proficiency_bonus = 0
-        self.path = ""
+        self.proficiency_bonus = 5
+        self.path = "path"
 
-        self.hit_dice = ""
-        self.max_hp = 0
-        self.speed = 0
+        self.hit_dice = "4d10 hit dice"
+        self.max_hp = 50
+        self.speed = 30
         self.swim_speed = 15
         self.fly_speed = 0
 
-        self.skill = []
+        self.skill = ["skill1", "skill2", "skill3"]
 
-        self.save = []
+        self.save = ["saving throw 1", "saving throw 2", "saving throw 3"]
 
-        self.language = []
-        self.proficiency = []
-        self.feature = []
-        self.feat = []
-        self.resistance = []
-        self.advantage = []
-        self.disadvantage = []
+        self.language = ["language1", "language2", "language3"]
+        self.proficiency = ["prof1", "prof2", "prof3"]
+        self.feature = ["feature1", "feature2", "feature3"]
+        self.feat = ["feat1", "feat2", "feat3"]
+        self.resistance = ["res 1", "res 2", "res 3"]
+        self.advantage = ["adv1", "adv2", "adv3"]
+        self.disadvantage = ["disadv1", "disadv2", "disadv3"]
 
-        self.armor = ["", ""]
+        self.armor = ["test armor", "10"]
 
-        self.attack = []
-        self.equipment = []
-        self.gold = 0.0
-        self.weapon = []
-        self.magic = []
-        self.magic_throw = ""
-        self.spell_dc = 0
-        self.spell_attack = 0
-        self.cantrips = [0, []]
-        self.lvl_one = [0, []]
-        self.lvl_two = [0, []]
-        self.lvl_three = [0, []]
-        self.lvl_four = [0, []]
-        self.lvl_five = [0, []]
-        self.lvl_six = [0, []]
-        self.lvl_seven = [0, []]
-        self.lvl_eight = [0, []]
-        self.lvl_nine = [0, []]
+        self.attack = ["attack1", "attack2", "attack3"]
+        self.equipment = ["eq1", "eq2", "eq3"]
+        self.gold = 500.0
+        self.weapon = ["weapon1", "weapon2", "weapon3"]
+        self.magic = ["test magic will delete", "test magic will delete2", "test magic will delete3"]
+        self.magic_throw = "magic throw"
+        self.spell_dc = 20
+        self.spell_attack = 20
+        self.cantrips = [2, ["cantrip1", "cantrip2"]]
+        self.lvl_one = [2, ["one1", "one2"]]
+        self.lvl_two = [2, ["two1", "two2"]]
+        self.lvl_three = [2, ["3spell1", "spell2"]]
+        self.lvl_four = [2, ["s4pell1", "spell2"]]
+        self.lvl_five = [2, ["5spell1", "spell2"]]
+        self.lvl_six = [2, ["6spell1", "spell2"]]
+        self.lvl_seven = [2, ["7spell1", "spell2"]]
+        self.lvl_eight = [2, ["8spell1", "spell2"]]
+        self.lvl_nine = [2, ["s9pell1", "spell2"]]
 
         self.spell_ct = 0
         self.spells = [self.lvl_one, self.lvl_two, self.lvl_three, self.lvl_four, self.lvl_five, self.lvl_six,
@@ -111,6 +111,7 @@ class Character:
         self.rage_dmg = 0
 
         self.jack_bonus = 0 # bard
+        self.jack_skill = []
 
         self.divine_desc = [] # cleric
         self.divine_ct = 0
@@ -143,7 +144,7 @@ class Character:
 
         self.metamagic_desc = [] # sorcerer
         self.sorcery_pts = 0
-        self.swim_spd_mult = 1
+        self.swim_spd_mult = 0
 
         self.pact = "" # warlock
         self.pact_desc = []
@@ -174,6 +175,10 @@ class Character:
 
     def intelligence_mod(self):
         return math.floor((self.intelligence - 10) / 2)
+
+    def count_spells(self):
+        for spell in self.spells:
+            self.spell_ct += spell[0]
 
     def set_race(self):
         race = raw_input("what race is your character? ")
@@ -380,6 +385,7 @@ class Character:
             self.cantrips.append(chr.cantrips)
             self.skill.append(chr.skill)
             self.weapon.append(chr.weapon)
+            self.jack_skill.append(chr.jack_skill)
             i = 0
             while i < 9:
                 self.spells[i][0] += chr.spells[i][0]
@@ -787,27 +793,44 @@ class Character:
             combat = "No Armor\n"
         wpn_string = ""
         for wpn in self.weapon:
-            wpn_string = wpn_string + "Weapon: \t\t\t" + str(wpn)
+            wpn_string = wpn_string + "\nWeapon: \t\t\t" + str(wpn)
 
         if wpn_string == "":
             wpn_string = "No Weapons"
 
         eqp = ""
         for ep in self.equipment:
-            eqp = eqp + "Equipment: \t" + str(ep)
+            eqp = eqp + "\nEquipment: \t\t\t" + str(ep)
 
         if eqp == "":
             eqp = "No Equipment (something went wrong, dude)"
 
+        cantrips = "\n"
+        for cantrip in self.cantrips:
+            if isinstance(cantrip, list):
+                place = "Cantrips: \t\t\t"
+                cantrips += place
+                for thing in cantrip:
+                    cantrips += str(thing) + " "
+                cantrips += "\n"
+
+        i = 0
         spells = ""
         for spell in self.spells:
-            spells = spells + "Spell: \t\t\t\t" + str(spell)
+            for item in spell:
+                if isinstance(item, list):
+                    place = "Spells level " + str(i+1) + ": \t"
+                    spells += place
+                    for thing in item:
+                        spells = spells + str(thing) + " "
+                    spells += "\n"
+                    i += 1
         if spells == "":
             spells = "No known spells"
 
         save = "\nSpell Ability: \t\t" + self.magic_throw
 
-        return combat + wpn_string + "\n" + eqp + "\n" + spells + save
+        return combat + wpn_string + "\n" + eqp + "\n" + cantrips + spells + save
 
     # returns level, ability scores, score modifiers, hp
     def score_to_string(self):
@@ -836,23 +859,23 @@ class Character:
         dis = ""
         atv = ""
         for item in self.skill:
-            skil = skil + "Skill: \t\t\t\t\t\t\t" + str(item)
+            skil = skil + "\nSkill: \t\t\t\t" + str(item)
         for prof in self.save:
-            sav = sav + "Proficient saving throw: \t\t" + str(prof)
+            sav = sav + "\nSaving throws: \t\t" + str(prof)
         for language in self.language:
-            lang = lang + "Language Known: \t" + str(language)
+            lang = lang + "\nLanguage Known: \t" + str(language)
         for proficient in self.proficiency:
-            profs = profs + str(proficient)
+            profs = profs + "\nProficient in: \t\t" + str(proficient)
         for feature in self.feature:
-            feats = feats + "Feature: \t\t\t\t\t\t" + str(feature)
+            feats = feats + "\nFeature: \t\t\t" + str(feature)
         for feat in self.feat:
-            featts = featts + "Feats: \t\t\t\t\t\t\t" + str(feat)
+            featts = featts + "\nFeats: \t\t\t\t" + str(feat)
         for resis in self.resistance:
-            res = res + str(resis)
+            res = res + "\nResistant to: \t\t" + str(resis)
         for adv in self.disadvantage:
-            dis = dis + "Disadvantage: \t\t" + str(adv)
+            dis = dis + "\nDisadvantage: \t\t" + str(adv)
         for thy in self.advantage:
-            atv = atv + "Advantages: \t\t" + str(thy)
+            atv = atv + "\nAdvantages: \t\t" + str(thy)
 
         if skil == "":
             skil = "No Skills"
@@ -873,17 +896,113 @@ class Character:
         if atv == "":
             atv = "No Advantages"
 
-        return skil + "\n" + sav + "\n" + lang + "\n" + "Proficiencies: " +  profs + "\n" + feats + "\n" + featts + "\n" + "Resistance: " + res + "\n" + dis + "\n" + atv + "\n"
+        return skil + "\n" + sav + "\n" + lang + "\n" + profs + "\n" + feats + "\n" + featts + "\n" + "Resistance: " + res + "\n" + dis + "\n" + atv + "\n"
 
     # returns class/race specific things
     def special_to_string(self):
         rage = ""
-        if self.rage:
-            rage = "Rage Description: " + str(self.rage_desc) + "\n"\
-                "Rage Count (max): " + str(self.rage_ct) + "\n"\
-                "Rage Damage Modifier: +" + str(self.rage_dmg)
+        jack = ""
+        cleric = ""
+        fighter = ""
+        monk = ""
+        paladin = ""
+        ranger = ""
+        rogue = ""
+        sorcerer = ""
+        warlock = ""
+        wizard = ""
 
-        return rage
+        if self.rage:
+            for item in self.rage_desc:
+                rage += "\nRage Description: \t\t" + str(item)
+            rage += "\nRage Count (max): \t\t" + str(self.rage_ct)
+            rage += "\nRage Damage Modifier: \t" + str(self.rage_dmg)
+        if self.jack_bonus != 0:
+            jack = "\nJack of all Trades Multiplier: " + str(self.jack_bonus)
+            for item in self.jack_skill:
+                jack += "\nDoubled Skill: \t\t\t" + str(item)
+        if self.divine_ct != 0:
+            cleric += "\nChannel Divinity Count: " + str(self.divine_ct)
+            for item in self.divine_desc:
+                cleric += "\nChannel Divinity Desc: \t" + str(item)
+
+        if self.style != "":
+            fighter += "\nFighting Style: \t\t" + str(self.style)
+        if self.arcane_dc != 0:
+            for item in self.arcane_choices:
+                fighter += "\nArcane Shot Choices: \t" + str(item)
+            for item in self.arcane_shot_desc:
+                fighter += "\nArcane Shot Desc: \t\t" + str(item)
+            fighter += "\nArcane Shot DC: \t\t" + str(self.arcane_dc)
+        if self.man_dc != 0:
+            fighter += "\nManeuver DC: \t\t\t" + str(self.man_dc)
+            for item in self.maneuver_opt:
+                fighter += "\nManeuvers: \t\t\t\t" + str(item)
+        if self.sup_dice_ct != 0:
+            fighter += "\nSuperiority Dice: \t\t" + str(self.sup_dice)
+            fighter += "\nSuperiority Dice Count (Max): " + str(self.sup_dice_ct)
+
+        if self.ki_ct != 0:
+            monk += "\nKi Count (Max): \t\t" + str(self.ki_ct)
+            monk += "\nKi DC: \t\t\t\t\t" + str(self.ki_dc)
+            for item in self.ki_features:
+                monk += "\nKi Feature: \t\t\t" + str(item)
+        for item in self.elem_feat:
+            monk += "\nElemental Features: \t" + str(item)
+
+        if self.oath_desc:
+            for item in self.oath_desc:
+                paladin += "\nOath Description: \t\t" + item
+        if self.divinity_desc:
+            for item in self.divinity_desc:
+                paladin += "\nChannel Divinity Desc: \t" + item
+        if self.fighting_style != "":
+            paladin += "\nFighting Style: \t\t" + self.fighting_style
+            for item in self.fighting_style_desc:
+                paladin += "\nFighting Style Description: " + item
+
+        for item in self.master_desc:
+            ranger += "\nMaster Description: \t" + item
+
+        if self.sneak_attack_dmg != "":
+            rogue += "\nSneak Attack Damage: \t" + self.sneak_attack_dmg
+            for item in self.sneak_attack_desc:
+                rogue += "\nSneak Attack Description: " + str(item)
+        for item in self.expert_skills:
+            rogue += "\nExpert Skills (2x Score): " + str(item)
+
+        for item in self.metamagic_desc:
+            sorcerer += "\nMetamagic Desc: \t\t" + item
+        if self.sorcery_pts != 0:
+            sorcerer += "\nSorcery Points (Max): \t" + str(self.sorcery_pts)
+
+        if self.pact != "":
+            warlock += "\nWarlock Pact: \t\t\t" + self.pact
+            for item in self.pact_desc:
+                warlock += "\nWarlock Pact Desc: \t\t" + item
+        if self.spell_slots != 0:
+            warlock += "\nSpell Slots: \t\t\t" + str(self.spell_slots)
+            warlock += "\nSlot Level: \t\t\t" + str(self.slot_lvl)
+        if self.invocation_ct != 0:
+            warlock += "\nInvocation Count (Max): " + str(self.invocation_ct)
+            for item in self.invocations:
+                warlock += "\nInvocations: \t\t\t" + item
+
+        for item in self.tradition_desc:
+            wizard += "\nTradition Description: \t" + item
+        for item in self.spell_master:
+            wizard += "\nMastered Spell: \t\t" + item
+        for item in self.sig_spells:
+            wizard += "\nSignature Spell: \t\t" + item
+
+
+        ending = ""
+        combined = [rage, jack, cleric, fighter, monk, paladin, ranger, rogue, sorcerer, warlock, wizard]
+
+        for item in combined:
+            if item != "":
+                ending += "\n" + item
+        return ending
 
     # returns name, player, xp, and all character information
     def character_to_string(self):
@@ -911,7 +1030,7 @@ class Character:
 
     # returns the entire character to string
     def to_string(self):
-        return self.character_to_string() + "\n" + self.score_to_string() + "\n" + self.feature_to_string() + "\n" + self.combat_to_string() + "\n" + "\n" + self.special_to_string() + "\n"
+        return self.character_to_string() + "\n" + self.score_to_string() + "\n" + self.feature_to_string() + "\n" + self.combat_to_string() + "\n" + self.special_to_string() + "\n"
 
     # TODO
     # returns entire character to json in case they want to have that?

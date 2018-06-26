@@ -50,8 +50,8 @@ def main():
             sex = raw_input("What is the gender (or sex) of your character?")
             chr.sex = sex'''
 
-            lvl = raw_input("what level is your character? ")
-            chr.level = lvl
+            #lvl = raw_input("what level is your character? ")
+            #chr.level = lvl
 
             '''print("\n")
             print("Let's talk about some of your stats.")
@@ -135,8 +135,9 @@ def main():
                     else:
                         print("charisma has already been accounted for")'''
 
-            chr.set_race()
-            chr.set_class()
+            #chr.set_race()
+            #chr.set_class()
+            #chr.count_spells()
 
             '''bg = raw_input("Tell me a bit about your character's personality")
             chr.personality_trait = bg
