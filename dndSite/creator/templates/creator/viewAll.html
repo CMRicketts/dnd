@@ -1,0 +1,12 @@
+{% extends 'creator/base.html' %}
+{% block content %}
+    {% if character_latest %}
+        <ul>
+        {% for char in character_latest %}
+            <li><a href="/viewall/{{ char.chr_name }}/">{{ char.chr_name }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>no characters.</p>
+    {% endif %}
+{% endblock %}

@@ -358,7 +358,7 @@ class Character:
             self.rage_desc = (str(chr.rage_description))
             self.hit_dice = chr.hit_dice
             self.skill = chr.skill
-            self.armor = ["none", "10"]
+            self.weapon.append(chr.weapon)
         elif clas == "bard":
             chr = Bard(self.level, self.strength, self.dexterity, self.constitution, self.charisma, self.intelligence, self.wisdom)
             self.archetype = chr.college
