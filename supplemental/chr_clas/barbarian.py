@@ -1,5 +1,6 @@
 import math
 
+
 class Barbarian:
 
     def __init__(self, level, race, stre, dex, con, cha, inte, wis):
