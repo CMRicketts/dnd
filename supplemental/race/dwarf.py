@@ -6,7 +6,6 @@ class Dwarf:
         self.strength = 0
         self.wisdom = 0
         self.max_hp = 0
-        self.hp_increase = 0
         self.age_low = 40
         self.age_high = 300
         self.height_low = 45

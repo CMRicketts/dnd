@@ -782,8 +782,6 @@ class Character:
                 i += 1
             self.spell_ct += chr.spell_ct
 
-
-
     # returns armor, ac, and weapon info
     def combat_to_string(self):
 
@@ -997,7 +995,6 @@ class Character:
         for item in self.sig_spells:
             wizard += "\nSignature Spell: \t\t" + item
 
-
         ending = ""
         combined = [rage, jack, cleric, fighter, monk, paladin, ranger, rogue, sorcerer, warlock, wizard]
 
@@ -1029,13 +1026,7 @@ class Character:
               "\nAlignment: \t\t\t" + self.alignment
         return beg + color + "\n"
 
-
     # returns the entire character to string
     def to_string(self):
         return self.character_to_string() + "\n" + self.score_to_string() + "\n" + self.feature_to_string() + "\n" + self.combat_to_string() + "\n" + self.special_to_string() + "\n"
 
-    # TODO
-    # returns entire character to json in case they want to have that?
-    # stretch goal
-    def to_json(self):
-        return ""

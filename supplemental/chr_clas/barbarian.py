@@ -2,9 +2,7 @@ import math
 
 
 class Barbarian:
-
     def __init__(self, level, race, stre, dex, con, cha, inte, wis):
-
         self.feature = ["Rage", "Unarmored Defense"]
         self.proficiency = ["light armor", "medium armor", "shields", "simple weapons", "martial weapons"]
         self.saving_throw = ["strength", "constitution"]
@@ -17,7 +15,6 @@ class Barbarian:
         self.rage_description = []
 
         self.level = int(level)
-        level = self.level
         self.strength = int(stre)
         self.wisdom = int(wis)
         self.intelligence = int(inte)
@@ -461,7 +458,7 @@ class Barbarian:
                                     "you can use a bonus action to make an additional melee weapon attack against it.")
 
         spirit()
-        if level > 6:
+        if level > 5:
             aspect()
         if level > 9:
             walker()
