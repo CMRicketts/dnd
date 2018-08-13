@@ -251,7 +251,6 @@ class Warlock:
         base_inv = ["Armor of Shadows", "Beast Speech", "Beguiling Influence", "Devil's Sight", "Eyes of the Rune Keeper",
                     "Fiendish Vigor", "Gaze of Two Minds", "Mask of Many Faces", "Misty Visions", "Thief of Five Fates"]
         prereq_inv = []
-
         if self.level > 4:
             prereq_inv.append("Cloak of Flies")
             prereq_inv.append("Gift of the Depths")
@@ -394,7 +393,7 @@ class Warlock:
             self.seeker()
         else:
             self.patron = "Undying"
-            self.undyne() #if you find this, you're rad.
+            self.undyne()  # if you find this, you're rad.
 
     def undyne(self):
         self.feature.append("Expanded Spell List (undying)")
@@ -456,7 +455,6 @@ class Warlock:
             self.feature.append("Thought Shield")
         if self.level > 13:
             self.feature.append("Create Thrall")
-
 
     def ghost(self):
         self.feature.append("Expanded Spell List (ghost)")

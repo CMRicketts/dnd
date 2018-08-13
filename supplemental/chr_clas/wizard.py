@@ -206,7 +206,6 @@ class Wizard:
         wpn = raw_input("Which do you want: a quarterstaff or a dagger?")
         self.weapon.append(wpn)
         self.equipment.append(wpn)
-        #V2: create weapon + equipment append
 
     def set_cantrip(self):
         self.cantrips[0] = 3

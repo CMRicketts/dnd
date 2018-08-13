@@ -322,7 +322,7 @@ class Rogue:
         if self.level > 16:
             self.feature.append("Eye for Weakness")
 
-    def ass(self): #ass
+    def ass(self):  # ass
         self.proficiency.append(str(["Disguise Kit", "Poisoner's Kit"]))
         self.feature.append("Assassinate")
         if self.level > 8:
