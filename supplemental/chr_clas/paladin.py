@@ -326,7 +326,7 @@ class Paladin:
 
     def veng(self):
         self.oath_desc.append("Tenets of Vengeance")
-        self.learn_spell(["bane", "hunter's mark", "haste", "protection from energy", "banishment", "dimension door", "hold monster", "scrying"])
+        self.learn_spell(["bane", "hunter's mark", "hold person", "misty step", "haste", "protection from energy", "banishment", "dimension door", "hold monster", "scrying"])
         self.divinity_feat.append("Anjure Enemy")
         self.divinity_feat.append("Vow of Enmity")
         if self.level > 6:
