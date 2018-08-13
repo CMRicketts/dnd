@@ -421,6 +421,6 @@ class Paladin:
             self.feature.append("Aura of Hate")
         if self.level > 14:
             self.feature.append("Supernatural Resistance")
-            self.resistance.append("Bludgeoning", "piercing", "slashing")
+            self.resistance.extend(["Bludgeoning", "piercing", "slashing"])
         if self.level > 19:
             self.feature.append("Dread Lord")

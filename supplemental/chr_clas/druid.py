@@ -351,14 +351,14 @@ class Druid():
             spells = [["Hold Person", "Spike Growth"], ["sleet storm", "slow"], ["freedom of movement", "ice storm"],
                       ["commune with nature", "cone of cold"]]
         elif lands == "coast":
-            spells = [["miror image", "misty step"], ["water breathing", "water walk"],
+            spells = [["mirror image", "misty step"], ["water breathing", "water walk"],
                       ["control water", "freedom of movement"], ["conjure elemental", "scrying"]]
         elif lands == "desert":
             spells = [["blur", "silence"], ["create food and water", "protection from energy"],
                       ["blight", "hallucinatory terrain"], ["insect plague", "wall of stone"]]
         elif lands == "forest":
             spells = [["barkskin", "spider climb"], ["call lightning", "plant growth"],
-                      ["divination", "freedom of mobement"], ["commune with nature", "tree stride"]]
+                      ["divination", "freedom of movement"], ["commune with nature", "tree stride"]]
         elif lands == "grassland":
             spells = [["invisibility", "pass without trace"], ["daylight", "haste"],
                       ["divination", "freedom of movement"], ["dream", "insect plague"]]

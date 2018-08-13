@@ -208,12 +208,10 @@ class Monk:
     def init_hp(self):
         print(str(self.constitution_mod()))
         self.hp = 10 + self.constitution_mod()
-        print(self.hp)
 
     def level_hp(self, level):
         print(self.constitution_mod())
         self.hp = 10 + (self.constitution_mod() * int(level))
-        print(self.hp)
 
     def set_skill(self):
         i = 0
